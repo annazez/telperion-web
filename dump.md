@@ -1,0 +1,1 @@
+- The seasons font nejde použít kvůli licencování (o grafiku Instagramu se nestarám, tam to neřeším, ale na webu by to bylo protizákonné použít), použiju playfair display, který je velmi blízký

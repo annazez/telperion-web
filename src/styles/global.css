@@ -1,0 +1,5 @@
+@import "tailwindcss";
+:root {
+  --font-sans: 'Manrope', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
