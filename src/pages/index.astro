@@ -1,17 +1,79 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components'; // <--- TOTO PŘIDAT
 ---
 
 <Layout title="Domů">
-	<div class="container mx-auto px-4 py-20 text-center">
-		
-		<h1 class="text-5xl md:text-7xl font-serif font-bold text-green-800 mb-6">
-			Mladí učí <span class="italic">o klimatu</span>
-		</h1>
-		
-		<p class="text-xl text-stone-600 max-w-2xl mx-auto">
-			Tohle je počátek projektu
-		</p>
+  
+  <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#f8f4dd]">
+    <div class="absolute inset-0 -z-10 bg-[#f8f4dd]"></div>
+    <div class="container mx-auto px-4 text-center max-w-4xl">
+      <span class="inline-block py-1 px-3 rounded-full bg-[#f8f4dd] text-[#0b210e] text-sm font-bold mb-6 tracking-wide border border-[#398f00]">
+        STUDENTI UČÍ STUDENTY
+      </span>
+      <h1 class="text-5xl md:text-7xl font-serif font-bold text-[#398f00] mb-6 leading-tight">
+        Mladí učí <span class="italic">o klimatu</span>
+      </h1>
+      <p class="text-lg md:text-xl text-[#0b210e] mb-10 leading-relaxed max-w-2xl mx-auto">
+        Informujeme o tématech spojených s životním prostředím. Vzděláváme a přibližujeme udržitelný způsob života mladé generaci.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="/programy" class="w-full sm:w-auto bg-[#f8f4dd] text-[#0b210e] px-8 py-4 rounded-full font-bold text-lg border border-[#398f00] hover:bg-[#398f00]/10 transition transform hover:-translate-y-0.5 shadow-xl shadow-[#398f00]/20">
+          Programy pro školy
+        </a>
+        <a href="/o-nas" class="w-full sm:w-auto bg-[#f8f4dd] text-[#0b210e] border border-[#398f00] px-8 py-4 rounded-full font-bold text-lg hover:bg-[#398f00]/10 transition">
+          Přidat se k nám
+        </a>
+      </div>
+    </div>
+  </section>
 
-	</div>
+  <section class="py-20 bg-[#f8f4dd]">
+    <div class="container mx-auto px-4">
+      
+      <div class="text-center mb-16 max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#398f00] mb-4">
+          Proč to funguje?
+        </h2>
+        <p class="text-[#0b210e] text-lg">
+          Věříme, že o klimatu se dá mluvit bez strašení a složitých grafů. Náš přístup stavíme na dialogu a faktech.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <div class="bg-[#f8f4dd] p-8 rounded-2xl border border-[#398f00]/30 hover:shadow-lg transition-shadow">
+          <div class="w-12 h-12 bg-[#f8f4dd] text-[#398f00] border border-[#398f00]/30 rounded-xl flex items-center justify-center mb-6">
+            <Icon name="mdi:account-group-outline" class="w-7 h-7" />
+          </div>
+          <h3 class="text-xl font-bold text-[#398f00] mb-3 font-serif">Rovnocenný přístup</h3>
+          <p class="text-[#0b210e] leading-relaxed">
+            Jsme studenti, stejně jako naše publikum. Nepoučujeme z pozice autority, ale diskutujeme jako vrstevníci. Odbouráváme bariéry a trému.
+          </p>
+        </div>
+
+        <div class="bg-[#f8f4dd] p-8 rounded-2xl border border-[#398f00]/30 hover:shadow-lg transition-shadow">
+          <div class="w-12 h-12 bg-[#f8f4dd] text-[#398f00] border border-[#398f00]/30 rounded-xl flex items-center justify-center mb-6">
+            <Icon name="mdi:earth" class="w-7 h-7" />
+          </div>
+          <h3 class="text-xl font-bold text-[#398f00] mb-3 font-serif">Ověřená fakta</h3>
+          <p class="text-[#0b210e] leading-relaxed">
+            Naše materiály nestavíme na dojmech. Čerpáme z ověřených vědeckých studií a dat (IPCC, Fakta o klimatu) a překládáme je do lidské řeči.
+          </p>
+        </div>
+
+        <div class="bg-[#f8f4dd] p-8 rounded-2xl border border-[#398f00]/30 hover:shadow-lg transition-shadow">
+          <div class="w-12 h-12 bg-[#f8f4dd] text-[#398f00] border border-[#398f00]/30 rounded-xl flex items-center justify-center mb-6">
+            <Icon name="mdi:lightbulb-on-outline" class="w-7 h-7" />
+          </div>
+          <h3 class="text-xl font-bold text-[#398f00] mb-3 font-serif">Interaktivita</h3>
+          <p class="text-[#0b210e] leading-relaxed">
+            Žádné monology. Používáme hry, workshopy a diskuze. Chceme, aby si žáci na věci přišli sami a vytvořili si vlastní názor.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </Layout>
