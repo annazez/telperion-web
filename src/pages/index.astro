@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Icon } from 'astro-icon/components';
+import FeatureCard from '../components/FeatureCard.astro';
 ---
 
 <Layout title="Domů">
@@ -41,35 +41,26 @@ import { Icon } from 'astro-icon/components';
 
       <div class="grid md:grid-cols-3 gap-8">
         
-        <div class="bg-cream p-8 rounded-2xl border border-brand-green/30 hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 bg-cream text-brand-green border border-brand-green/30 rounded-xl flex items-center justify-center mb-6">
-            <Icon name="mdi:account-group-outline" class="w-7 h-7" />
-          </div>
-          <h3 class="text-xl font-bold text-brand-green mb-3 font-serif">Rovnocenný přístup</h3>
-          <p class="text-dark-green leading-relaxed">
-            Jsme studenti, stejně jako naše publikum. Nepoučujeme z pozice autority, ale diskutujeme jako vrstevníci. Odbouráváme bariéry a trému.
-          </p>
-        </div>
+        <FeatureCard
+          icon="mdi:account-group-outline"
+          title="Rovnocenný přístup"
+        >
+          Jsme studenti, stejně jako naše publikum. Nepoučujeme z pozice autority, ale diskutujeme jako vrstevníci. Odbouráváme bariéry a trému.
+        </FeatureCard>
 
-        <div class="bg-cream p-8 rounded-2xl border border-brand-green/30 hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 bg-cream text-brand-green border border-brand-green/30 rounded-xl flex items-center justify-center mb-6">
-            <Icon name="mdi:earth" class="w-7 h-7" />
-          </div>
-          <h3 class="text-xl font-bold text-brand-green mb-3 font-serif">Ověřená fakta</h3>
-          <p class="text-dark-green leading-relaxed">
-            Naše materiály nestavíme na dojmech. Čerpáme z ověřených vědeckých studií a dat (IPCC, Fakta o klimatu) a překládáme je do lidské řeči.
-          </p>
-        </div>
+        <FeatureCard
+          icon="mdi:earth"
+          title="Ověřená fakta"
+        >
+          Naše materiály nestavíme na dojmech. Čerpáme z ověřených vědeckých studií a dat (IPCC, Fakta o klimatu) a překládáme je do lidské řeči.
+        </FeatureCard>
 
-        <div class="bg-cream p-8 rounded-2xl border border-brand-green/30 hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 bg-cream text-brand-green border border-brand-green/30 rounded-xl flex items-center justify-center mb-6">
-            <Icon name="mdi:lightbulb-on-outline" class="w-7 h-7" />
-          </div>
-          <h3 class="text-xl font-bold text-brand-green mb-3 font-serif">Interaktivita</h3>
-          <p class="text-dark-green leading-relaxed">
-            Žádné monology. Používáme hry, workshopy a diskuze. Chceme, aby si žáci na věci přišli sami a vytvořili si vlastní názor.
-          </p>
-        </div>
+        <FeatureCard
+          icon="mdi:lightbulb-on-outline"
+          title="Interaktivita"
+        >
+          Žádné monology. Používáme hry, workshopy a diskuze. Chceme, aby si žáci na věci přišli sami a vytvořili si vlastní názor.
+        </FeatureCard>
 
       </div>
     </div>
