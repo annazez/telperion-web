@@ -9,12 +9,12 @@ interface Props {
 const { icon, title } = Astro.props;
 ---
 
-<div class="bg-[#f8f4dd] p-8 rounded-2xl border border-[#398f00]/30 hover:shadow-lg transition-shadow">
-  <div class="w-12 h-12 bg-[#f8f4dd] text-[#398f00] border border-[#398f00]/30 rounded-xl flex items-center justify-center mb-6">
+<div class="bg-cream p-8 rounded-2xl border border-brand-green/30 hover:shadow-lg transition-shadow">
+  <div class="w-12 h-12 bg-cream text-brand-green border border-brand-green/30 rounded-xl flex items-center justify-center mb-6">
     <Icon name={icon} class="w-7 h-7" />
   </div>
-  <h3 class="text-xl font-bold text-[#398f00] mb-3 font-serif">{title}</h3>
-  <p class="text-[#0b210e] leading-relaxed">
+  <h3 class="text-xl font-bold text-brand-green mb-3 font-serif">{title}</h3>
+  <p class="text-dark-green leading-relaxed">
     <slot />
   </p>
 </div>
