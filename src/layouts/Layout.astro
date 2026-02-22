@@ -1,10 +1,4 @@
 ---
-// Písmo pro obsah stránky
-import '@fontsource-variable/manrope';
-
-// Ozdobné písmo pro nadpisy
-import '@fontsource-variable/playfair-display';
-
 import '../styles/global.css';
 
 interface Props {
@@ -27,7 +21,12 @@ const pageTitle = title ? `${title} | Mladí učí o klimatu` : 'Mladí učí o 
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
+
+        <link rel="preload" href="/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/fonts/manrope-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/fonts/playfair-latin.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/fonts/playfair-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+
 		<title>{pageTitle}</title>
 		<meta name="description" content={description} />
 		<meta property="og:title" content={pageTitle} />
@@ -35,7 +34,9 @@ const pageTitle = title ? `${title} | Mladí učí o klimatu` : 'Mladí učí o 
 		<meta property="og:type" content="website" />
 	</head>
 	<body>
-		<slot />
+        <main>
+		    <slot />
+        </main>
 	</body>
 </html>
 
