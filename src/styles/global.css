@@ -1,12 +1,12 @@
 @import "tailwindcss";
 :root {
-  --font-sans: 'Manrope', sans-serif;
-  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Manrope Variable', sans-serif;
+  --font-serif: 'Playfair Display Variable', serif;
 }
 
 body {
-  background-color: #f8f4dd;
-  color: #0b210e;
+  background-color: var(--color-cream);
+  color: var(--color-dark-green);
 }
 
 h1,
@@ -15,5 +15,5 @@ h3,
 h4,
 h5,
 h6 {
-  color: #398f00;
+  color: var(--color-brand-green);
 }
