@@ -4,8 +4,8 @@ test.describe('Layout Component', () => {
   test('should render with default title when no title prop is provided', async ({ page }) => {
     await page.goto('/test/layout-default');
 
-    // Check the title - title prop is undefined so it renders as empty string
-    await expect(page).toHaveTitle('| Telperion');
+    // Check the title
+    await expect(page).toHaveTitle('Telperion');
 
     // Check the language attribute
     await expect(page.locator('html')).toHaveAttribute('lang', 'cs');
