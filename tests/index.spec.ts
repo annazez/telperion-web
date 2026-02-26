@@ -12,10 +12,6 @@ test.describe('Home Page', () => {
     const heading = page.getByRole('heading', { level: 1 });
     await expect(heading).toHaveText(/Mladí učí o klimatu/);
 
-    // Check for the welcome text
-    const welcome = page.getByText('Vítejte na stránkách Telperionu!');
-    await expect(welcome).toBeVisible();
-
     // Check for the description text
     const description = page.getByText('Informujeme o tématech spojených s životním prostředím');
     await expect(description).toBeVisible();

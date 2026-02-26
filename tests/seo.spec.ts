@@ -10,7 +10,5 @@ test.describe('SEO', () => {
     // Check meta description
     const description = page.locator('meta[name="description"]');
     await expect(description).toHaveAttribute('content', 'Informujeme o tématech spojených s životním prostředím. Vzděláváme a přibližujeme udržitelný způsob života mladé generaci.');
-
-    // OG tags are not currently implemented in Layout.astro, so skipping checks.
   });
 });

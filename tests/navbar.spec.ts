@@ -1,53 +1,41 @@
 import { test, expect } from '@playwright/test';
 
-test('Mobile menu toggles correctly and updates icon', async ({ page }) => {
-  // Navigate to the home page
-  await page.goto('/');
+test.describe('Navbar Mobile Menu', () => {
+  test.use({ viewport: { width: 375, height: 667 } }); // Mobile viewport
 
-  // Set viewport to mobile size
-  await page.setViewportSize({ width: 375, height: 667 });
+  test('should toggle mobile menu and icons correctly', async ({ page }) => {
+    await page.goto('/test/navbar-test');
 
-  const menuButton = page.locator('#mobile-menu-btn');
-  const menu = page.locator('#mobile-menu');
+    const menuBtn = page.locator('#mobile-menu-btn');
+    const mobileMenu = page.locator('#mobile-menu');
 
-  // Define the paths for the icons
-  const hamburgerPath = "M4 6h16M4 12h16M4 18h16";
-  const closePath = "M6 18L18 6M6 6l12 12";
+    // Initial state
+    await expect(mobileMenu).toBeHidden();
 
-  // Check initial state: menu hidden, hamburger icon visible
-  await expect(menu).not.toBeVisible();
+    // Check for aria-expanded (new requirement)
+    await expect(menuBtn).toHaveAttribute('aria-expanded', 'false');
 
-  // Verify hamburger icon is visible (using separate elements approach)
-  // We'll look for an svg that contains the path and check its visibility
-  const hamburgerIcon = menuButton.locator(`svg:has(path[d="${hamburgerPath}"])`);
-  const closeIcon = menuButton.locator(`svg:has(path[d="${closePath}"])`);
+    // Check icons visibility (assuming new implementation classes)
+    const hamburger = menuBtn.locator('svg.hamburger-icon');
+    const close = menuBtn.locator('svg.close-icon');
 
-  // Wait for the button to be interactive
-  await expect(menuButton).toBeVisible();
+    await expect(hamburger).toBeVisible();
+    await expect(close).toBeHidden();
 
-  // Initial check - Hamburger should be visible
-  await expect(hamburgerIcon).toBeVisible();
-  // Close icon should be hidden (or not present if not yet implemented, but this test is for TDD)
-  await expect(closeIcon).not.toBeVisible();
+    // Click to open
+    await menuBtn.click();
 
-  // Click to open menu
-  await menuButton.click();
+    await expect(mobileMenu).toBeVisible();
+    await expect(menuBtn).toHaveAttribute('aria-expanded', 'true');
+    await expect(hamburger).toBeHidden();
+    await expect(close).toBeVisible();
 
-  // Verify menu is visible
-  await expect(menu).toBeVisible();
+    // Click to close
+    await menuBtn.click();
 
-  // Verify hamburger icon is hidden
-  await expect(hamburgerIcon).not.toBeVisible();
-  // Verify close icon is visible
-  await expect(closeIcon).toBeVisible();
-
-  // Click to close menu
-  await menuButton.click();
-
-  // Verify menu is hidden again
-  await expect(menu).not.toBeVisible();
-
-  // Verify icons revert to initial state
-  await expect(hamburgerIcon).toBeVisible();
-  await expect(closeIcon).not.toBeVisible();
+    await expect(mobileMenu).toBeHidden();
+    await expect(menuBtn).toHaveAttribute('aria-expanded', 'false');
+    await expect(hamburger).toBeVisible();
+    await expect(close).toBeHidden();
+  });
 });
