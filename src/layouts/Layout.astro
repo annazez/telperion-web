@@ -8,7 +8,6 @@ import '../styles/global.css';
 import { Image } from 'astro:assets';
 import leaves from '../assets/leaves.svg';
 
-// IMPORTUJEME NAVBAR A FOOTER
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
@@ -40,7 +39,6 @@ const pageTitle = title ? `${title} | Mladí učí o klimatu` : "Mladí učí o 
         
         <div class="relative overflow-hidden flex flex-col min-h-screen">
             
-            <!-- LÍSTKY ZŮSTÁVAJÍ -->
             <div class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0">
                 <Image src={leaves} alt="" fetchpriority="high" loading="eager" />
             </div>
@@ -48,19 +46,17 @@ const pageTitle = title ? `${title} | Mladí učí o klimatu` : "Mladí učí o 
                 <Image src={leaves} alt="" loading="lazy" />
             </div>
 
-            <!-- VLOŽENÝ NAVBAR -->
             <Navbar />
 
             <!-- 
-                Změna: Přidáno pt-24 (padding top), aby obsah nezačínal POD navbarem 
-                flex-grow zajistí, že obsah roztáhne zbytek obrazovky a zatlačí footer dolů
+                Změna: Přidáno "flex flex-col". Tím se z mainu stane chytry kontejner,
+                do kterého se teď 404 stránka krásně napasuje.
+                Dále je zde pb-4 (drobná mezera nad patičkou).
             -->
-            <main class="flex-grow relative z-10 pt-24">
+            <main class="flex-grow flex flex-col relative z-10 pt-24 pb-4">
                 <slot />
             </main>
 
-            <!-- VLOŽENÝ FOOTER -->
-            <!-- z-20 ho drží bezpečně nad spodními lístky -->
             <div class="relative z-20">
                 <Footer />
             </div>

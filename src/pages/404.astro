@@ -4,29 +4,24 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Stránka nenalezena (404)">
   <!-- 
-    Změny pro zrušení scrollbaru:
-    - h-[80vh]: Sekce zabere přesně 80 % výšky okna (zbytek padne na navbar/okraje)
-    - odstraněno py-20: Už nepřidáváme extra pixely, které by stránku protáhly
+    Díky "flex-grow" na <main> v Layoutu stačí této sekci také přidat "flex-grow". 
+    Dokonale a bez posuvníků vyplní veškerý zbylý prostor mezi navbarem a patičkou.
   -->
-  <section class="h-[80vh] flex items-center justify-center">
+  <section class="flex-grow flex flex-col items-center justify-center w-full">
     <div class="container mx-auto px-4 text-center max-w-2xl">
       
-      <!-- Velké, dominantní číslo 404 -->
       <h1 class="text-8xl md:text-9xl font-serif font-bold text-brand-green/20 mb-4 select-none">
         404
       </h1>
       
-      <!-- Hlavní nadpis -->
       <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-6">
         Jejda! Tady rostou jen stromy.
       </h2>
       
-      <!-- Vysvětlující text -->
       <p class="text-lg text-dark-green mb-10 leading-relaxed">
         Stránka, kterou hledáte, tu bohužel není. Možná byla přesunuta, smazána, čeká na vytvoření, nebo jste se jen překlepli v adrese.
       </p>
       
-      <!-- Tlačítka pro návrat -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <a 
           href="/" 
