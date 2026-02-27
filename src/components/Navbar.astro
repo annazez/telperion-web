@@ -2,6 +2,8 @@
 import type { MenuItem } from '../types';
 import DesktopMenuItem from './navbar/DesktopMenuItem.astro';
 import MobileMenuItem from './navbar/MobileMenuItem.astro';
+import { Image } from 'astro:assets';
+import logoImg from '../assets/logo.png';
 
 const menuItems: MenuItem[] = [
   { name: 'Domů', url: '/' },
@@ -30,9 +32,13 @@ const menuItems: MenuItem[] = [
       <!-- Logo -->
       <div class="flex-shrink-0">
         <a href="/" class="flex items-center gap-2 group">
-          <span class="font-serif text-xl md:text-2xl font-bold text-brand-green tracking-wide group-hover:text-dark-green transition-colors">
-            Telperion
-          </span>
+          <!-- OBRÁZKOVÉ LOGO ZE SRC/ASSETS -->
+          <!-- h-8 na mobilu, h-10 na počítači, w-auto udrží správný poměr stran -->
+          <Image 
+            src={logoImg} 
+            alt="Telperion Logo" 
+            class="h-8 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+          />
         </a>
       </div>
 
@@ -86,8 +92,9 @@ const menuItems: MenuItem[] = [
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
-  const openIcon = document.getElementById('menu-icon-open');
-  const closeIcon = document.getElementById('menu-icon-close');
+  
+  // Tady jsem smazal hledání 'menu-icon-open', protože v HTML používáš group-aria-expanded
+  // což to řeší krásně přes čisté CSS (Tailwind)!
 
   btn?.addEventListener('click', () => {
     const isExpanded = btn.getAttribute('aria-expanded') === 'true';
