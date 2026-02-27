@@ -8,12 +8,13 @@ import '../styles/global.css';
 import { Image } from 'astro:assets';
 import leaves from '../assets/leaves.svg';
 
-// IMPORTUJEME NAVBAR
+// IMPORTUJEME NAVBAR A FOOTER
 import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 
 interface Props {
-	title?: string;
-	description?: string;
+    title?: string;
+    description?: string;
 }
 
 const { title, description = "Mladí učí o klimatu. Vzdělávací programy pro školy a veřejnost." } = Astro.props;
@@ -22,41 +23,48 @@ const pageTitle = title ? `${title} | Mladí učí o klimatu` : "Mladí učí o 
 
 <!doctype html>
 <html lang="cs" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-		<meta property="og:title" content={`${title} | Telperion`} />
-		<meta property="og:description" content={description} />
-		<meta property="og:type" content="website" />
-		<title>{title} | Telperion</title>
-		<Analytics />
-		<SpeedInsights />
-	</head>
-	
-	<body class="bg-cream text-dark-green font-sans antialiased">
-		
-		<div class="relative overflow-hidden flex flex-col min-h-screen">
-			
-			<!-- LÍSTKY ZŮSTÁVAJÍ -->
-			<div class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0">
-				<Image src={leaves} alt="" fetchpriority="high" loading="eager" />
-			</div>
-			<div class="absolute bottom-0 left-0 rotate-180 w-64 md:w-96 opacity-90 pointer-events-none z-0">
-				<Image src={leaves} alt="" loading="lazy" />
-			</div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+        <meta property="og:title" content={`${title} | Telperion`} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <title>{title} | Telperion</title>
+        <Analytics />
+        <SpeedInsights />
+    </head>
+    
+    <body class="bg-cream text-dark-green font-sans antialiased">
+        
+        <div class="relative overflow-hidden flex flex-col min-h-screen">
+            
+            <!-- LÍSTKY ZŮSTÁVAJÍ -->
+            <div class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0">
+                <Image src={leaves} alt="" fetchpriority="high" loading="eager" />
+            </div>
+            <div class="absolute bottom-0 left-0 rotate-180 w-64 md:w-96 opacity-90 pointer-events-none z-0">
+                <Image src={leaves} alt="" loading="lazy" />
+            </div>
 
             <!-- VLOŽENÝ NAVBAR -->
             <Navbar />
 
-			<!-- 
+            <!-- 
                 Změna: Přidáno pt-24 (padding top), aby obsah nezačínal POD navbarem 
+                flex-grow zajistí, že obsah roztáhne zbytek obrazovky a zatlačí footer dolů
             -->
-			<main class="flex-grow relative z-10 pt-24">
-				<slot />
-			</main>
-			
-		</div>
-	</body>
+            <main class="flex-grow relative z-10 pt-24">
+                <slot />
+            </main>
+
+            <!-- VLOŽENÝ FOOTER -->
+            <!-- z-20 ho drží bezpečně nad spodními lístky -->
+            <div class="relative z-20">
+                <Footer />
+            </div>
+            
+        </div>
+    </body>
 </html>
