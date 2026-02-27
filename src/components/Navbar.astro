@@ -20,20 +20,20 @@ const menuItems: MenuItem[] = [
 ];
 ---
 
-<header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-300">
+<header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-300 pointer-events-none">
   
-  <!-- 
-    Sjednocený jemný Glassmorphism s FeatureCards:
-    - glass-card: Sjednocený Glassmorphism efekt (krytí, rozmazání, rámeček)
-  -->
-  <div class="mx-auto max-w-6xl glass-card shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-full px-6 py-3">
-    <div class="flex items-center justify-between">
+  <div class="relative mx-auto max-w-6xl px-6 py-3 pointer-events-auto">
+    <!-- 
+      TRIK ZDE: Skleněné pozadí je oddělené do samostatného podkladového divu. 
+      Tím pádem už neblokuje blur prvkům, které se nacházejí v navigaci (jako je náš dropdown)!
+    -->
+    <div class="absolute inset-0 glass-card shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-full -z-10 pointer-events-none"></div>
+    
+    <div class="relative z-10 flex items-center justify-between">
       
       <!-- Logo -->
       <div class="flex-shrink-0">
         <a href="/" class="flex items-center gap-2 group">
-          <!-- OBRÁZKOVÉ LOGO ZE SRC/ASSETS -->
-          <!-- h-10 na mobilu, h-12 na počítači, w-auto udrží správný poměr stran -->
           <Image 
             src={logoImg} 
             alt="Telperion Logo" 
@@ -61,11 +61,9 @@ const menuItems: MenuItem[] = [
       <!-- Tlačítko pro mobilní menu (Hamburger) -->
       <div class="md:hidden flex items-center">
         <button id="mobile-menu-btn" class="group text-dark-green hover:text-brand-green focus:outline-none p-2 bg-cream/50 rounded-full transition-colors" aria-label="Otevřít menu" aria-expanded="false">
-          <!-- Hamburger Icon -->
           <svg class="hamburger-icon h-6 w-6 block group-aria-expanded:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
-          <!-- Close Icon -->
           <svg class="close-icon h-6 w-6 hidden group-aria-expanded:block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -75,8 +73,9 @@ const menuItems: MenuItem[] = [
   </div>
 
   <!-- Mobilní Menu -->
-  <div id="mobile-menu" class="hidden md:hidden mt-4 mx-auto max-w-6xl">
-    <div class="bg-cream/90 backdrop-blur-sm border border-dark-green/10 rounded-3xl shadow-xl overflow-hidden px-4 pt-4 pb-6 space-y-2">
+  <div id="mobile-menu" class="hidden md:hidden mt-4 mx-auto max-w-6xl pointer-events-auto">
+    <!-- Mobilní menu rovnou používá glass-card pro sjednocení -->
+    <div class="glass-card rounded-3xl shadow-xl overflow-hidden px-4 pt-4 pb-6 space-y-2">
       {menuItems.map((item) => (
         <MobileMenuItem item={item} />
       ))}
@@ -92,9 +91,6 @@ const menuItems: MenuItem[] = [
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
-  
-  // Tady jsem smazal hledání 'menu-icon-open', protože v HTML používáš group-aria-expanded
-  // což to řeší krásně přes čisté CSS (Tailwind)!
 
   btn?.addEventListener('click', () => {
     const isExpanded = btn.getAttribute('aria-expanded') === 'true';
