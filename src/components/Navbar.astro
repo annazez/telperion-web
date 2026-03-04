@@ -5,6 +5,7 @@ import MobileMenuItem from './navbar/MobileMenuItem.astro';
 import { Image } from 'astro:assets';
 import logoImg from '../assets/logo.png';
 
+// Zde je upravené pole s položkami navigace
 const menuItems: MenuItem[] = [
   { name: 'Domů', url: '/' },
   { 
@@ -12,10 +13,12 @@ const menuItems: MenuItem[] = [
     url: '#',
     subItems: [
       { name: 'Pro školy', url: '/programy/pro-skoly' },
-      { name: 'Pro skauty', url: '/programy/pro-skauty' },
+      { name: 'Pro veřejnost', url: '/programy/pro-verejnost' },
+      { name: 'Další programy', url: '/programy/dalsi-programy' },
     ]
   },
   { name: 'Podcast', url: '/podcast' },
+  { name: 'O nás', url: '/o-nas' },
   { name: 'Kontakty', url: '/kontakty' },
 ];
 ---
@@ -40,13 +43,6 @@ const menuItems: MenuItem[] = [
       </div>
 
       <!-- Desktop Menu (absolutně vycentrované) -->
-      <!-- 
-        Změna pro vycentrování:
-        - absolute inset-x-0: roztáhne nav přes celou šířku
-        - flex justify-center: vycentruje obsah uvnitř
-        - pointer-events-none: aby absolutní vrstva neblokovala logo/tlačítko pod ní
-        - pointer-events-auto na ul: aby šlo na odkazy klikat
-      -->
       <nav class="hidden md:flex absolute inset-x-0 top-0 bottom-0 justify-center items-center pointer-events-none z-10">
         <ul class="flex items-center space-x-1 lg:space-x-4 pointer-events-auto">
           {menuItems.map((item) => (
