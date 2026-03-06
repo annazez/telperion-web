@@ -22,9 +22,10 @@ import { Icon } from 'astro-icon/components';
     <!-- Skautská víkendovka -->
     <div class="glass-card rounded-3xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start">
       <div class="md:w-1/3 shrink-0">
-        <div class="bg-brand-green text-cream rounded-2xl p-6 shadow-lg">
-          <h3 class="text-2xl font-serif font-bold mb-4">Skautská klima víkendovka</h3>
-          <ul class="space-y-3 text-sm font-medium">
+        <!-- ZMĚNA ZDE: Použito text-white přímo na prvky, aby se barva bezpečně vynutila -->
+        <div class="bg-brand-green text-white rounded-2xl p-6 shadow-lg">
+          <h3 class="text-2xl font-serif font-bold mb-4 !text-white">Skautská klima víkendovka</h3>
+          <ul class="space-y-3 text-sm font-medium text-white">
             <li class="flex items-center gap-2"><Icon name="mdi:calendar-weekend" class="w-5 h-5"/> Pátek až Neděle</li>
             <li class="flex items-center gap-2"><Icon name="mdi:account-group" class="w-5 h-5"/> Až 100 účastníků</li>
             <li class="flex items-start gap-2"><Icon name="mdi:pine-tree" class="w-5 h-5 shrink-0"/> Vlčata, světlušky, skauti, roveři</li>
