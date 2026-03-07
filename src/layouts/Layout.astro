@@ -1,64 +1,104 @@
 ---
-import Analytics from '@vercel/analytics/astro';
-import SpeedInsights from '@vercel/speed-insights/astro';
-import '@fontsource-variable/manrope';
-import '@fontsource-variable/playfair-display';
-import '@fontsource-variable/playfair-display/wght-italic.css';
-import '../styles/global.css';
-import { Image } from 'astro:assets';
-import leaves from '../assets/leaves.svg';
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
+import "@fontsource-variable/manrope";
+import "@fontsource-variable/playfair-display";
+import "@fontsource-variable/playfair-display/wght-italic.css";
+import "../styles/global.css";
+import { Image } from "astro:assets";
+import leaves from "../assets/leaves.svg";
 
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import Modal from '../components/Modal.astro';
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Modal from "../components/Modal.astro";
 
 interface Props {
-    title?: string;
-    description?: string;
+  title?: string;
+  description?: string;
 }
 
-const { title, description = "Mladí učí o klimatu. Vzdělávací programy pro školy a veřejnost." } = Astro.props;
-const pageTitle = title ? `${title} | Mladí učí o klimatu` : "Mladí učí o klimatu";
+const {
+  title,
+  description = "Mladí učí o klimatu. Vzdělávací programy pro školy a veřejnost.",
+} = Astro.props;
+const pageTitle = title
+  ? `${title} | Mladí učí o klimatu`
+  : "Mladí učí o klimatu";
 ---
 
 <!doctype html>
 <html lang="cs" class="scroll-smooth">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-        <meta property="og:title" content={`${title} | Telperion`} />
-        <meta property="og:description" content={description} />
-        <meta property="og:type" content="website" />
-        <title>{title} | Telperion</title>
-        <Analytics />
-        <SpeedInsights />
-    </head>
-    
-    <body class="bg-cream text-dark-green font-sans antialiased">
-        
-        <div class="relative overflow-hidden flex flex-col min-h-screen">
-            
-            <div class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0">
-                <Image src={leaves} alt="" fetchpriority="high" loading="eager" />
-            </div>
-            <div class="absolute bottom-0 left-0 rotate-180 w-64 md:w-96 opacity-90 pointer-events-none z-0">
-                <Image src={leaves} alt="" fetchpriority="high" loading="eager" />
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta property="og:title" content={`${title} | Telperion`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title} | Telperion</title>
+    <Analytics />
+    <SpeedInsights />
+  </head>
 
-            <Navbar />
+  <body class="bg-cream text-dark-green font-sans antialiased">
+    <div class="relative overflow-hidden flex flex-col min-h-screen">
+      <div
+        class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0"
+      >
+        <Image src={leaves} alt="" fetchpriority="high" loading="eager" />
+      </div>
+      <div
+        class="absolute bottom-0 left-0 rotate-180 w-64 md:w-96 opacity-90 pointer-events-none z-0"
+      >
+        <Image src={leaves} alt="" fetchpriority="high" loading="eager" />
+      </div>
 
-            <main class="flex-grow flex flex-col relative z-10 pt-24 pb-0">
-                <slot />
-            </main>
+      <Navbar />
 
-            <div class="relative z-20">
-                <Footer />
-            </div>
-            
-        </div>
+      <main class="flex-grow flex flex-col relative z-10 pt-24 pb-0">
+        <slot />
+      </main>
 
-        <Modal />
-    </body>
+      <div class="relative z-20">
+        <Footer />
+      </div>
+    </div>
+
+    <Modal />
+    <script>
+      import { Tolgee, FormatSimple, DevTools } from "@tolgee/web";
+
+      // 1. Zjistíme, jestli si uživatel jazyk už ručně nepřepnul v minulosti
+      let savedLanguage = localStorage.getItem("zvoleny-jazyk");
+
+      // 2. Pokud u nás uživatel ještě nikdy nebyl, detekujeme jazyk z jeho prohlížeče
+      if (!savedLanguage) {
+        // navigator.language vrací např. "cs-CZ" nebo "en-US". Vezmeme první 2 písmena.
+        const browserLang = navigator.language.slice(0, 2);
+
+        // Pokud je prohlížeč v češtině nebo slovenštině, nastavíme češtinu. Pro zbytek světa angličtinu.
+        savedLanguage =
+          browserLang === "cs" || browserLang === "sk" ? "cs" : "en";
+      }
+
+      // 3. Spuštění samotného Tolgee s chytrým jazykem
+      const tolgee = Tolgee()
+        .use(DevTools())
+        .use(FormatSimple())
+        .init({
+          apiKey: import.meta.env.PUBLIC_TOLGEE_API_KEY,
+          apiUrl: "https://app.tolgee.io",
+          language: savedLanguage, // Aktuální jazyk (detekovaný, nebo z paměti)
+          defaultLanguage: "en", // Záložní jazyk, pokud nějaký překlad chybí
+          observerType: "text",
+          observerOptions: { inputPrefix: "[[", inputSuffix: "]]" },
+        });
+
+      // 4. Potvrzení do konzole, že vše běží
+      tolgee.run().then(() => {
+        console.log("Tolgee bylo úspěšně spuštěno v jazyce:", savedLanguage);
+      });
+    </script>
+  </body>
 </html>
