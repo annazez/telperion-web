@@ -24,7 +24,7 @@ test.describe('Navbar Component', () => {
         { name: 'Domů', href: '/' },
         // Programy is a button, handled separately
         { name: 'Podcast', href: '/podcast' },
-        { name: 'O nás', href: '/o-nas' },
+        { name: 'Články', href: '/clanky' },
         { name: 'Kontakty', href: '/kontakty' },
       ];
 
@@ -66,10 +66,9 @@ test.describe('Navbar Component', () => {
         // The desktop CTA is in a div with "hidden md:block" that is a sibling of the nav
         // It's the div following the nav
         const desktopCtaContainer = page.locator('div.hidden.md\\:block').filter({ hasText: 'Poptat program' });
-        const cta = desktopCtaContainer.getByRole('link', { name: 'Poptat program' });
+        const cta = desktopCtaContainer.getByRole('button', { name: 'Poptat program' });
 
         await expect(cta).toBeVisible();
-        await expect(cta).toHaveAttribute('href', '/poptavka');
     });
 
     test('should hide mobile menu button', async ({ page }) => {
@@ -108,7 +107,7 @@ test.describe('Navbar Component', () => {
         'Domů',
         'Programy',
         'Podcast',
-        'O nás',
+        'Články',
         'Kontakty'
       ];
 
@@ -118,7 +117,7 @@ test.describe('Navbar Component', () => {
       }
 
        // Check CTA in mobile menu
-       const mobileCta = mobileMenu.getByRole('link', { name: 'Poptat program' });
+       const mobileCta = mobileMenu.getByRole('button', { name: 'Poptat program' });
        await expect(mobileCta).toBeVisible();
 
       // Click to close

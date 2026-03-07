@@ -20,8 +20,8 @@ test.describe('Home Page', () => {
     const programyLink = page.getByRole('link', { name: 'Programy pro školy' });
     await expect(programyLink).toHaveAttribute('href', '/programy/pro-skoly');
 
-    const oNasLink = page.getByRole('link', { name: 'Přidat se k nám' });
-    await expect(oNasLink).toHaveAttribute('href', '/o-nas');
+    const oNasLink = page.getByRole('link', { name: 'Náš tým' });
+    await expect(oNasLink).toHaveAttribute('href', '/kontakty');
   });
 
   test('should have interactive elements', async ({ page }) => {
