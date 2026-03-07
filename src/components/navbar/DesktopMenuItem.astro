@@ -30,6 +30,7 @@ const { item } = Astro.props;
             <a 
               href={subItem.url} 
               class="block px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
+            aria-label={subItem.name}
             >
               {subItem.name}
             </a>
