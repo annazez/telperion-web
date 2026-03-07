@@ -9,14 +9,14 @@ test.describe('SEO', () => {
 
     // Check meta description
     const description = page.locator('meta[name="description"]');
-    await expect(description).toHaveAttribute('content', 'Informujeme o tématech spojených s životním prostředím. Vzděláváme a přibližujeme udržitelný způsob života mladé generaci.');
+    await expect(description).toHaveAttribute('content', 'Mladí učí o klimatu. Vzdělávací programy pro školy a veřejnost.');
 
     // Check Open Graph tags
     const ogTitle = page.locator('meta[property="og:title"]');
     await expect(ogTitle).toHaveAttribute('content', 'Domů | Telperion');
 
     const ogDescription = page.locator('meta[property="og:description"]');
-    await expect(ogDescription).toHaveAttribute('content', 'Informujeme o tématech spojených s životním prostředím. Vzděláváme a přibližujeme udržitelný způsob života mladé generaci.');
+    await expect(ogDescription).toHaveAttribute('content', 'Mladí učí o klimatu. Vzdělávací programy pro školy a veřejnost.');
 
     const ogType = page.locator('meta[property="og:type"]');
     await expect(ogType).toHaveAttribute('content', 'website');
