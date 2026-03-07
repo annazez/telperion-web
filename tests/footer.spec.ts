@@ -2,8 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Footer Component", () => {
   test.beforeEach(async ({ page }) => {
-    // Navigate to the home page since Footer is global
-    await page.goto("/");
+    await page.goto('/');
   });
 
   test("should display the footer with correct copyright text", async ({
@@ -23,12 +22,11 @@ test.describe("Footer Component", () => {
     const glassCard = page.locator("footer .glass-card");
     await expect(glassCard).toBeVisible();
 
-    // Check if the glass-card utility is applied
     await expect(glassCard).toHaveClass(/glass-card/);
   });
 
-  test("should have hover transition effect", async ({ page }) => {
-    const footerContent = page.locator("footer div.max-w-fit");
+  test('should have hover transition effect', async ({ page }) => {
+    const footerContent = page.locator('footer div.glass-card');
     await expect(footerContent).toHaveClass(/hover:-translate-y-1/);
     await expect(footerContent).toHaveClass(/duration-300/);
     await expect(footerContent).toHaveClass(/transition-transform/);

@@ -49,7 +49,6 @@ const menuItems: MenuItem[] = [
         </ul>
       </nav>
 
-      <!-- Desktop Tlačítko: Místo volání window, posíláme CustomEvent -->
       <div class="hidden md:block z-20">
         <button 
           type="button" 
@@ -85,7 +84,6 @@ const menuItems: MenuItem[] = [
         <MobileMenuItem item={item} />
       ))}
       <div class="pt-4 mt-2 border-t border-brand-green/10">
-        <!-- Mobilní Tlačítko: Také posílá CustomEvent -->
         <button 
           type="button" 
           onclick="document.dispatchEvent(new CustomEvent('open-contact-modal'))" 

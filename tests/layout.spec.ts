@@ -6,15 +6,12 @@ test.describe("Layout Component", () => {
   }) => {
     await page.goto("/test/layout-default");
 
-    // Check the title
-    await expect(page).toHaveTitle("| Telperion");
+    await expect(page).toHaveTitle('| Telperion');
 
-    // Check the language attribute
-    await expect(page.locator("html")).toHaveAttribute("lang", "cs");
+    await expect(page.locator('html')).toHaveAttribute('lang', 'cs');
 
-    // Check the slot content
-    const heading = page.getByRole("heading", { level: 1 });
-    await expect(heading).toHaveText("Default Layout Content");
+    const heading = page.getByRole('heading', { level: 1 });
+    await expect(heading).toHaveText('Default Layout Content');
   });
 
   test("should render with custom title when title prop is provided", async ({
@@ -22,15 +19,12 @@ test.describe("Layout Component", () => {
   }) => {
     await page.goto("/test/layout-custom");
 
-    // Check the title
-    await expect(page).toHaveTitle("Test Title | Telperion");
+    await expect(page).toHaveTitle('Test Title | Telperion');
 
-    // Check the language attribute
-    await expect(page.locator("html")).toHaveAttribute("lang", "cs");
+    await expect(page.locator('html')).toHaveAttribute('lang', 'cs');
 
-    // Check the slot content
-    const heading = page.getByRole("heading", { level: 1 });
-    await expect(heading).toHaveText("Custom Layout Content");
+    const heading = page.getByRole('heading', { level: 1 });
+    await expect(heading).toHaveText('Custom Layout Content');
   });
 
   test("should have eager loading on bottom image", async ({ page }) => {

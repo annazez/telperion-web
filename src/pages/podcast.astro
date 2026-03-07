@@ -9,10 +9,8 @@ import SectionBadge from '../components/SectionBadge.astro';
   <section class="min-h-[70vh] flex items-center pt-12 pb-8 px-4">
     <div class="container mx-auto max-w-4xl">
       
-      <!-- Skleněná karta s obsahem -->
       <div class="glass-card rounded-3xl p-8 md:p-16 text-center shadow-xl border border-brand-green/20 relative overflow-hidden">
         
-        <!-- Dekorativní prvky na pozadí karty -->
         <div class="absolute -top-10 -right-10 text-brand-green/10 transform rotate-12 pointer-events-none">
           <Icon name="mdi:microphone-variant" class="w-48 h-48" />
         </div>
@@ -20,7 +18,6 @@ import SectionBadge from '../components/SectionBadge.astro';
           <Icon name="mdi:headphones" class="w-48 h-48" />
         </div>
 
-        <!-- Hlavní obsah -->
         <div class="relative z-10 flex flex-col items-center">
           
           <SectionBadge class="uppercase tracking-widest">
@@ -36,7 +33,6 @@ import SectionBadge from '../components/SectionBadge.astro';
             <strong>Ladicí práce finišují, těšte se.</strong>
           </p>
 
-          <!-- Ikonky platforem (zatím neaktivní) -->
           <div class="flex flex-col items-center space-y-4 mb-12">
             <p class="text-sm font-bold text-dark-green uppercase tracking-wide">Najdete nás brzy na:</p>
             <div class="flex gap-6">
@@ -52,7 +48,6 @@ import SectionBadge from '../components/SectionBadge.astro';
             </div>
           </div>
 
-          <!-- Výzva k akci (Otevře kontaktní modal) -->
           <button 
             type="button" 
             onclick="document.dispatchEvent(new CustomEvent('open-contact-modal'))"
