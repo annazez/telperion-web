@@ -5,7 +5,6 @@ test.describe('Navbar Component', () => {
     await page.goto('/test/navbar');
   });
 
-  // Desktop Tests
   test.describe('Desktop Viewport', () => {
     test.use({ viewport: { width: 1280, height: 720 } });
 
@@ -16,13 +15,11 @@ test.describe('Navbar Component', () => {
     });
 
     test('should display main navigation items', async ({ page }) => {
-      // Scope to desktop nav
       const nav = page.locator('nav.hidden.md\\:flex');
       await expect(nav).toBeVisible();
 
       const expectedLinks = [
         { name: 'Domů', href: '/' },
-        // Programy is a button, handled separately
         { name: 'Podcast', href: '/podcast' },
         { name: 'Články', href: '/clanky' },
         { name: 'Kontakty', href: '/kontakty' },
@@ -34,7 +31,6 @@ test.describe('Navbar Component', () => {
         await expect(linkElement).toHaveAttribute('href', link.href);
       }
 
-      // Check the 'Programy' button specifically
       const programyButton = nav.getByRole('button', { name: 'Programy' });
       await expect(programyButton).toBeVisible();
     });
@@ -43,7 +39,6 @@ test.describe('Navbar Component', () => {
       const nav = page.locator('nav.hidden.md\\:flex');
       const programyButton = nav.getByRole('button', { name: 'Programy' });
 
-      // Hover to trigger dropdown
       await programyButton.hover();
 
       const subItems = [
@@ -53,9 +48,6 @@ test.describe('Navbar Component', () => {
       ];
 
       for (const item of subItems) {
-        // Scope to the dropdown container within the nav
-        // We look for the link inside the nav.
-        // Note: The dropdown is absolutely positioned but structurally inside the <li> in the <nav>
         const link = nav.getByRole('link', { name: item.name });
         await expect(link).toBeVisible();
         await expect(link).toHaveAttribute('href', item.href);
@@ -63,8 +55,6 @@ test.describe('Navbar Component', () => {
     });
 
     test('should display CTA button', async ({ page }) => {
-        // The desktop CTA is in a div with "hidden md:block" that is a sibling of the nav
-        // It's the div following the nav
         const desktopCtaContainer = page.locator('div.hidden.md\\:block').filter({ hasText: 'Poptat program' });
         const cta = desktopCtaContainer.getByRole('button', { name: 'Poptat program' });
 
@@ -77,7 +67,6 @@ test.describe('Navbar Component', () => {
     });
   });
 
-  // Mobile Tests
   test.describe('Mobile Viewport', () => {
     test.use({ viewport: { width: 375, height: 667 } });
 
@@ -95,14 +84,11 @@ test.describe('Navbar Component', () => {
       const mobileBtn = page.locator('#mobile-menu-btn');
       const mobileMenu = page.locator('#mobile-menu');
 
-      // Initially hidden
       await expect(mobileMenu).toBeHidden();
 
-      // Click to open
       await mobileBtn.click();
       await expect(mobileMenu).toBeVisible();
 
-      // Check menu items
       const expectedLinks = [
         'Domů',
         'Programy',
@@ -116,11 +102,9 @@ test.describe('Navbar Component', () => {
           await expect(link).toBeVisible();
       }
 
-       // Check CTA in mobile menu
        const mobileCta = mobileMenu.getByRole('button', { name: 'Poptat program' });
        await expect(mobileCta).toBeVisible();
 
-      // Click to close
       await mobileBtn.click();
       await expect(mobileMenu).toBeHidden();
     });

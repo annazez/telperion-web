@@ -49,11 +49,6 @@ const pageTitle = title ? `${title} | Mladí učí o klimatu` : "Mladí učí o 
 
             <Navbar />
 
-            <!-- 
-                Změna: Přidáno "flex flex-col". Tím se z mainu stane chytry kontejner,
-                do kterého se teď 404 stránka krásně napasuje.
-                Dále je zde pb-4 (drobná mezera nad patičkou).
-            -->
             <main class="flex-grow flex flex-col relative z-10 pt-24 pb-0">
                 <slot />
             </main>

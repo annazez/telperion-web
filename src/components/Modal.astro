@@ -2,26 +2,15 @@
 import { Icon } from 'astro-icon/components';
 ---
 
-<!-- 
-  Hlavní kontejner modalu. Ve výchozím stavu má třídu 'hidden'.
-  id="contact-modal" použijeme v JavaScriptu pro jeho ovládání.
--->
 <div id="contact-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
   
-  <!-- Tmavé, rozmazané pozadí (Backdrop) -->
   <div id="modal-backdrop" class="fixed inset-0 bg-dark-green/60 backdrop-blur-sm transition-opacity opacity-0 duration-300"></div>
 
-  <!-- Obal pro samotné okno modalu, zajišťuje vycentrování -->
   <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
     <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
       
-      <!-- 
-        Samotné okno modalu.
-        Třídy pro animaci: scale-95 opacity-0 (skryté) -> scale-100 opacity-100 (zobrazené)
-      -->
       <div id="modal-panel" class="relative transform overflow-hidden rounded-3xl bg-cream text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg scale-95 opacity-0 duration-300">
         
-        <!-- Tlačítko pro zavření (Křížek vpravo nahoře) -->
         <button type="button" id="close-modal-btn" class="absolute right-6 top-6 text-dark-green/50 hover:text-brand-green transition-colors focus:outline-none rounded-full p-1 hover:bg-brand-green/10">
           <span class="sr-only">Zavřít</span>
           <Icon name="mdi:close" class="h-6 w-6" />
@@ -40,11 +29,6 @@ import { Icon } from 'astro-icon/components';
             </div>
           </div>
 
-          <!-- 
-            FORMULÁŘ 
-            Zde stačí změnit 'action' atribut na URL, kterou získáš z Formspree.
-            Atribut 'name' u každého inputu je důležitý - tak se data pojmenují v e-mailu.
-          -->
           <form action="https://formspree.io/f/xyknzgwp" method="POST" class="mt-6 space-y-4">
             
             <div>
@@ -85,7 +69,6 @@ import { Icon } from 'astro-icon/components';
 </div>
 
 <script>
-  // Počkáme na načtení DOMu, aby modal na 100% existoval
   document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('contact-modal');
     const backdrop = document.getElementById('modal-backdrop');
@@ -95,7 +78,6 @@ import { Icon } from 'astro-icon/components';
 
     if(!modal || !backdrop || !panel) return;
 
-    // Funkce pro otevření modalu
     const openModal = () => {
       modal.classList.remove('hidden');
       
@@ -108,7 +90,6 @@ import { Icon } from 'astro-icon/components';
       }, 10);
     };
 
-    // Funkce pro zavření modalu
     const closeModal = () => {
       backdrop.classList.remove('opacity-100');
       backdrop.classList.add('opacity-0');
@@ -121,22 +102,16 @@ import { Icon } from 'astro-icon/components';
       }, 300);
     };
 
-    // 1. ZAVŘENÍ: Naslouchače na tlačítka v modalu
     closeBtn?.addEventListener('click', closeModal);
     cancelBtn?.addEventListener('click', closeModal);
 
-    // Zavření při kliknutí mimo okno
     modal.addEventListener('click', (e) => {
       if (e.target === modal.querySelector('.min-h-full')) {
         closeModal();
       }
     });
 
-    // 2. OTEVŘENÍ: Skvělá a neprůstřelná komunikace!
-    // Modal sedí a čeká na vlastní událost, kterou mu pošle Navbar.
     document.addEventListener('open-contact-modal', () => {
-      // Když zaslechne zprávu, navíc zkontroluje, jestli uživatel neklikl z mobilního menu, 
-      // a pokud ano, zavře ho, aby mu modal nevyskočil pod otevřeným menu.
       const mobileMenu = document.getElementById('mobile-menu');
       if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
           mobileMenu.classList.add('hidden');

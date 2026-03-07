@@ -2,11 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
 import SectionBadge from '../components/SectionBadge.astro';
-// Sem později přidáš importy fotek, např.:
-// import jakubImg from '../assets/team/jakub.jpg';
 
-// BLUEPRINT TÝMU: Zde jednoduše upravuješ a přidáváš lidi. 
-// Až budeš mít fotky, místo "null" dáš název importované fotky (např. jakubImg).
 const teamMembers = [
   {
     name: "Jakub Nekvasil",
@@ -44,8 +40,8 @@ const teamMembers = [
     name: "Magdaléna Klímová",
     role: "Klimatické dny",
     bio: "Zde bude krátký medailonek. Prostor pro pár vět o tom, co Magdalénu baví, proč to dělá a jaká je její vize.",
-    email: "magdalena.klimova@telperion.cz", // Nech prázdné, pokud nemáš
-    phone: "", // Nech prázdné, pokud nemáš
+    email: "magdalena.klimova@telperion.cz",
+    phone: "",
     image: null
   },
   {
@@ -61,7 +57,6 @@ const teamMembers = [
 
 <Layout title="Náš tým a Kontakty">
   
-  <!-- HLAVIČKA STRÁNKY -->
   <section class="relative pt-12 pb-8 md:pt-16 md:pb-8 overflow-hidden text-center">
     <div class="container mx-auto px-4 max-w-4xl">
       <SectionBadge>
@@ -76,7 +71,6 @@ const teamMembers = [
     </div>
   </section>
 
-  <!-- GRID VIZITEK -->
   <section class="pb-8 md:pb-8">
     <div class="container mx-auto px-4 max-w-6xl">
       
@@ -84,18 +78,14 @@ const teamMembers = [
         {teamMembers.map((member) => (
           <div class="glass-card rounded-3xl p-6 sm:p-8 transform-gpu will-change-transform h-full flex flex-col transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-green/10">
             
-            <!-- Fotka nebo iniciála (Placeholder) -->
             <div class="w-24 h-24 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-6 mx-auto overflow-hidden border-2 border-brand-green/20">
               {member.image ? (
-                // Až budeš mít obrázky, odkomentuj tento řádek a zakomentuj ten pod ním:
-                // <Image src={member.image} alt={member.name} class="w-full h-full object-cover" />
                 <span class="text-xs text-brand-green/50">Obrázek</span>
               ) : (
                 <span class="text-3xl font-serif font-bold">{member.name.charAt(0)}</span>
               )}
             </div>
 
-            <!-- Jméno a Role -->
             <div class="text-center mb-4">
               <h3 class="text-2xl font-serif font-bold text-brand-green mb-1">
                 {member.name}
@@ -105,15 +95,12 @@ const teamMembers = [
               </p>
             </div>
 
-            <!-- Dělící čára -->
             <hr class="border-t border-brand-green/10 w-12 mx-auto mb-4" />
 
-            <!-- Medailonek (flex-grow zajistí, že kontakty dole budou vždy zarovnané) -->
             <p class="text-dark-green/80 text-sm leading-relaxed mb-8 flex-grow text-center">
               {member.bio}
             </p>
 
-            <!-- Kontaktní údaje (zobrazí se jen pokud existují) -->
             <div class="flex flex-col gap-2 mt-auto">
               {member.email && (
                 <a href={`mailto:${member.email}`} class="flex items-center gap-3 text-sm text-dark-green font-medium hover:text-brand-green transition-colors p-2 rounded-xl hover:bg-white/40">
@@ -133,7 +120,6 @@ const teamMembers = [
         ))}
       </div>
 
-      <!-- ÚDAJE O SPOLKU (Sídlo, IČO, Účet) -->
       <div class="mt-16 md:mt-24 max-w-4xl mx-auto">
         <div class="glass-card rounded-3xl p-8 sm:p-12 text-center md:text-left border border-brand-green/20">
           <h2 class="text-3xl font-serif font-bold text-brand-green mb-8 text-center">Údaje o spolku</h2>

@@ -4,12 +4,10 @@ import { getCollection } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import SectionBadge from '../components/SectionBadge.astro';
 
-// Získáme všechny články ze složky src/content/clanky
 const vsechnyClanky = await getCollection('clanky');
 
-// Seřadíme je podle data od nejnovějšího
 const clanky = vsechnyClanky
-  .filter((clanek: any) => clanek.data.pubDate) // Filtrujeme články bez data
+  .filter((clanek: any) => clanek.data.pubDate)
   .sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
