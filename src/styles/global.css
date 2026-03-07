@@ -27,3 +27,22 @@ h6 {
   color: var(--color-brand-green);
 }
 
+/*
+  Website Carbon Badge overrides
+  to ensure perfect vertical centering
+*/
+#wcb {
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+}
+
+#wcb_p {
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+#wcb_2 {
+  display: none !important;
+}
