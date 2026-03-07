@@ -1,0 +1,8 @@
+push:
+  files:
+    - path: ./src/i18n/*.json
+      format: JSON
+
+pull:
+  path: ./src/i18n
+  format: JSON

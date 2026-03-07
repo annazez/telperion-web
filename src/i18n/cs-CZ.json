@@ -1,0 +1,39 @@
+{
+  "home": {
+    "features": {
+      "card1": {
+        "text": "Jsme studenti, stejně jako naše publikum. Nepoučujeme z pozice autority, ale diskutujeme jako vrstevníci. Odbouráváme bariéry a trému.",
+        "title": "Rovnocenný přístup"
+      },
+      "card2": {
+        "text": "Naše materiály nestavíme na dojmech. Čerpáme z ověřených vědeckých studií a dat (IPCC, Fakta o klimatu) a překládáme je do lidské řeči.",
+        "title": "Ověřené informace"
+      },
+      "card3": {
+        "text": "Žádné monology. Používáme hry, workshopy a diskuze. Chceme, aby si žáci na věci přišli sami a vytvořili si vlastní názor.",
+        "title": "Interaktivita"
+      },
+      "description": "Věříme, že o klimatu se dá mluvit bez strašení a složitých grafů. Náš přístup stavíme na dialogu a faktech.\n\n",
+      "title": "Proč to funguje?"
+    },
+    "hero": {
+      "badge": "\uD83D\uDEA7 Naše nové stránky právě klíčí",
+      "button_programs": "Programy pro školy",
+      "button_team": "Náš tým",
+      "description": "Informujeme o tématech spojených s životním prostředím. Vzděláváme a přibližujeme udržitelný způsob života mladé generaci.\n\n",
+      "title_highlight": "klimatu",
+      "title_main": "Mladí učí o"
+    },
+    "map": {
+      "description": "S našimi programy jezdíme za žáky a studenty po celé České republice. Podívejte se, kde všude už Telperion zapustil kořeny.\n\n",
+      "title_highlight": "byli?",
+      "title_main": "Kde všude už jsme"
+    },
+    "page_title": "Domů"
+  },
+  "nav": {
+    "button": {
+      "book": "Poptat program"
+    }
+  }
+}
