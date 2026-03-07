@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
+import SectionBadge from '../components/SectionBadge.astro';
 ---
 
 <Layout title="Podcast">
@@ -22,9 +23,9 @@ import { Icon } from 'astro-icon/components';
         <!-- Hlavní obsah -->
         <div class="relative z-10 flex flex-col items-center">
           
-          <span class="inline-block py-1.5 px-4 rounded-full bg-brand-green/10 text-brand-green text-sm font-bold mb-6 tracking-widest uppercase">
+          <SectionBadge class="uppercase tracking-widest">
             Připravujeme
-          </span>
+          </SectionBadge>
           
           <h1 class="text-5xl md:text-7xl font-serif font-bold text-brand-green mb-6 leading-tight">
             Telperion <span class="italic">Podcast</span>

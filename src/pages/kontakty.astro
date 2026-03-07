@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
+import SectionBadge from '../components/SectionBadge.astro';
 // Sem později přidáš importy fotek, např.:
 // import jakubImg from '../assets/team/jakub.jpg';
 
@@ -63,9 +64,9 @@ const teamMembers = [
   <!-- HLAVIČKA STRÁNKY -->
   <section class="relative pt-12 pb-8 md:pt-16 md:pb-8 overflow-hidden text-center">
     <div class="container mx-auto px-4 max-w-4xl">
-      <span class="inline-block py-1 px-3 rounded-full bg-cream/80 backdrop-blur-sm text-dark-green text-sm font-bold mb-6 tracking-wide border border-brand-green/30">
+      <SectionBadge>
         Náš tým
-      </span>
+      </SectionBadge>
       <h1 class="text-4xl md:text-6xl font-serif font-bold text-brand-green mb-6">
         Kdo za spolkem <span class="italic">stojí?</span>
       </h1>

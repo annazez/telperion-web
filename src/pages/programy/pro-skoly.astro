@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
+import SectionBadge from '../../components/SectionBadge.astro';
 
 const realizace = [
   "Gymnázium Přírodní škola, Praha", "BIGY, České Budějovice", 
@@ -15,9 +16,9 @@ const realizace = [
   
   <!-- Hlavička -->
   <section class="pt-12 pb-8 text-center px-4 max-w-3xl mx-auto">
-    <span class="inline-block py-1 px-3 rounded-full bg-brand-green/10 text-brand-green text-sm font-bold mb-4 tracking-wide">
+    <SectionBadge>
       Pro základní a střední školy
-    </span>
+    </SectionBadge>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
       Přinášíme klima do <span class="italic">lavic</span>
     </h1>
