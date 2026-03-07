@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { Icon } from 'astro-icon/components';
+import SectionBadge from '../components/SectionBadge.astro';
 
 // Získáme všechny články ze složky src/content/clanky
 const vsechnyClanky = await getCollection('clanky');
@@ -15,9 +16,9 @@ const clanky = vsechnyClanky
 <Layout title="Články a novinky">
   
   <section class="pt-12 pb-8 px-4 max-w-4xl mx-auto text-center">
-    <span class="inline-block py-1 px-3 rounded-full bg-brand-green/10 text-brand-green text-sm font-bold mb-4 tracking-wide">
+    <SectionBadge>
       Náš blog
-    </span>
+    </SectionBadge>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
       Články a <span class="italic">zamyšlení</span>
     </h1>

@@ -35,6 +35,18 @@ This project leverages a modern frontend stack to prioritize performance, develo
 - **Security Focused:** Relies on SSG to minimize the attack surface. Security headers and removal of framework generator tags are verified via automated tests.
 - **Accessibility (a11y):** Uses semantic HTML5, ARIA attributes for state management (e.g., `aria-expanded` for mobile menus instead of innerHTML manipulation), and maintains high contrast ratios.
 
+## 🎨 Graphic Guidelines & UI Consistency
+To maintain a high-quality, Apple HIG / MDN-inspired aesthetic, the project adheres to strict design logic:
+
+- **Typography & Scale:** Headings use `font-serif` ('Playfair Display') and `text-brand-green` for distinct hierarchy. Body text uses `font-sans` ('Manrope') with generous line height (`leading-relaxed`) and color `text-dark-green/90` or `/80` to soften contrast slightly without compromising readability.
+- **Section Kicker / Eyebrow:** All descriptive labels above main headings (e.g., "Náš tým", "Náš blog") MUST use the `<SectionBadge>` component. This enforces the consistent "Cream/Glassy" styling (`bg-cream/80 backdrop-blur-sm ... border-brand-green/30`) and spacing (`mb-6`) across all pages.
+- **Color Semantics:** Do not use raw hex colors. Stick to the Tailwind variables:
+  - `bg-cream` / `text-cream`
+  - `bg-brand-green` / `text-brand-green`
+  - `bg-dark-green` / `text-dark-green`
+- **Glassmorphism:** Use the utility class `glass-card` for standard containers. Always consider adding `transform-gpu will-change-transform` for elements with hover animations to prevent rendering glitches in Chromium browsers.
+- **Articles (`prose`):** Article rendering (via Tailwind Typography) is strictly overridden to ensure visual consistency: headings get bottom borders, links are semibold with no-underline (until hovered), and blockquotes receive a subtle green background fill (`bg-brand-green/5`) with a left border.
+
 ## 🚀 Getting Started
 
 If you want to explore the code, run it locally, or contribute, follow these steps:
