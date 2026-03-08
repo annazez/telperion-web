@@ -12,3 +12,8 @@ if ! git diff --quiet src/i18n/; then
   git add src/i18n/
   git commit -m "chore: update translations from Tolgee"
 fi
+
+echo "Running formatting and tests before push..."
+npm run format
+npm run lint
+npm run test
