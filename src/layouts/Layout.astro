@@ -88,12 +88,16 @@ const pageTitle = title
         DevTools,
         ObserverPlugin,
       } from "@tolgee/web";
-      import enTranslations from "../i18n/en.json";
-      import csTranslations from "../i18n/cs-CZ.json";
       import { getSafeLanguage } from "../utils/lang";
 
       const isDev = import.meta.env.DEV;
       const savedLanguage = getSafeLanguage();
+
+      const translationsModule =
+        savedLanguage === "en"
+          ? await import("../i18n/en.json")
+          : await import("../i18n/cs-CZ.json");
+      const activeTranslations = translationsModule.default;
 
       const tolgee = Tolgee()
         .use(FormatSimple())
@@ -108,8 +112,7 @@ const pageTitle = title
           observerType: "text",
           observerOptions: { inputPrefix: "[[", inputSuffix: "]]" },
           staticData: {
-            en: enTranslations,
-            "cs-CZ": csTranslations,
+            [savedLanguage]: activeTranslations,
           },
         });
 
@@ -120,14 +123,12 @@ const pageTitle = title
           document.title = document.title.replace(
             /\[\[([^\]]+)\]\]/g,
             (_, key) => {
-              const translations =
-                savedLanguage === "en" ? enTranslations : csTranslations;
               const value = key
                 .split(".")
                 .reduce(
                   (obj: Record<string, unknown>, k: string) =>
                     obj?.[k] as Record<string, unknown>,
-                  translations as Record<string, unknown>,
+                  activeTranslations as Record<string, unknown>,
                 );
               return typeof value === "string" ? value : key;
             },
