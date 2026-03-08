@@ -57,11 +57,9 @@ const { mobile = false } = Astro.props;
 </div>
 
 <script>
-  // This script runs once per page load and sets up all language dropdowns
   document.addEventListener('DOMContentLoaded', () => {
     const containers = document.querySelectorAll('.language-dropdown-container');
 
-    // Get current language from localStorage or fallback
     let currentLang = localStorage.getItem('zvoleny-jazyk');
     if (!currentLang) {
       const browserLang = navigator.language.slice(0, 2);
@@ -69,71 +67,61 @@ const { mobile = false } = Astro.props;
       localStorage.setItem('zvoleny-jazyk', currentLang);
     }
 
-    // Update labels on load
     const labels = document.querySelectorAll('.current-language-label');
-    labels.forEach(label => {
+    for (const label of labels) {
       label.textContent = currentLang === 'en' ? 'EN' : 'CS';
-    });
+    }
 
-    // Close all menus when clicking outside
-    document.addEventListener('click', (e) => {
-      containers.forEach(container => {
-        const toggle = container.querySelector('.language-toggle');
-        const menu = container.querySelector('.language-menu');
-
-        if (toggle && menu && !container.contains(e.target as Node)) {
-          toggle.setAttribute('aria-expanded', 'false');
-          menu.classList.add('hidden');
-          toggle.classList.remove('group'); // remove group for icon rotation
-        }
-      });
-    });
-
-    // Setup each dropdown
-    containers.forEach(container => {
+    const dropdownData = [];
+    for (const container of containers) {
       const toggle = container.querySelector('.language-toggle');
       const menu = container.querySelector('.language-menu');
       const options = container.querySelectorAll('.lang-option');
-
       if (toggle && menu) {
-        toggle.addEventListener('click', () => {
-          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        dropdownData.push({ container, toggle, menu, options });
+      }
+    }
 
-          // Close other open menus
-          containers.forEach(c => {
-            if (c !== container) {
-              const otherToggle = c.querySelector('.language-toggle');
-              const otherMenu = c.querySelector('.language-menu');
-              if (otherToggle && otherMenu) {
-                otherToggle.setAttribute('aria-expanded', 'false');
-                otherMenu.classList.add('hidden');
-                otherToggle.classList.remove('group');
-              }
-            }
-          });
-
-          // Toggle this menu
-          toggle.setAttribute('aria-expanded', String(!isExpanded));
-          menu.classList.toggle('hidden');
-          toggle.classList.toggle('group');
-        });
-
-        // Handle option clicks
-        options.forEach(option => {
-          option.addEventListener('click', () => {
-            const newLang = option.getAttribute('data-lang');
-            if (newLang && newLang !== currentLang) {
-              localStorage.setItem('zvoleny-jazyk', newLang);
-              window.location.reload();
-            } else {
-              // Just close if selecting current language
-              toggle.setAttribute('aria-expanded', 'false');
-              menu.classList.add('hidden');
-              toggle.classList.remove('group');
-            }
-          });
-        });
+    document.addEventListener('click', (e) => {
+      for (const { container, toggle, menu } of dropdownData) {
+        if (!container.contains(e.target as Node)) {
+          toggle.setAttribute('aria-expanded', 'false');
+          menu.classList.add('hidden');
+          toggle.classList.remove('group');
+        }
       }
     });
+
+    for (const { container, toggle, menu, options } of dropdownData) {
+      toggle.addEventListener('click', () => {
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+        for (const other of dropdownData) {
+          if (other.container !== container) {
+            other.toggle.setAttribute('aria-expanded', 'false');
+            other.menu.classList.add('hidden');
+            other.toggle.classList.remove('group');
+          }
+        }
+
+        toggle.setAttribute('aria-expanded', String(!isExpanded));
+        menu.classList.toggle('hidden');
+        toggle.classList.toggle('group');
+      });
+
+      for (const option of options) {
+        option.addEventListener('click', () => {
+          const newLang = option.getAttribute('data-lang');
+          if (newLang && newLang !== currentLang) {
+            localStorage.setItem('zvoleny-jazyk', newLang);
+            window.location.reload();
+          } else {
+            toggle.setAttribute('aria-expanded', 'false');
+            menu.classList.add('hidden');
+            toggle.classList.remove('group');
+          }
+        });
+      }
+    }
   });
 </script>
