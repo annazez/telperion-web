@@ -6,7 +6,7 @@ test.describe("Layout Component", () => {
   }) => {
     await page.goto("/test/layout-default");
 
-    await expect(page).toHaveTitle("| Telperion");
+    await expect(page).toHaveTitle("Telperion");
 
     await expect(page.locator("html")).toHaveAttribute("lang", "cs");
 

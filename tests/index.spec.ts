@@ -15,10 +15,10 @@ test.describe("Home Page", () => {
     await expect(description).toBeVisible();
 
     const programyLink = page.getByRole("link", { name: "Programy pro školy" });
-    await expect(programyLink).toHaveAttribute("href", "/programy/pro-skoly");
+    await expect(programyLink).toHaveAttribute("href", "/programy/pro-skoly/");
 
     const oNasLink = page.getByRole("link", { name: "Náš tým" });
-    await expect(oNasLink).toHaveAttribute("href", "/kontakty");
+    await expect(oNasLink).toHaveAttribute("href", "/kontakty/");
   });
 
   test("should have interactive elements", async ({ page }) => {
@@ -31,7 +31,7 @@ test.describe("Home Page", () => {
     await expect(whySectionHeading).toBeVisible();
 
     const cards = page.locator(".grid > div");
-    await expect(cards).toHaveCount(3);
+    await expect(cards).toHaveCount(6);
 
     await expect(page.getByText("Rovnocenný přístup")).toBeVisible();
     await expect(page.getByText("Ověřené informace")).toBeVisible();
