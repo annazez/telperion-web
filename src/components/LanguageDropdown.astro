@@ -6,6 +6,13 @@ interface Props {
 }
 
 const { mobile = false } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const isEn = currentPath === "/en" || currentPath.startsWith("/en/");
+const currentLabel = isEn ? "EN" : "CS";
+
+const csPath = currentPath.replace(/^\/en(?=\/|$)/, "") || "/";
+const enPath = isEn ? currentPath : `/en${currentPath === "/" ? "" : currentPath}`;
 ---
 
 <div
@@ -23,7 +30,7 @@ const { mobile = false } = Astro.props;
   >
     <div class="flex items-center gap-2">
       <Icon name="mdi:earth" class="w-5 h-5 text-brand-green" />
-      <span class="current-language-label">CS</span>
+      <span class="current-language-label">{currentLabel}</span>
     </div>
     <Icon
       name="mdi:chevron-down"
@@ -41,22 +48,20 @@ const { mobile = false } = Astro.props;
     aria-orientation="vertical"
   >
     <div class="p-2 flex flex-col gap-1">
-      <button
-        type="button"
+      <a
+        href={csPath}
         class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
-        data-lang="cs-CZ"
         role="menuitem"
       >
         Čeština
-      </button>
-      <button
-        type="button"
+      </a>
+      <a
+        href={enPath}
         class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
-        data-lang="en"
         role="menuitem"
       >
         English
-      </button>
+      </a>
     </div>
   </div>
 </div>
@@ -69,23 +74,10 @@ const { mobile = false } = Astro.props;
 
     // Cache DOM elements per container to avoid repeated querySelectors in global listeners
     const dropdowns = Array.from(containerElements).map((container) => ({
-      container,
-      toggle: container.querySelector(".language-toggle"),
-      menu: container.querySelector(".language-menu"),
-      options: container.querySelectorAll(".lang-option"),
+      container: container as HTMLElement,
+      toggle: container.querySelector(".language-toggle") as HTMLButtonElement | null,
+      menu: container.querySelector(".language-menu") as HTMLElement | null,
     }));
-
-    let currentLang = localStorage.getItem("zvoleny-jazyk");
-    if (!currentLang) {
-      const browserLang = navigator.language.slice(0, 2);
-      currentLang = browserLang === "en" ? "en" : "cs-CZ";
-      localStorage.setItem("zvoleny-jazyk", currentLang);
-    }
-
-    const labels = document.querySelectorAll(".current-language-label");
-    for (const label of labels) {
-      label.textContent = currentLang === "en" ? "EN" : "CS";
-    }
 
     // Close all menus when clicking outside
     document.addEventListener("click", (e) => {
@@ -99,7 +91,7 @@ const { mobile = false } = Astro.props;
     });
 
     // Setup each dropdown
-    dropdowns.forEach(({ container, toggle, menu, options }) => {
+    dropdowns.forEach(({ container, toggle, menu }) => {
       if (toggle && menu) {
         toggle.addEventListener("click", () => {
           const isExpanded = toggle.getAttribute("aria-expanded") === "true";
@@ -120,20 +112,6 @@ const { mobile = false } = Astro.props;
           menu.classList.toggle("hidden");
           toggle.classList.toggle("group");
         });
-
-        for (const option of options) {
-          option.addEventListener("click", () => {
-            const newLang = option.getAttribute("data-lang");
-            if (newLang && newLang !== currentLang) {
-              localStorage.setItem("zvoleny-jazyk", newLang);
-              window.location.reload();
-            } else {
-              toggle.setAttribute("aria-expanded", "false");
-              menu.classList.add("hidden");
-              toggle.classList.remove("group");
-            }
-          });
-        }
       }
     });
   });
