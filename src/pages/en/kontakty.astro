@@ -1,0 +1,208 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import SectionBadge from "../../components/SectionBadge.astro";
+
+const teamMembers = [
+  {
+    name: "Jakub Nekvasil",
+    role: "President, Re:generation Program, Climate Fresk Community Coordination for CZ, Facilitator",
+    bio: "Founder of Telperion, student. Dedicated to environmental education and climate motivation. Local coordinator of the Living Landscape model and finalist of the Josef Vavrousek award for Eco-Action 2023. My goal is to unite society to address climate change.",
+    email: "jakub.nekvasil@telperion.cz",
+    phone: "+420 776 059 998",
+    image: null,
+  },
+  {
+    name: "Damia Veselá",
+    role: "Vice President, Administration, Climate Weekend for Scouts Program",
+    bio: "I volunteer to lead Telperion. Preparing to study psychology. I enjoy scouting, working with people, graphics, crafts, and hiking. I was inspired by the Climate Fresk I attended during a Telperion teambuilding.",
+    email: "damia.vesela@telperion.cz",
+    phone: "+420 608 168 078",
+    image: null,
+  },
+  {
+    name: "Anna Zezulka",
+    role: "Web Developer, Graphic Designer",
+    bio: "",
+    email: "anna.zezulka@telperion.cz",
+    phone: "",
+    image: null,
+  },
+  {
+    name: "Martin Jirků",
+    role: "Internal Operations, Communication, Partnerships",
+    bio: "",
+    email: "martin.jirku@telperion.cz",
+    phone: "+420 734 465 698",
+    image: null,
+  },
+  {
+    name: "Magdaléna Klímová",
+    role: "Climate Days",
+    bio: "",
+    email: "magdalena.klimova@telperion.cz",
+    phone: "",
+    image: null,
+  },
+  {
+    name: "Lucie Kubášová",
+    role: "Climate Fresk Coordinator",
+    bio: "I study at a gymnasium in Litvínov. Active in the school parliament and the Living Litvínov association. My biggest hobbies include science, hockey, and reading. I got into Climate Fresk through Telperion and now facilitate workshops myself.",
+    email: "lucie.kubasova@telperion.cz",
+    phone: "+420 792 474 847",
+    image: null,
+  },
+  {
+    name: "Joly",
+    role: "",
+    bio: "I come from Prague. I enjoy working with children, nature conservation, computer graphics, writing poetry, scouting, and inventing board games. I got into facilitating Climate Fresk thanks to Telperion.",
+    email: "",
+    phone: "",
+    image: null,
+  },
+  {
+    name: "Hana",
+    role: "",
+    bio: "I study at Wichterle Gymnasium in Ostrava. Besides Telperion, I work in the school editorial office, volunteer, and co-founded the Vietnamese community 'Bạn Bè'. I like relaxing with books and series, or taking walks with my dogs.",
+    email: "",
+    phone: "",
+    image: null,
+  },
+];
+---
+
+<Layout title="Our Team and Contacts">
+  <section
+    class="relative pt-12 pb-8 md:pt-16 md:pb-8 overflow-hidden text-center"
+  >
+    <div class="container mx-auto px-4 max-w-4xl">
+      <SectionBadge> Our Team </SectionBadge>
+      <h1
+        class="text-4xl md:text-6xl font-serif font-bold text-brand-green mb-6"
+      >
+        Who is <span class="italic">behind</span> the association?
+      </h1>
+      <p
+        class="text-lg md:text-xl text-dark-green mb-4 leading-relaxed max-w-2xl mx-auto font-medium"
+      >
+        We are a group of students who want to change the way we talk about climate. Meet us!
+      </p>
+    </div>
+  </section>
+
+  <section class="pb-8 md:pb-8">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          teamMembers.map((member) => (
+            <div class="glass-card rounded-3xl p-6 sm:p-8 transform-gpu will-change-transform h-full flex flex-col transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-green/10">
+              <div class="w-24 h-24 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-6 mx-auto overflow-hidden border-2 border-brand-green/20">
+                {member.image ? (
+                  <span class="text-xs text-brand-green/50">Image</span>
+                ) : (
+                  <span class="text-3xl font-serif font-bold">
+                    {member.name.charAt(0)}
+                  </span>
+                )}
+              </div>
+
+              <div class="text-center mb-4">
+                <h3 class="text-2xl font-serif font-bold text-brand-green mb-1">
+                  {member.name}
+                </h3>
+                <p class="text-sm font-bold text-dark-green/60 uppercase tracking-wider">
+                  {member.role}
+                </p>
+              </div>
+
+              <hr class="border-t border-brand-green/10 w-12 mx-auto mb-4" />
+
+              <p class="text-dark-green/80 text-sm leading-relaxed mb-8 flex-grow text-center">
+                {member.bio}
+              </p>
+
+              <div class="flex flex-col gap-2 mt-auto">
+                {member.email && (
+                  <a
+                    href={`mailto:${member.email}`}
+                    class="flex items-center gap-3 text-sm text-dark-green font-medium hover:text-brand-green transition-colors p-2 rounded-xl hover:bg-white/40"
+                  >
+                    <Icon
+                      name="mdi:email-outline"
+                      class="w-5 h-5 text-brand-green flex-shrink-0"
+                    />
+                    <span class="truncate">{member.email}</span>
+                  </a>
+                )}
+                {member.phone && (
+                  <a
+                    href={`tel:${member.phone.replace(/\s+/g, "")}`}
+                    class="flex items-center gap-3 text-sm text-dark-green font-medium hover:text-brand-green transition-colors p-2 rounded-xl hover:bg-white/40"
+                  >
+                    <Icon
+                      name="mdi:phone-outline"
+                      class="w-5 h-5 text-brand-green flex-shrink-0"
+                    />
+                    <span>{member.phone}</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-16 md:mt-24 max-w-4xl mx-auto">
+        <div
+          class="glass-card rounded-3xl p-8 sm:p-12 text-center md:text-left border border-brand-green/20"
+        >
+          <h2
+            class="text-3xl font-serif font-bold text-brand-green mb-8 text-center"
+          >
+            Association Details
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="flex flex-col items-center md:items-start">
+              <div
+                class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-4 border border-brand-green/20"
+              >
+                <Icon name="mdi:office-building-marker" class="w-6 h-6" />
+              </div>
+              <h3 class="text-lg font-bold text-brand-green mb-2">
+                Headquarters
+              </h3>
+              <p class="text-dark-green/80 text-sm font-medium">
+                Úvozová 261/6, 252 62
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center md:items-start">
+              <div
+                class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-4 border border-brand-green/20"
+              >
+                <Icon name="mdi:identifier" class="w-6 h-6" />
+              </div>
+              <h3 class="text-lg font-bold text-brand-green mb-2">ID Number</h3>
+              <p class="text-dark-green/80 text-sm font-medium">21104271</p>
+            </div>
+
+            <div class="flex flex-col items-center md:items-start">
+              <div
+                class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-4 border border-brand-green/20"
+              >
+                <Icon name="mdi:bank-outline" class="w-6 h-6" />
+              </div>
+              <h3 class="text-lg font-bold text-brand-green mb-2">
+                Transparent Account
+              </h3>
+              <p class="text-dark-green/80 text-sm font-medium break-all">
+                2102801318 / 2010
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

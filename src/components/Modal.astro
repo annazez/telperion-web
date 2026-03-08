@@ -1,4 +1,8 @@
 ---
+import { useTranslations, replacePlaceholders } from "../utils/i18n";
+import type { Locale } from "../utils/i18n";
+const lang = (Astro.currentLocale as Locale) || "cs";
+const t = useTranslations(lang);
 import { Icon } from "astro-icon/components";
 ---
 
@@ -28,7 +32,7 @@ import { Icon } from "astro-icon/components";
           id="close-modal-btn"
           class="absolute right-6 top-6 text-dark-green/50 hover:text-brand-green transition-colors focus:outline-none rounded-full p-1 hover:bg-brand-green/10"
         >
-          <span class="sr-only">[[modal.close]]</span>
+          <span class="sr-only">{t("modal.close")}</span>
           <Icon name="mdi:close" class="h-6 w-6" />
         </button>
 
@@ -47,10 +51,10 @@ import { Icon } from "astro-icon/components";
                 class="text-2xl font-serif font-bold leading-6 text-brand-green"
                 id="modal-title"
               >
-                [[modal.title]]
+                {t("modal.title")}
               </h3>
               <div class="mt-2">
-                <p class="text-sm text-dark-green/80">[[modal.description]]</p>
+                <p class="text-sm text-dark-green/80">{t("modal.description")}</p>
               </div>
             </div>
           </div>
@@ -70,7 +74,7 @@ import { Icon } from "astro-icon/components";
               <label
                 for="name"
                 class="block text-sm font-medium leading-6 text-dark-green"
-                >[[modal.label.name]]</label
+                >{t("modal.label.name")}</label
               >
               <div class="mt-1">
                 <input
@@ -87,7 +91,7 @@ import { Icon } from "astro-icon/components";
               <label
                 for="email"
                 class="block text-sm font-medium leading-6 text-dark-green"
-                >[[modal.label.email]]</label
+                >{t("modal.label.email")}</label
               >
               <div class="mt-1">
                 <input
@@ -104,7 +108,7 @@ import { Icon } from "astro-icon/components";
               <label
                 for="phone"
                 class="block text-sm font-medium leading-6 text-dark-green"
-                >[[modal.label.phone]]</label
+                >{t("modal.label.phone")}</label
               >
               <div class="mt-1">
                 <input
@@ -120,7 +124,7 @@ import { Icon } from "astro-icon/components";
               <label
                 for="program"
                 class="block text-sm font-medium leading-6 text-dark-green"
-                >[[modal.label.program]]</label
+                >{t("modal.label.program")}</label
               >
               <div class="mt-1">
                 <select
@@ -130,28 +134,28 @@ import { Icon } from "astro-icon/components";
                   class="block w-full rounded-xl border-0 py-2.5 px-4 text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 focus:ring-2 focus:ring-inset focus:ring-brand-green sm:text-sm sm:leading-6 bg-white/50"
                 >
                   <option value="" disabled selected
-                    >[[modal.program.placeholder]]</option
+                    >{t("modal.program.placeholder")}</option
                   >
-                  <option value="klima-dny">[[modal.program.klima_dny]]</option>
+                  <option value="klima-dny">{t("modal.program.klima_dny")}</option>
                   <option value="mozaika-junior"
-                    >[[modal.program.mozaika_junior]]</option
+                    >{t("modal.program.mozaika_junior")}</option
                   >
                   <option value="mozaika-firmy"
-                    >[[modal.program.mozaika_firmy]]</option
+                    >{t("modal.program.mozaika_firmy")}</option
                   >
                   <option value="mozaika-verejnost"
-                    >[[modal.program.mozaika_verejnost]]</option
+                    >{t("modal.program.mozaika_verejnost")}</option
                   >
                   <option value="skautska-vikendovka"
-                    >[[modal.program.skautska_vikendovka]]</option
+                    >{t("modal.program.skautska_vikendovka")}</option
                   >
                   <option value="slow-fast-fashion"
-                    >[[modal.program.slow_fast_fashion]]</option
+                    >{t("modal.program.slow_fast_fashion")}</option
                   >
-                  <option value="other-workshop">[[modal.program.other]]</option
+                  <option value="other-workshop">{t("modal.program.other")}</option
                   >
                   <option value="not-workshop"
-                    >[[modal.program.not_workshop]]</option
+                    >{t("modal.program.not_workshop")}</option
                   >
                 </select>
               </div>
@@ -161,7 +165,7 @@ import { Icon } from "astro-icon/components";
               <label
                 for="message"
                 class="block text-sm font-medium leading-6 text-dark-green"
-                >[[modal.label.message]]</label
+                >{t("modal.label.message")}</label
               >
               <div class="mt-1">
                 <textarea
@@ -179,14 +183,14 @@ import { Icon } from "astro-icon/components";
                 type="submit"
                 class="inline-flex w-full justify-center rounded-full bg-brand-green px-6 py-3 text-sm font-bold text-cream shadow-sm hover:bg-dark-green sm:w-auto transition-colors"
               >
-                [[modal.button.submit]]
+                {t("modal.button.submit")}
               </button>
               <button
                 type="button"
                 id="cancel-modal-btn"
                 class="mt-3 inline-flex w-full justify-center rounded-full bg-white px-6 py-3 text-sm font-bold text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 hover:bg-gray-50 sm:mt-0 sm:w-auto transition-colors"
               >
-                [[modal.button.cancel]]
+                {t("modal.button.cancel")}
               </button>
             </div>
           </form>

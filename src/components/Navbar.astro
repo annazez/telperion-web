@@ -1,25 +1,36 @@
 ---
+import { useTranslations, replacePlaceholders } from "../utils/i18n";
+import type { Locale } from "../utils/i18n";
+const lang = (Astro.currentLocale as Locale) || "cs";
+const t = useTranslations(lang);
 import type { MenuItem } from "../types";
 import DesktopMenuItem from "./navbar/DesktopMenuItem.astro";
 import MobileMenuItem from "./navbar/MobileMenuItem.astro";
 import LanguageDropdown from "./LanguageDropdown.astro";
 import { Image } from "astro:assets";
 import logoImg from "../assets/logo.png";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const getUrl = (path: string) => {
+  if (path === "#") return path;
+  if (lang === "cs") return path;
+  return getRelativeLocaleUrl(lang, path);
+};
 
 const menuItems: MenuItem[] = [
-  { name: "[[nav.home]]", url: "/" },
+  { name: t("nav.home"), url: getUrl("/") },
   {
-    name: "[[nav.programs]]",
+    name: t("nav.programs"),
     url: "#",
     subItems: [
-      { name: "[[nav.programs_schools]]", url: "/programy/pro-skoly" },
-      { name: "[[nav.programs_public]]", url: "/programy/pro-verejnost" },
-      { name: "[[nav.programs_other]]", url: "/programy/dalsi-programy" },
+      { name: t("nav.programs_schools"), url: getUrl("/programy/pro-skoly") },
+      { name: t("nav.programs_public"), url: getUrl("/programy/pro-verejnost") },
+      { name: t("nav.programs_other"), url: getUrl("/programy/dalsi-programy") },
     ],
   },
-  { name: "[[nav.podcast]]", url: "/podcast" },
-  { name: "[[nav.articles]]", url: "/clanky" },
-  { name: "[[nav.contact]]", url: "/kontakty" },
+  { name: t("nav.podcast"), url: getUrl("/podcast") },
+  { name: t("nav.articles"), url: getUrl("/clanky") },
+  { name: t("nav.contact"), url: getUrl("/kontakty") },
 ];
 ---
 
@@ -31,7 +42,7 @@ const menuItems: MenuItem[] = [
 
     <div class="relative z-10 flex items-center justify-between h-10 lg:h-12">
       <div class="flex-shrink-0 z-20">
-        <a href="/" class="flex items-center gap-2 group">
+        <a href={getUrl("/")} class="flex items-center gap-2 group">
           <Image
             src={logoImg}
             alt="Telperion Logo"
@@ -61,7 +72,7 @@ const menuItems: MenuItem[] = [
           onclick="document.dispatchEvent(new CustomEvent('open-contact-modal'))"
           class="bg-brand-green text-cream px-6 py-2.5 rounded-full font-bold text-sm hover:bg-dark-green transition-colors focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 shadow-lg shadow-brand-green/20"
         >
-          [[nav.button.book]]
+          {t("nav.button.book")}
         </button>
       </div>
 
@@ -119,7 +130,7 @@ const menuItems: MenuItem[] = [
           onclick="document.dispatchEvent(new CustomEvent('open-contact-modal'))"
           class="block w-full text-center bg-brand-green text-cream px-6 py-3.5 rounded-full font-bold hover:bg-dark-green transition-colors focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 shadow-lg shadow-brand-green/20"
         >
-          [[nav.button.book]]
+          {t("nav.button.book")}
         </button>
       </div>
     </div>

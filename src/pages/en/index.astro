@@ -1,12 +1,12 @@
 ---
-import { useTranslations, replacePlaceholders } from "../utils/i18n";
-import type { Locale } from "../utils/i18n";
+import { useTranslations, replacePlaceholders } from "../../utils/i18n";
+import type { Locale } from "../../utils/i18n";
 const lang = (Astro.currentLocale as Locale) || "cs";
 const t = useTranslations(lang);
 import { getRelativeLocaleUrl } from "astro:i18n";
-import Layout from "../layouts/Layout.astro";
-import FeatureCard from "../components/FeatureCard.astro";
-import SectionBadge from "../components/SectionBadge.astro";
+import Layout from "../../layouts/Layout.astro";
+import FeatureCard from "../../components/FeatureCard.astro";
+import SectionBadge from "../../components/SectionBadge.astro";
 ---
 
 <Layout title={t("home.page_title")}>
@@ -144,7 +144,7 @@ import SectionBadge from "../components/SectionBadge.astro";
 </Layout>
 
 <script>
-  import { getSafeLanguage } from "../utils/lang";
+  import { getSafeLanguage } from "../../utils/lang";
 
   const iframe = document.getElementById("umap-iframe") as HTMLIFrameElement;
   if (iframe) {
