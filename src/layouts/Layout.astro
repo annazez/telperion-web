@@ -32,16 +32,25 @@ const pageTitle = title
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon.ico" />
     <meta property="og:title" content={`${title} | Telperion`} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <title>{title} | Telperion</title>
     <Analytics />
     <SpeedInsights />
+    <style>
+      body.tolgee-loading {
+        visibility: hidden;
+      }
+      body.tolgee-ready {
+        visibility: visible;
+      }
+    </style>
+    <noscript><style>body.tolgee-loading { visibility: visible; }</style></noscript>
   </head>
 
-  <body class="bg-cream text-dark-green font-sans antialiased" style="opacity: 0; transition: opacity 0.15s ease-in;">
+  <body class="bg-cream text-dark-green font-sans antialiased tolgee-loading">
     <div class="relative overflow-hidden flex flex-col min-h-screen">
       <div
         class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0"
@@ -102,11 +111,31 @@ const pageTitle = title
       tolgee
         .run()
         .then(() => {
-          document.body.style.opacity = "1";
+          // Replace any [[key]] placeholders in the document title
+          document.title = document.title.replace(
+            /\[\[([^\]]+)\]\]/g,
+            (_, key) => {
+              const translations =
+                savedLanguage === "en" ? enTranslations : csTranslations;
+              const value = key
+                .split(".")
+                .reduce(
+                  (obj: Record<string, unknown>, k: string) =>
+                    obj?.[k] as Record<string, unknown>,
+                  translations as Record<string, unknown>,
+                );
+              return typeof value === "string" ? value : key;
+            },
+          );
+          requestAnimationFrame(() => {
+            document.body.classList.remove("tolgee-loading");
+            document.body.classList.add("tolgee-ready");
+          });
         })
         .catch((e) => {
           console.error("Tolgee initialization failed:", e);
-          document.body.style.opacity = "1";
+          document.body.classList.remove("tolgee-loading");
+          document.body.classList.add("tolgee-ready");
         });
     </script>
   </body>
