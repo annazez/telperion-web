@@ -39,24 +39,9 @@ const pageTitle = title
     <title>{title} | Telperion</title>
     <Analytics />
     <SpeedInsights />
-    <style>
-      body.tolgee-loading {
-        opacity: 0;
-      }
-      body.tolgee-ready {
-        opacity: 1;
-      }
-    </style>
-    <noscript
-      ><style>
-        body.tolgee-loading {
-          opacity: 1;
-        }
-      </style></noscript
-    >
   </head>
 
-  <body class="bg-cream text-dark-green font-sans antialiased tolgee-loading">
+  <body class="bg-cream text-dark-green font-sans antialiased">
     <div class="relative overflow-hidden flex flex-col min-h-screen">
       <div
         class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0"
@@ -132,15 +117,9 @@ const pageTitle = title
               return typeof value === "string" ? value : key;
             },
           );
-          requestAnimationFrame(() => {
-            document.body.classList.remove("tolgee-loading");
-            document.body.classList.add("tolgee-ready");
-          });
         })
         .catch((e) => {
           console.error("Tolgee initialization failed:", e);
-          document.body.classList.remove("tolgee-loading");
-          document.body.classList.add("tolgee-ready");
         });
     </script>
 
