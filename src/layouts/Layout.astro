@@ -12,31 +12,36 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Modal from "../components/Modal.astro";
 
+import { replacePlaceholders } from "../utils/i18n";
+import type { Locale } from "../utils/i18n";
+
 interface Props {
   title?: string;
   description?: string;
 }
 
+const lang = (Astro.currentLocale as Locale) || "cs";
+
 const {
   title,
   description = "Mladí učí o klimatu. Vzdělávací programy pro školy a veřejnost.",
 } = Astro.props;
-const pageTitle = title
-  ? `${title} | Mladí učí o klimatu`
-  : "Mladí učí o klimatu";
+
+const translatedTitle = title ? replacePlaceholders(title, lang) : undefined;
+const translatedDesc = description ? replacePlaceholders(description, lang) : undefined;
 ---
 
 <!doctype html>
-<html lang="cs" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
+    <meta name="description" content={translatedDesc} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.ico" />
-    <meta property="og:title" content={`${title} | Telperion`} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={`${translatedTitle || 'Domů'} | Telperion`} />
+    <meta property="og:description" content={translatedDesc} />
     <meta property="og:type" content="website" />
-    <title>{title} | Telperion</title>
+    <title>{translatedTitle ? `${translatedTitle} | Telperion` : 'Telperion'}</title>
     <Analytics />
     <SpeedInsights />
   </head>
@@ -103,22 +108,6 @@ const pageTitle = title
 
       tolgee
         .run()
-        .then(() => {
-          // Replace any [[key]] placeholders in the document title
-          document.title = document.title.replace(
-            /\[\[([^\]]+)\]\]/g,
-            (_, key) => {
-              const value = key
-                .split(".")
-                .reduce(
-                  (obj: Record<string, unknown>, k: string) =>
-                    obj?.[k] as Record<string, unknown>,
-                  activeTranslations as Record<string, unknown>,
-                );
-              return typeof value === "string" ? value : key;
-            },
-          );
-        })
         .catch((e) => {
           console.error("Tolgee initialization failed:", e);
         });
