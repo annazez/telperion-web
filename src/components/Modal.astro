@@ -50,9 +50,7 @@ import { Icon } from "astro-icon/components";
                 [[modal.title]]
               </h3>
               <div class="mt-2">
-                <p class="text-sm text-dark-green/80">
-                  [[modal.description]]
-                </p>
+                <p class="text-sm text-dark-green/80">[[modal.description]]</p>
               </div>
             </div>
           </div>
@@ -62,6 +60,7 @@ import { Icon } from "astro-icon/components";
             method="POST"
             class="mt-6 space-y-4"
           >
+            <input type="hidden" name="language" id="form-language" value="cs" />
             <div>
               <label
                 for="name"
@@ -93,6 +92,64 @@ import { Icon } from "astro-icon/components";
                   required
                   class="block w-full rounded-xl border-0 py-2.5 px-4 text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 focus:ring-2 focus:ring-inset focus:ring-brand-green sm:text-sm sm:leading-6 bg-white/50"
                 />
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="phone"
+                class="block text-sm font-medium leading-6 text-dark-green"
+                >[[modal.label.phone]]</label
+              >
+              <div class="mt-1">
+                <input
+                  type="tel"
+                  name="phone"
+                  id="phone"
+                  class="block w-full rounded-xl border-0 py-2.5 px-4 text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 focus:ring-2 focus:ring-inset focus:ring-brand-green sm:text-sm sm:leading-6 bg-white/50"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="program"
+                class="block text-sm font-medium leading-6 text-dark-green"
+                >[[modal.label.program]]</label
+              >
+              <div class="mt-1">
+                <select
+                  name="program"
+                  id="program"
+                  required
+                  class="block w-full rounded-xl border-0 py-2.5 px-4 text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 focus:ring-2 focus:ring-inset focus:ring-brand-green sm:text-sm sm:leading-6 bg-white/50"
+                >
+                  <option value="" disabled selected
+                    >[[modal.program.placeholder]]</option
+                  >
+                  <option value="klima-dny">[[modal.program.klima_dny]]</option>
+                  <option value="mozaika-junior"
+                    >[[modal.program.mozaika_junior]]</option
+                  >
+                  <option value="mozaika-firmy"
+                    >[[modal.program.mozaika_firmy]]</option
+                  >
+                  <option value="mozaika-verejnost"
+                    >[[modal.program.mozaika_verejnost]]</option
+                  >
+                  <option value="skautska-vikendovka"
+                    >[[modal.program.skautska_vikendovka]]</option
+                  >
+                  <option value="slow-fast-fashion"
+                    >[[modal.program.slow_fast_fashion]]</option
+                  >
+                  <option value="other-workshop"
+                    >[[modal.program.other]]</option
+                  >
+                  <option value="not-workshop"
+                    >[[modal.program.not_workshop]]</option
+                  >
+                </select>
               </div>
             </div>
 
@@ -137,6 +194,12 @@ import { Icon } from "astro-icon/components";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const langField = document.getElementById("form-language") as HTMLInputElement | null;
+    if (langField) {
+      const saved = localStorage.getItem("zvoleny-jazyk");
+      langField.value = saved === "en" ? "en" : "cs";
+    }
+
     const modal = document.getElementById("contact-modal");
     const backdrop = document.getElementById("modal-backdrop");
     const panel = document.getElementById("modal-panel");

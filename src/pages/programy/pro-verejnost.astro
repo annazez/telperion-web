@@ -8,11 +8,11 @@ import SectionBadge from "../../components/SectionBadge.astro";
   <section class="pt-12 pb-8 text-center px-4 max-w-3xl mx-auto">
     <SectionBadge> [[public.badge]] </SectionBadge>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
-      [[public.title_main]] <span class="italic">[[public.title_highlight]]</span>
+      [[public.title_main]] <span class="italic"
+        >[[public.title_highlight]]</span
+      >
     </h1>
-    <p class="text-lg text-dark-green/80 font-medium">
-      [[public.subtitle]]
-    </p>
+    <p class="text-lg text-dark-green/80 font-medium">[[public.subtitle]]</p>
   </section>
 
   <div class="container mx-auto max-w-5xl px-4 pb-8 space-y-8">
@@ -41,9 +41,7 @@ import SectionBadge from "../../components/SectionBadge.astro";
       <div
         class="md:w-2/3 space-y-4 text-dark-green/80 text-sm leading-relaxed text-justify"
       >
-        <p>
-          [[public.scouts.desc_p1]]
-        </p>
+        <p>[[public.scouts.desc_p1]]</p>
         <p>
           <strong>[[public.scouts.desc_p2_youngest]]</strong> [[public.scouts.desc_p2_youngest_text]]
           <strong>[[public.scouts.desc_p2_scouts]]</strong> [[public.scouts.desc_p2_scouts_text]]
@@ -79,11 +77,10 @@ import SectionBadge from "../../components/SectionBadge.astro";
       </div>
 
       <div class="md:w-2/3 text-dark-green/80 text-sm leading-relaxed">
-        <p>
-          [[public.fresk.desc_p1]]
-        </p>
+        <p>[[public.fresk.desc_p1]]</p>
         <p class="mt-4">
-          [[public.fresk.desc_p2_before]] <em>[[public.fresk.desc_p2_note]]</em>.
+          [[public.fresk.desc_p2_before]] <em>[[public.fresk.desc_p2_note]]</em
+          >.
         </p>
       </div>
     </div>
