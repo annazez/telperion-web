@@ -59,7 +59,15 @@ const { mobile = false } = Astro.props;
 <script>
   // This script runs once per page load and sets up all language dropdowns
   document.addEventListener('DOMContentLoaded', () => {
-    const containers = document.querySelectorAll('.language-dropdown-container');
+    const containerElements = document.querySelectorAll('.language-dropdown-container');
+
+    // Cache DOM elements per container to avoid repeated querySelectors in global listeners
+    const dropdowns = Array.from(containerElements).map(container => ({
+      container,
+      toggle: container.querySelector('.language-toggle'),
+      menu: container.querySelector('.language-menu'),
+      options: container.querySelectorAll('.lang-option')
+    }));
 
     // Get current language from localStorage or fallback
     let currentLang = localStorage.getItem('zvoleny-jazyk');
@@ -77,10 +85,7 @@ const { mobile = false } = Astro.props;
 
     // Close all menus when clicking outside
     document.addEventListener('click', (e) => {
-      containers.forEach(container => {
-        const toggle = container.querySelector('.language-toggle');
-        const menu = container.querySelector('.language-menu');
-
+      dropdowns.forEach(({ container, toggle, menu }) => {
         if (toggle && menu && !container.contains(e.target as Node)) {
           toggle.setAttribute('aria-expanded', 'false');
           menu.classList.add('hidden');
@@ -90,20 +95,15 @@ const { mobile = false } = Astro.props;
     });
 
     // Setup each dropdown
-    containers.forEach(container => {
-      const toggle = container.querySelector('.language-toggle');
-      const menu = container.querySelector('.language-menu');
-      const options = container.querySelectorAll('.lang-option');
-
+    dropdowns.forEach(({ container, toggle, menu, options }) => {
       if (toggle && menu) {
         toggle.addEventListener('click', () => {
           const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
 
-          // Close other open menus
-          containers.forEach(c => {
-            if (c !== container) {
-              const otherToggle = c.querySelector('.language-toggle');
-              const otherMenu = c.querySelector('.language-menu');
+          // Close other open menus using the cached elements
+          dropdowns.forEach(otherDropdown => {
+            if (otherDropdown.container !== container) {
+              const { toggle: otherToggle, menu: otherMenu } = otherDropdown;
               if (otherToggle && otherMenu) {
                 otherToggle.setAttribute('aria-expanded', 'false');
                 otherMenu.classList.add('hidden');
