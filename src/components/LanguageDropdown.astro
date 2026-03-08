@@ -88,7 +88,7 @@ const { mobile = false } = Astro.props;
           menu.classList.add('hidden');
           toggle.classList.remove('group');
         }
-      }
+      });
     });
 
     // Setup each dropdown
@@ -109,24 +109,25 @@ const { mobile = false } = Astro.props;
             }
           });
 
-        toggle.setAttribute('aria-expanded', String(!isExpanded));
-        menu.classList.toggle('hidden');
-        toggle.classList.toggle('group');
-      });
-
-      for (const option of options) {
-        option.addEventListener('click', () => {
-          const newLang = option.getAttribute('data-lang');
-          if (newLang && newLang !== currentLang) {
-            localStorage.setItem('zvoleny-jazyk', newLang);
-            window.location.reload();
-          } else {
-            toggle.setAttribute('aria-expanded', 'false');
-            menu.classList.add('hidden');
-            toggle.classList.remove('group');
-          }
+          toggle.setAttribute('aria-expanded', String(!isExpanded));
+          menu.classList.toggle('hidden');
+          toggle.classList.toggle('group');
         });
+
+        for (const option of options) {
+          option.addEventListener('click', () => {
+            const newLang = option.getAttribute('data-lang');
+            if (newLang && newLang !== currentLang) {
+              localStorage.setItem('zvoleny-jazyk', newLang);
+              window.location.reload();
+            } else {
+              toggle.setAttribute('aria-expanded', 'false');
+              menu.classList.add('hidden');
+              toggle.classList.remove('group');
+            }
+          });
+        }
       }
-    }
+    });
   });
 </script>
