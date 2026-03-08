@@ -41,7 +41,7 @@ const pageTitle = title
     <SpeedInsights />
   </head>
 
-  <body class="bg-cream text-dark-green font-sans antialiased">
+  <body class="bg-cream text-dark-green font-sans antialiased" style="opacity: 0; transition: opacity 0.15s ease-in;">
     <div class="relative overflow-hidden flex flex-col min-h-screen">
       <div
         class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0"
@@ -99,9 +99,15 @@ const pageTitle = title
           },
         });
 
-      tolgee.run().catch((e) => {
-        console.error("Tolgee initialization failed:", e);
-      });
+      tolgee
+        .run()
+        .then(() => {
+          document.body.style.opacity = "1";
+        })
+        .catch((e) => {
+          console.error("Tolgee initialization failed:", e);
+          document.body.style.opacity = "1";
+        });
     </script>
   </body>
 </html>

@@ -12,7 +12,8 @@
     "test:ui": "playwright test --ui",
     "tolgee:extract": "tolgee extract",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",

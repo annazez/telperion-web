@@ -40,7 +40,10 @@ test.describe("Navbar Component", () => {
     // Add browserName here as well
     test("should show dropdown on hover", async ({ page, browserName }) => {
       // Skip for Firefox
-      test.skip(browserName === "firefox", "Headless Firefox ignores CSS group-hovers");
+      test.skip(
+        browserName === "firefox",
+        "Headless Firefox ignores CSS group-hovers",
+      );
 
       const nav = page.locator("nav.hidden.lg\\:flex");
       const programyButton = nav.getByRole("button", { name: "Programy" });
