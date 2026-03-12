@@ -1,4 +1,10 @@
 {
+  "donation_modal": {
+    "account_number": "Číslo účtu\n\n",
+    "description": "Vaše podpora nám pomáhá dál vzdělávat o klimatu. Děkujeme!\n\n",
+    "title": "Podpořte nás",
+    "transparent_account_link": "Zobrazit transparentní účet"
+  },
   "home": {
     "features": {
       "card1": {
@@ -61,7 +67,8 @@
   "nav": {
     "articles": "Články",
     "button": {
-      "book": "Poptat program"
+      "book": "Poptat program",
+      "donate": "Přispět"
     },
     "contact": "Kontakt",
     "home": "Domů",

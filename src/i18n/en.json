@@ -1,4 +1,10 @@
 {
+  "donation_modal": {
+    "account_number": "Account number\n\n",
+    "description": "Your support helps us continue educating about climate. Thank you!\n\n",
+    "title": "Support Us",
+    "transparent_account_link": "View Transparent Account"
+  },
   "home": {
     "features": {
       "card1": {
@@ -61,7 +67,8 @@
   "nav": {
     "articles": "Articles",
     "button": {
-      "book": "Book a workshop"
+      "book": "Book a workshop",
+      "donate": "Donate"
     },
     "contact": "Contact",
     "home": "Home",
