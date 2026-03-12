@@ -1,7 +1,14 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import SectionBadge from "../../components/SectionBadge.astro";
+import jakubNekvasilPhoto from "../../assets/team/jakub_nekvasil.jpg";
+import damiaVeselaPhoto from "../../assets/team/damia_vesela.jpg";
+import martinJirkuPhoto from "../../assets/team/martin_jirku.jpg";
+import magdalenaKlimovaPhoto from "../../assets/team/magdalena_klimova.jpg";
+import lucieKubasovaPhoto from "../../assets/team/lucie_kubasova.jpg";
+import jolanaBalcarovaPhoto from "../../assets/team/jolana_balcarova.jpg";
 
 const teamMembers = [
   {
@@ -9,14 +16,14 @@ const teamMembers = [
     role: "President, Re:generation Program, Climate Fresk Community Coordination for CZ, Facilitator",
     email: "jakub.nekvasil@telperion.cz",
     phone: "+420 776 059 998",
-    image: null,
+    image: jakubNekvasilPhoto,
   },
   {
     name: "Damia Veselá",
     role: "Vice President, Administration, Climate Weekend for Scouts Program",
     email: "damia.vesela@telperion.cz",
     phone: "+420 608 168 078",
-    image: null,
+    image: damiaVeselaPhoto,
   },
   {
     name: "Anna Zezulka",
@@ -30,21 +37,21 @@ const teamMembers = [
     role: "Internal Operations, Communication, Partnerships",
     email: "martin.jirku@telperion.cz",
     phone: "+420 734 465 698",
-    image: null,
+    image: martinJirkuPhoto,
   },
   {
     name: "Magdaléna Klímová",
     role: "Climate Days Program Coordinator",
     email: "magdalena.klimova@telperion.cz",
     phone: "",
-    image: null,
+    image: magdalenaKlimovaPhoto,
   },
   {
     name: "Lucie Kubášová",
     role: "Climate Fresk Coordinator",
     email: "lucie.kubasova@telperion.cz",
     phone: "+420 792 474 847",
-    image: null,
+    image: lucieKubasovaPhoto,
   },
   {
     name: "Klára Adámková",
@@ -65,7 +72,7 @@ const teamMembers = [
     role: "Climate Days Instructor, Graphics, Board Game Development",
     email: "jolana.balcarova@telperion.cz",
     phone: "",
-    image: null,
+    image: jolanaBalcarovaPhoto,
   },
   {
     name: "Sofia Grycová",
@@ -111,7 +118,13 @@ const teamMembers = [
             <div class="glass-card rounded-3xl p-6 sm:p-8 transform-gpu will-change-transform h-full flex flex-col transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-green/10">
               <div class="w-24 h-24 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-6 mx-auto overflow-hidden border-2 border-brand-green/20">
                 {member.image ? (
-                  <span class="text-xs text-brand-green/50">Image</span>
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    class="w-full h-full object-cover"
+                    width={96}
+                    height={96}
+                  />
                 ) : (
                   <span class="text-3xl font-serif font-bold">
                     {member.name.charAt(0)}
