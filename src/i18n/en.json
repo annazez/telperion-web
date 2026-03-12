@@ -17,7 +17,7 @@
       "title": "Why does it work?"
     },
     "hero": {
-      "badge": "Join the Re:generation program",
+      "badge": "Become a leader of the climate movement in Czechia!",
       "button_programs": "School workshops",
       "button_team": "Our team",
       "description": "We inform about enviroment and teach sustainable living to the young generation.",
@@ -68,7 +68,7 @@
     "podcast": "Podcast",
     "programs": "Workshops",
     "programs_other": "Other workshops",
-    "programs_public": "For public",
+    "programs_public": "For public and businesses",
     "programs_schools": "For schools"
   },
   "other": {
@@ -112,7 +112,7 @@
       "tag_duration": "3 hours\n",
       "title": "Climate Fresk for the public"
     },
-    "page_title": "For public and scouts",
+    "page_title": "For public and businesses",
     "scouts": {
       "desc_p1": "Similar to Climate Days, we move from general knowledge to specific solutions appropriate to the age of the participants.\n\n",
       "desc_p2_scouts": "With Boy Scouts and Girl Scouts",

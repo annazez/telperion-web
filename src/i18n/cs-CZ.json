@@ -17,7 +17,7 @@
       "title": "Proč to funguje?"
     },
     "hero": {
-      "badge": "Přidej se do programu Re:generace",
+      "badge": "Staň se lídrem klima hnutí v Česku!",
       "button_programs": "Programy pro školy",
       "button_team": "Náš tým",
       "description": "Informujeme o tématech spojených s životním prostředím. Vzděláváme a přibližujeme udržitelný způsob života mladé generaci.\n\n",
@@ -68,7 +68,7 @@
     "podcast": "Podcast",
     "programs": "Programy",
     "programs_other": "Další programy",
-    "programs_public": "Pro veřejnost",
+    "programs_public": "Pro veřejnost a firmy",
     "programs_schools": "Pro školy"
   },
   "other": {
@@ -112,7 +112,7 @@
       "tag_duration": "3 hodiny\n",
       "title": "Klimatická mozaika pro veřejnost"
     },
-    "page_title": "Pro veřejnost a skauty",
+    "page_title": "Pro veřejnost a firmy",
     "scouts": {
       "desc_p1": "Podobně jako Klimatické dny jdeme od obecných znalostí až po konkrétní řešení úměrně věku účastníků.",
       "desc_p2_scouts": "Se skauty a skautkami",
