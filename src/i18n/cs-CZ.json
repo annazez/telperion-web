@@ -61,7 +61,8 @@
   "nav": {
     "articles": "Články",
     "button": {
-      "book": "Poptat program"
+      "book": "Poptat program",
+      "donate": "Přispět"
     },
     "contact": "Kontakt",
     "home": "Domů",
@@ -70,6 +71,12 @@
     "programs_other": "Další programy",
     "programs_public": "Pro veřejnost a firmy",
     "programs_schools": "Pro školy"
+  },
+  "donation_modal": {
+    "title": "Podpořte nás",
+    "description": "Vaše podpora nám pomáhá dál vzdělávat o klimatu. Děkujeme!",
+    "account_number": "Číslo účtu",
+    "transparent_account_link": "Zobrazit transparentní účet"
   },
   "other": {
     "badge": "Nové formáty\n",

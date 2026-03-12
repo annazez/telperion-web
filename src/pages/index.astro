@@ -46,17 +46,18 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
         {t("home.hero.description")}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a
-          href={getRelativeLocaleUrl(lang, "/programy/pro-skoly")}
+        <button
+          type="button"
+          onclick="document.dispatchEvent(new CustomEvent('open-contact-modal'))"
           class="w-full sm:w-auto bg-brand-green text-cream px-8 py-4 rounded-full font-bold text-lg hover:bg-dark-green transition transform hover:-translate-y-0.5 shadow-xl shadow-brand-green/20"
         >
-          {t("home.hero.button_programs")}
-        </a>
+          {t("nav.button.book")}
+        </button>
         <a
-          href={getRelativeLocaleUrl(lang, "/kontakty")}
+          href={getRelativeLocaleUrl(lang, "/programy/pro-skoly")}
           class="w-full sm:w-auto bg-cream/50 backdrop-blur-sm text-dark-green border border-brand-green/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/60 transition"
         >
-          {t("home.hero.button_team")}
+          {t("home.hero.button_programs")}
         </a>
       </div>
     </div>
