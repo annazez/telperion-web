@@ -2,8 +2,10 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
+  site: "https://www.telperion.cz",
   i18n: {
     defaultLocale: "cs",
     locales: ["cs", "en"],
@@ -12,7 +14,7 @@ export default defineConfig({
       strategy: "pathname",
     },
   },
-  integrations: [icon({ include: { mdi: ["*"] } }), react()],
+  integrations: [icon({ include: { mdi: ["*"] } }), react(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },
