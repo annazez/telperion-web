@@ -10,7 +10,17 @@ const clanky = vsechnyClanky
   .filter((clanek: any) => clanek.data.pubDate)
   .sort(
     (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-  );
+  )
+  .map((clanek: any) => ({
+    ...clanek,
+    slug: clanek.id.replace(/\.md$/, ""),
+  }));
+
+const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
 ---
 
 <Layout title="Články a novinky">
@@ -40,17 +50,13 @@ const clanky = vsechnyClanky
               <div class="flex items-center gap-2 text-sm text-dark-green/60 font-medium mb-4">
                 <Icon name="mdi:calendar-blank" class="w-4 h-4" />
                 <time datetime={clanek.data.pubDate?.toISOString()}>
-                  {clanek.data.pubDate?.toLocaleDateString("cs-CZ", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {clanek.data.pubDate ? dateFormatter.format(clanek.data.pubDate) : ""}
                 </time>
               </div>
 
               <h2 class="text-2xl font-serif font-bold text-brand-green mb-3 line-clamp-2">
                 <a
-                  href={`/clanky/${clanek.id.replace(/\.md$/, '')}`}
+                  href={`/clanky/${clanek.slug}`}
                   class="hover:text-dark-green transition-colors"
                 >
                   {clanek.data.title}
@@ -66,7 +72,7 @@ const clanky = vsechnyClanky
                   {clanek.data.author}
                 </span>
                 <a
-                  href={`/clanky/${clanek.id.replace(/\.md$/, '')}`}
+                  href={`/clanky/${clanek.slug}`}
                   class="inline-flex items-center gap-1 text-sm font-bold text-dark-green hover:text-brand-green transition-colors group"
                 >
                   Číst dál

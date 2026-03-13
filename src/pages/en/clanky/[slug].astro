@@ -7,14 +7,23 @@ const lang = "en";
 
 export async function getStaticPaths() {
   const clanky = await getCollection("clanky");
-  return clanky.map((clanek) => ({
-    params: { slug: clanek.id.replace(/\.md$/, '') },
-    props: { clanek },
-  }));
+  return clanky.map((clanek) => {
+    const slug = clanek.id.replace(/\.md$/, "");
+    return {
+      params: { slug },
+      props: { clanek },
+    };
+  });
 }
 
 const { clanek } = Astro.props;
 const { Content } = await render(clanek);
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
 ---
 
 <Layout title={clanek.data.title} description={clanek.data.description}>
@@ -44,11 +53,7 @@ const { Content } = await render(clanek);
           <Icon name="mdi:calendar-blank" class="w-4 h-4" />
           <time datetime={clanek.data.pubDate?.toISOString()}>
             {
-              clanek.data.pubDate?.toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })
+              clanek.data.pubDate ? dateFormatter.format(clanek.data.pubDate) : ""
             }
           </time>
         </div>
