@@ -4,9 +4,6 @@ import icon from "astro-icon";
 import react from "@astrojs/react";
 
 export default defineConfig({
-  experimental: {
-    rustCompiler: true,
-  },
   i18n: {
     defaultLocale: "cs",
     locales: ["cs", "en"],
