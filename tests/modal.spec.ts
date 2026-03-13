@@ -4,12 +4,15 @@ test.describe("Modal Component", () => {
   test.beforeEach(async ({ page }) => {
     // Modal is a global component included in Layout.astro, so we can test it on the home page
     await page.goto("/");
-    // Close the climate fresk promo modal if it shows up
-    const promoModal = page.locator("#climate-fresk-modal");
-    if (await promoModal.isVisible()) {
-       await page.locator("#climate-fresk-close").click();
-       await expect(promoModal).toHaveClass(/hidden/);
-    }
+    // Evaluate in page to dismiss the climate fresk modal if it pops up and blocks the UI
+    await page.evaluate(() => {
+      sessionStorage.setItem("climateFreskModalSeen", "true");
+      const climateModal = document.getElementById("climate-fresk-modal");
+      if (climateModal) {
+        climateModal.classList.add("hidden");
+        climateModal.classList.remove("flex");
+      }
+    });
   });
 
   test.describe("Desktop Viewport", () => {

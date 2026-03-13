@@ -14,30 +14,34 @@ export function getLangFromUrl(url: URL): Locale {
   return "cs";
 }
 
+function getNestedValue(obj: any, keys: string[]): string | undefined {
+  let value = obj;
+  for (const k of keys) {
+    if (value === undefined || value === null) break;
+    value = value[k];
+  }
+  return typeof value === "string" ? value : undefined;
+}
+
 export function useTranslations(lang: Locale) {
+  const cache = new Map<string, string>();
+
   return function t(key: string): string {
+    if (cache.has(key)) {
+      return cache.get(key)!;
+    }
+
     const keys = key.split(".");
-    let value: any = translations[lang];
+    let value = getNestedValue(translations[lang], keys);
 
-    for (const k of keys) {
-      if (value === undefined || value === null) break;
-      value = value[k];
+    if (value === undefined && lang === "en") {
+      value = getNestedValue(translations["cs"], keys);
     }
 
-    if (value === undefined || typeof value !== "string") {
-      // Fallback to cs if missing in en
-      if (lang === "en") {
-        let csValue: any = translations["cs"];
-        for (const k of keys) {
-          if (csValue === undefined || csValue === null) break;
-          csValue = csValue[k];
-        }
-        if (typeof csValue === "string") return csValue;
-      }
-      return key;
-    }
+    const finalValue = value ?? key;
+    cache.set(key, finalValue);
 
-    return value;
+    return finalValue;
   };
 }
 
