@@ -2,16 +2,6 @@
 
 Security is a priority for us. This document outlines our security policy and how to responsibly report security vulnerabilities found in this repository.
 
-## Supported Versions
-
-Currently, the project is in the alpha phase of development.
-
-| Version | Supported         |
-| ------- | ----------------- |
-| < 1.0.0 | :x: (Alpha / Dev) |
-
-Once the project reaches a stable release, this table will be updated.
-
 ## Reporting a Vulnerability
 
 We heavily rely on static site generation (SSG), which significantly reduces the attack surface. However, if you discover a valid security vulnerability in our code or its dependencies, please let us know.
