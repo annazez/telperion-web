@@ -129,7 +129,16 @@ import { Icon } from "astro-icon/components";
 </div>
 
 <script>
-  import { generateQRDataURI } from "../utils/qr";
+  let generateQRDataURILazy:
+    | ((options: { iban: string; amount?: number; message?: string }) => Promise<string>)
+    | null = null;
+
+  const getGenerateQRDataURI = async () => {
+    if (generateQRDataURILazy) return generateQRDataURILazy;
+    const mod = await import("../utils/qr");
+    generateQRDataURILazy = mod.generateQRDataURI;
+    return generateQRDataURILazy;
+  };
 
   document.addEventListener("astro:page-load", () => {
     setupModal();
@@ -165,6 +174,7 @@ import { Icon } from "astro-icon/components";
     let currentAmount: number | undefined = undefined;
 
     const renderQR = async () => {
+      const generateQRDataURI = await getGenerateQRDataURI();
       const dataUri = await generateQRDataURI({
         iban,
         amount: currentAmount,
