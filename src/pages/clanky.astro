@@ -7,9 +7,9 @@ import SectionBadge from "../components/SectionBadge.astro";
 const vsechnyClanky = await getCollection("clanky");
 
 const clanky = vsechnyClanky
-  .filter((clanek: any) => clanek.data.pubDate)
+  .filter((clanek) => clanek.data.pubDate)
   .sort(
-    (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
   );
 
 function formatDate(date: Date) {
@@ -43,7 +43,7 @@ function formatDate(date: Date) {
         </div>
       ) : (
         <div class="grid md:grid-cols-2 gap-8">
-          {clanky.map((clanek: any) => (
+          {clanky.map((clanek) => (
             <article class="glass-card rounded-3xl p-8 flex flex-col hover:shadow-xl transition-shadow duration-300 border border-brand-green/10">
               <div class="flex items-center gap-2 text-sm text-dark-green/60 font-medium mb-4">
                 <Icon name="mdi:calendar-blank" class="w-4 h-4" />
