@@ -6,6 +6,44 @@
     "transparent_account_link": "Zobrazit transparentní účet"
   },
   "home": {
+    "reviews": {
+      "title_main": "Co o nás",
+      "title_highlight": "říkají ostatní?",
+      "subtitle": "Zpětná vazba od účastníků a partnerů našich programů je pro nás důležitá.",
+      "1": {
+        "text": "\"Díky Jakubovi a celému Telperionu za super Klima dny na Biskupském gymnáziu v ČB! Organizace a příprava byla na profesionálním levelu. Studenti si odnesli mnoho nových poznatků a akce je dovedla k hlubšímu zamyšlení nad klimatickou krizí. Doufám, že je Klima dny inspirovaly i k další ekologické činnosti.\"",
+        "author": "Karolína Bittová",
+        "date": "21. 06. 2023"
+      },
+      "2": {
+        "text": "\"Jakubovu iniciativu znám jako přednášející na Klimatických dnech v minulém roce - přijde mi důležité, aby téma ochrany klimatu a životního prostředí vnášeli do školního prostředí právě studující a navíc mají tah na dlouhodobější akce, což Klimatické dny, zdá se, nyní budou a úspěšně se šířit. Ocenění práce na školách, kde se klíčová témata pro naši budoucnost prosazují jen pomalu, si podle mne zaslouží ocenění.\"",
+        "author": "Anna Kárníková",
+        "date": "04. 05. 2023"
+      },
+      "3": {
+        "text": "\"Jakuba znám přímo z akce Klimatické dny, kde jsem v roce 2022 vedla jeden z programů. Od té doby často zmiňuji jeho iniciativu jako skvělý počin, který každoročně podněcuje studenty napříč věkovými kategoriemi k hlubšímu přemýšlení o souvislostech komplikovaného vztahu mezi člověkem a jeho životním prostředím.\"",
+        "author": "Magdalena Davis",
+        "date": "20. 04. 2023"
+      }
+    },
+    "fresk_modal": {
+      "title": "Workshop Klimatická mozaika",
+      "date": "9. dubna 2026",
+      "time": "15:00 - 19:00",
+      "location": "Kumst, Brno",
+      "price": "Vstup zdarma",
+      "p1_strong": "Největší Klimatická mozaika v Česku je zpět a po roce jedeme do Brna.",
+      "p1_rest": "Staň se součástí této akce, nauč se něco nového a poznej lidi se stejnými zájmy!",
+      "p2": "Můžeš se těšit na:",
+      "li1": "Workshop Klimatická mozaika postavený na vědecky podložených datech IPCC",
+      "li2": "Týmovou spolupráci s 42 kartami odhalujícími příčiny a následky změny klimatu",
+      "li3": "Inspiraci jak se zapojit do řešení a setkání s lidmi s podobným smýšlením",
+      "li4": "Expertízu odborníků a drobné občerstvení",
+      "p3_strong": "S sebou nic nepotřebujete",
+      "p3_rest": ", pouze chuť se zapojit. Workshop je zdarma a účastníci obdrží certifikát o absolvování Climate Fresk. Zbývá 11 volných míst!",
+      "btn_register": "Registrovat se",
+      "btn_close": "Zavřít"
+    },
     "features": {
       "card1": {
         "text": "Jsme studenti, stejně jako naše publikum. Nepoučujeme z pozice autority, ale diskutujeme jako vrstevníci. Odbouráváme bariéry a trému.",
@@ -109,7 +147,7 @@
     "title_main": "Telperion\n"
   },
   "public": {
-    "badge": "Veřejnost & Skauting\n",
+    "badge": "Veřejnost & Firmy",
     "fresk": {
       "desc_p1": "Zažijte celosvětově populární workshop, který už absolvoval více než milion lidí. Pomocí sady karet založených na zprávách IPCC si společně s lektorem sestavíte vizuální mapu příčin a následků klimatické krize.",
       "desc_p2_before": "Program je ideální jak pro úplné začátečníky, tak pro klimatické nadšence, kteří si chtějí utřídit myšlenky a najít motivaci k akci. ",
@@ -117,7 +155,7 @@
       "tag_age": "15+ let\n",
       "tag_capacity": "Dle domluvy\n",
       "tag_duration": "3 hodiny\n",
-      "title": "Klimatická mozaika pro veřejnost"
+      "title": "Klimatická mozaika pro veřejnost a firmy"
     },
     "page_title": "Pro veřejnost a firmy",
     "scouts": {
@@ -146,7 +184,7 @@
       "day2_desc": "Žáci zkoumají cesty k zapojení. Probádají úpravu osobní stopy i boj s klimatem na úrovni obcí a států (adaptace a mitigace). Pomocí workshopů trénují kritické myšlení a tvoří vlastní návrhy řešení.\n\n",
       "day2_title": "Den druhý: Akce\n",
       "desc_p1": "V tomto balíčku účastníci získají komplexní pochopení změny klimatu, setkají se s experty z české klimatické scény a najdou konkrétní způsoby, jak se s krizí vypořádat.",
-      "desc_p2_after": "Jako převážně studentská organizace poskytujeme žákům jedinečnou perspektivu – nepoučujeme, ale diskutujeme s nimi jako rovný s rovným.",
+      "desc_p2_after": " Jako převážně studentská organizace poskytujeme žákům jedinečnou perspektivu – nepoučujeme, ale diskutujeme s nimi jako rovný s rovným.",
       "desc_p2_before": "Vycházíme z principu",
       "desc_p2_bold": "vrstevnického učení",
       "desc_p3": "Program systematicky vyhodnocujeme pomocí sociologické analýzy. Sledujeme, jak účastníci porozuměli tématům a jak se změnily jejich postoje. Chceme, aby žáci odcházeli s vědomím, že jejich kroky mají smysl.\n",

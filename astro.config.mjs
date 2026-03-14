@@ -22,11 +22,9 @@ export default defineConfig({
         const { pathname } = new URL(page);
 
         // Exclude non-indexable routes from production sitemap.
-        return ![
-          /^\/test(\/|$)/,
-          /\/404\/?$/,
-          /\/500\/?$/,
-        ].some((pattern) => pattern.test(pathname));
+        return ![/^\/test(\/|$)/, /\/404\/?$/, /\/500\/?$/].some((pattern) =>
+          pattern.test(pathname),
+        );
       },
     }),
   ],
