@@ -40,16 +40,23 @@ const translatedDesc = description
   : undefined;
 
 // Create canonical URL without query parameters
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site || "https://www.telperion.cz");
+const canonicalUrl = new URL(
+  Astro.url.pathname,
+  Astro.site || "https://www.telperion.cz",
+);
 
 // Helper to create hreflang URLs
 const getHreflangUrl = (targetLang: string) => {
   let currentPath = Astro.url.pathname;
-  if (currentPath !== "/" && currentPath !== "/en/" && currentPath.endsWith("/")) {
+  if (
+    currentPath !== "/" &&
+    currentPath !== "/en/" &&
+    currentPath.endsWith("/")
+  ) {
     currentPath = currentPath.slice(0, -1);
   }
 
-  const isEnglishPath = currentPath === '/en' || currentPath.startsWith('/en/');
+  const isEnglishPath = currentPath === "/en" || currentPath.startsWith("/en/");
 
   let newPath = currentPath;
 
@@ -114,21 +121,57 @@ const includeAlternateLinks = !noindex;
     <meta name="viewport" content="width=device-width" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/png" href="/favicon.ico" />
-    <meta property="og:title" content={`${translatedTitle || "Domů"} | Telperion`} />
+    <meta
+      property="og:title"
+      content={`${translatedTitle || "Domů"} | Telperion`}
+    />
     <meta property="og:description" content={translatedDesc} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl.href} />
-    {image && <meta property="og:image" content={new URL(image, Astro.site || "https://www.telperion.cz").href} />}
+    {
+      image && (
+        <meta
+          property="og:image"
+          content={
+            new URL(image, Astro.site || "https://www.telperion.cz").href
+          }
+        />
+      )
+    }
 
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content={`${translatedTitle || "Domů"} | Telperion`} />
+    <meta
+      name="twitter:title"
+      content={`${translatedTitle || "Domů"} | Telperion`}
+    />
     <meta name="twitter:description" content={translatedDesc} />
-    {image && <meta name="twitter:image" content={new URL(image, Astro.site || "https://www.telperion.cz").href} />}
+    {
+      image && (
+        <meta
+          name="twitter:image"
+          content={
+            new URL(image, Astro.site || "https://www.telperion.cz").href
+          }
+        />
+      )
+    }
 
     <link rel="canonical" href={canonicalUrl.href} />
-    {includeAlternateLinks && <link rel="alternate" hreflang="cs" href={csUrl} />}
-    {includeAlternateLinks && <link rel="alternate" hreflang="en" href={enUrl} />}
-    {includeAlternateLinks && <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />}
+    {
+      includeAlternateLinks && (
+        <link rel="alternate" hreflang="cs" href={csUrl} />
+      )
+    }
+    {
+      includeAlternateLinks && (
+        <link rel="alternate" hreflang="en" href={enUrl} />
+      )
+    }
+    {
+      includeAlternateLinks && (
+        <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
+      )
+    }
 
     <title>
       {translatedTitle ? `${translatedTitle} | Telperion` : "Telperion"}

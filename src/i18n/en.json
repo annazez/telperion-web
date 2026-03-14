@@ -6,6 +6,44 @@
     "transparent_account_link": "View Transparent Account"
   },
   "home": {
+    "reviews": {
+      "title_main": "What do others",
+      "title_highlight": "say about us?",
+      "subtitle": "Feedback from participants and partners of our programs is important to us.",
+      "1": {
+        "text": "\"Thanks to Jakub and the whole Telperion for super Climate days at the Episcopal Grammar School in ČB! Organization and preparation were at a professional level. Students took away many new findings and the event led them to deeper reflection on the climate crisis. I hope that the Climate days inspired them to further ecological activity as well.\"",
+        "author": "Karolína Bittová",
+        "date": "Jun 21, 2023"
+      },
+      "2": {
+        "text": "\"I know Jakub's initiative as a speaker at the Climate Days last year - I find it important that the topic of climate and environmental protection is brought into the school environment by students, and they have the drive for longer-term events, which Climate Days, it seems, will now be and successfully spread. Appreciating work in schools, where key issues for our future are slow to take hold, is in my opinion worthy of appreciation.\"",
+        "author": "Anna Kárníková",
+        "date": "May 04, 2023"
+      },
+      "3": {
+        "text": "\"I know Jakub directly from the Climate Days event, where I led one of the programs in 2022. Since then I often mention his initiative as a great feat that encourages students across age categories to think more deeply every year about the connections of the complex relationship between humans and their environment.\"",
+        "author": "Magdalena Davis",
+        "date": "Apr 20, 2023"
+      }
+    },
+    "fresk_modal": {
+      "title": "Climate Fresk Workshop",
+      "date": "April 9, 2026",
+      "time": "15:00 - 19:00",
+      "location": "Kumst, Brno",
+      "price": "Free entry",
+      "p1_strong": "The biggest Climate Fresk in Czechia is back and after a year we are going to Brno.",
+      "p1_rest": "Become a part of this event, learn something new and meet people with the same interests!",
+      "p2": "You can look forward to:",
+      "li1": "Climate Fresk workshop based on scientifically proven IPCC data",
+      "li2": "Team collaboration with 42 cards revealing the causes and consequences of climate change",
+      "li3": "Inspiration on how to get involved in solutions and meeting like-minded people",
+      "li4": "Expertise of professionals and light refreshments",
+      "p3_strong": "You don't need anything with you",
+      "p3_rest": ", just a desire to get involved. The workshop is free and participants will receive a certificate of completion of Climate Fresk. 11 spots left!",
+      "btn_register": "Register",
+      "btn_close": "Close"
+    },
     "features": {
       "card1": {
         "text": "We are students, just like our audience. We don't lecture from a position of authority, but discuss as peers. We break down barriers and stage fright.",
@@ -109,7 +147,7 @@
     "title_main": "Telperion\n"
   },
   "public": {
-    "badge": "Public & Scouting\n",
+    "badge": "Public & Businesses",
     "fresk": {
       "desc_p1": "Experience a globally popular workshop that has already been attended by more than a million people. Using a set of cards based on IPCC reports, you will work with the instructor to create a visual map of the causes and consequences of the climate crisis.",
       "desc_p2_before": "The program is ideal for both complete beginners and climate enthusiasts who want to organize their thoughts and find motivation for action. ",
@@ -117,7 +155,7 @@
       "tag_age": "15+ years\n",
       "tag_capacity": "As agreed\n",
       "tag_duration": "3 hours\n",
-      "title": "Climate Fresk for the public"
+      "title": "Climate Fresk for Public and Businesses"
     },
     "page_title": "For public and businesses",
     "scouts": {

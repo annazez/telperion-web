@@ -54,7 +54,10 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
           {t("nav.button.book")}
         </button>
         <a
-          href={lang === "en" ? (routeMap["/programy/pro-skoly"] || getRelativeLocaleUrl(lang, "/programy/pro-skoly")) : getRelativeLocaleUrl(lang, "/programy/pro-skoly")}
+          href={lang === "en"
+            ? routeMap["/programy/pro-skoly"] ||
+              getRelativeLocaleUrl(lang, "/programy/pro-skoly")
+            : getRelativeLocaleUrl(lang, "/programy/pro-skoly")}
           class="w-full sm:w-auto bg-cream/50 backdrop-blur-sm text-dark-green border border-brand-green/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/60 transition"
         >
           {t("home.hero.button_programs")}

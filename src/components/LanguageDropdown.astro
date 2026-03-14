@@ -10,7 +10,11 @@ const { mobile = false } = Astro.props;
 
 // Strip trailing slash except for root paths
 let currentPath = Astro.url.pathname;
-if (currentPath !== "/" && currentPath !== "/en/" && currentPath.endsWith("/")) {
+if (
+  currentPath !== "/" &&
+  currentPath !== "/en/" &&
+  currentPath.endsWith("/")
+) {
   currentPath = currentPath.slice(0, -1);
 }
 

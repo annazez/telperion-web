@@ -15,6 +15,13 @@ export function getLangFromUrl(url: URL): Locale {
 }
 
 function getNestedValue(obj: any, keys: string[]): string | undefined {
+  if (!obj) return undefined;
+
+  const flatKey = keys.join(".");
+  if (obj[flatKey] !== undefined) {
+    return typeof obj[flatKey] === "string" ? obj[flatKey] : undefined;
+  }
+
   let value = obj;
   for (const k of keys) {
     if (value === undefined || value === null) break;
