@@ -3,24 +3,13 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
 import SectionBadge from "../components/SectionBadge.astro";
+import { getFormattedDate } from "../utils/date";
 
 const vsechnyClanky = await getCollection("clanky");
 
 const clanky = vsechnyClanky
   .filter((clanek) => clanek.data.pubDate)
-  .sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-  );
-
-const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
-
-function formatDate(date: Date) {
-  return dateFormatter.format(date);
-}
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <Layout title="Články a novinky">
@@ -50,7 +39,9 @@ function formatDate(date: Date) {
               <div class="flex items-center gap-2 text-sm text-dark-green/60 font-medium mb-4">
                 <Icon name="mdi:calendar-blank" class="w-4 h-4" />
                 <time datetime={clanek.data.pubDate?.toISOString()}>
-                  {clanek.data.pubDate ? formatDate(clanek.data.pubDate) : ""}
+                  {clanek.data.pubDate
+                    ? getFormattedDate(clanek.data.pubDate)
+                    : ""}
                 </time>
               </div>
 

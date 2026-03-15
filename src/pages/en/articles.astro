@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import SectionBadge from "../../components/SectionBadge.astro";
 import { Icon } from "astro-icon/components";
+import { getFormattedDate } from "../../utils/date";
 
 const allArticles = await getCollection("clanky");
 
@@ -14,16 +15,6 @@ const sortedArticles = allArticles
   }))
   .sort((a, b) => b.time - a.time)
   .map(({ article }) => article);
-
-const dateFormatter = new Intl.DateTimeFormat("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
-
-function formatDate(date: Date) {
-  return dateFormatter.format(date);
-}
 ---
 
 <Layout title="Articles and Knowledge Base">
@@ -52,7 +43,7 @@ function formatDate(date: Date) {
                 <div class="flex items-center gap-1.5 bg-cream/50 px-3 py-1 rounded-full border border-dark-green/10">
                   <Icon name="mdi:calendar" class="w-4 h-4 text-brand-green" />
                   <time datetime={article.data.pubDate!.toISOString()}>
-                    {formatDate(article.data.pubDate!)}
+                    {getFormattedDate(article.data.pubDate!, "en-US")}
                   </time>
                 </div>
               </div>
