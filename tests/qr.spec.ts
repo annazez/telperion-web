@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
 import { generateSPDString } from '../src/utils/qr';
 
-test.describe('generateSPDString', () => {
+test.describe('generateSPDString @unit', () => {
+  test.describe.configure({ mode: 'parallel' });
+
   const baseIban = 'CZ9620100000002102801318';
 
   test('generates basic string with only required IBAN', () => {
