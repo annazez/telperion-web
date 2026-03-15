@@ -45,7 +45,7 @@ const canonicalUrl = new URL(
   Astro.site || "https://www.telperion.cz",
 );
 
-// Cache routeMap entries outside the rendering loop to prevent redundant allocations
+// Compute routeMap entries once per layout render to reuse across getHreflangUrl calls
 const routeMapEntries = Object.entries(routeMap);
 
 // Helper to create hreflang URLs
