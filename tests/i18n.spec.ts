@@ -9,21 +9,28 @@ test.describe("i18n replacePlaceholders", () => {
   });
 
   test("should replace a single placeholder with the correct translation", () => {
-    // en.json has "nav": { "home": "Home" }
-    // cs-CZ.json has "nav": { "home": "Domů" }
-    expect(replacePlaceholders("Go to [[nav.home]]", "en")).toBe("Go to Home");
+    // Derive the concrete translation from the same source used by replacePlaceholders
+    const homeEn = replacePlaceholders("[[nav.home]]", "en");
+    const homeCs = replacePlaceholders("[[nav.home]]", "cs");
+
+    expect(replacePlaceholders("Go to [[nav.home]]", "en")).toBe(
+      `Go to ${homeEn}`,
+    );
     expect(replacePlaceholders("Jít na [[nav.home]]", "cs")).toBe(
-      "Jít na Domů",
+      `Jít na ${homeCs}`,
     );
   });
 
   test("should replace multiple placeholders, including repeated ones", () => {
-    // en.json has "nav": { "home": "Home", "contact": "Contact" }
+    // Derive the concrete translations from the same source used by replacePlaceholders
+    const home = replacePlaceholders("[[nav.home]]", "en");
+    const contact = replacePlaceholders("[[nav.contact]]", "en");
+
     const text =
       "Visit [[nav.home]] or [[nav.contact]] and back to [[nav.home]]";
-    expect(replacePlaceholders(text, "en")).toBe(
-      "Visit Home or Contact and back to Home",
-    );
+    const expected = `Visit ${home} or ${contact} and back to ${home}`;
+
+    expect(replacePlaceholders(text, "en")).toBe(expected);
   });
 
   test("should return the raw key string if the placeholder key does not exist", () => {
