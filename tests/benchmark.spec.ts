@@ -1,12 +1,5 @@
 import { test, expect } from "@playwright/test";
 
-const isBenchmarkEnabled = !!process.env.PLAYWRIGHT_BENCHMARK;
-
-test.skip(
-  !isBenchmarkEnabled,
-  "LanguageDropdown benchmark disabled by default; set PLAYWRIGHT_BENCHMARK=1 to enable.",
-);
-
 test("LanguageDropdown Initialization Benchmark", async ({ page }) => {
   // We'll create a page with 10,000 language dropdowns to measure the init time.
   const numDropdowns = 10000;

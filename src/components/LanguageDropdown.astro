@@ -133,13 +133,7 @@ if (isStatusPath) {
     );
 
     // Cache DOM elements per container to avoid repeated querySelectors in global listeners
-    type DropdownCacheEntry = {
-      container: HTMLElement;
-      toggle: HTMLButtonElement | null;
-      menu: HTMLElement | null;
-    };
-
-    const dropdowns: DropdownCacheEntry[] = [];
+    const dropdowns = [];
     for (let i = 0; i < containerElements.length; i++) {
       const container = containerElements[i] as HTMLElement;
       dropdowns.push({
