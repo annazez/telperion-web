@@ -92,13 +92,31 @@ test("LanguageDropdown Initialization Benchmark", async ({ page }) => {
     return performance.getEntriesByName("init-optimized")[0].duration;
   });
 
-  console.log(
-    `[BASELINE] Initialization of ${numDropdowns} dropdowns took: ${baselineDuration.toFixed(2)} ms`,
-  );
-  console.log(
-    `[OPTIMIZED] Initialization of ${numDropdowns} dropdowns took: ${optimizedDuration.toFixed(2)} ms`,
-  );
-  console.log(
-    `[IMPROVEMENT] ${(baselineDuration - optimizedDuration).toFixed(2)} ms (${(((baselineDuration - optimizedDuration) / baselineDuration) * 100).toFixed(2)}%)`,
-  );
+  const info = test.info();
+  const improvementMs = baselineDuration - optimizedDuration;
+  const improvementPct = (improvementMs / baselineDuration) * 100;
+
+  info.annotations.push({
+    type: "benchmark",
+    description:
+      `Initialization of ${numDropdowns} dropdowns: ` +
+      `baseline=${baselineDuration.toFixed(2)} ms, ` +
+      `optimized=${optimizedDuration.toFixed(2)} ms, ` +
+      `improvement=${improvementMs.toFixed(2)} ms (${improvementPct.toFixed(2)}%)`,
+  });
+
+  const shouldLogBenchmark =
+    process.env.BENCHMARK_LOG === "1" || process.env.BENCHMARK === "1";
+
+  if (shouldLogBenchmark) {
+    console.log(
+      `[BASELINE] Initialization of ${numDropdowns} dropdowns took: ${baselineDuration.toFixed(2)} ms`,
+    );
+    console.log(
+      `[OPTIMIZED] Initialization of ${numDropdowns} dropdowns took: ${optimizedDuration.toFixed(2)} ms`,
+    );
+    console.log(
+      `[IMPROVEMENT] ${improvementMs.toFixed(2)} ms (${improvementPct.toFixed(2)}%)`,
+    );
+  }
 });
