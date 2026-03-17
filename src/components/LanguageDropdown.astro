@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { routeMap } from "../utils/lang";
+import { translatePath } from "../utils/lang";
 
 interface Props {
   mobile?: boolean;
@@ -30,47 +30,11 @@ if (isStatusPath) {
   enPath = "/en/";
 } else {
   if (isEn) {
-    // We are on English, need to find Czech equivalent
     enPath = currentPath;
-
-    // Check exact match in values
-    let found = false;
-    for (const [czBase, enBase] of Object.entries(routeMap)) {
-      if (currentPath === enBase) {
-        csPath = czBase;
-        found = true;
-        break;
-      } else if (currentPath.startsWith(`${enBase}/`)) {
-        csPath = currentPath.replace(enBase, czBase);
-        found = true;
-        break;
-      }
-    }
-
-    if (!found) {
-      csPath = currentPath.replace(/^\/en(?=\/|$)/, "") || "/";
-    }
+    csPath = translatePath(currentPath, "cs");
   } else {
-    // We are on Czech, need to find English equivalent
     csPath = currentPath || "/";
-
-    // Check exact match in keys
-    let found = false;
-    for (const [czBase, enBase] of Object.entries(routeMap)) {
-      if (currentPath === czBase) {
-        enPath = enBase;
-        found = true;
-        break;
-      } else if (currentPath.startsWith(`${czBase}/`)) {
-        enPath = currentPath.replace(czBase, enBase);
-        found = true;
-        break;
-      }
-    }
-
-    if (!found) {
-      enPath = `/en${currentPath === "/" ? "" : currentPath}`;
-    }
+    enPath = translatePath(currentPath, "en");
   }
 }
 ---
