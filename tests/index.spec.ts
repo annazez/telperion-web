@@ -15,7 +15,7 @@ test.describe("Home Page", () => {
     await expect(description).toBeVisible();
 
     const programyLink = page.getByRole("link", { name: "Programy pro školy" });
-    await expect(programyLink).toHaveAttribute("href", "/programy/pro-skoly/");
+    await expect(programyLink).toHaveAttribute("href", "/programy/pro-skoly");
 
     const poptatBtn = page.getByRole("button", { name: "Poptat program" });
     await expect(poptatBtn).toBeVisible();
