@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
+import { formatDate } from "../../utils/date";
 
 export async function getStaticPaths() {
   const clanky = await getCollection("clanky");
@@ -13,16 +14,6 @@ export async function getStaticPaths() {
 
 const { clanek } = Astro.props;
 const { Content } = await render(clanek);
-
-const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
-
-function formatDate(date: Date) {
-  return dateFormatter.format(date);
-}
 ---
 
 <Layout title={clanek.data.title} description={clanek.data.description}>

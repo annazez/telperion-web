@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
 import SectionBadge from "../components/SectionBadge.astro";
+import { formatDate } from "../utils/date";
 
 const vsechnyClanky = await getCollection("clanky");
 
@@ -14,16 +15,6 @@ const clanky = vsechnyClanky
   }))
   .sort((a, b) => b.time - a.time)
   .map(({ clanek }) => clanek);
-
-const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
-
-function formatDate(date: Date) {
-  return dateFormatter.format(date);
-}
 ---
 
 <Layout title="Články a novinky">
