@@ -1,4 +1,3 @@
-
 const routeMap = {
   "/kontakty": "/en/contacts",
   "/clanky": "/en/articles",
@@ -52,7 +51,7 @@ function originalLogic(currentPath, isEn) {
 }
 
 const reverseRouteMap = Object.fromEntries(
-  Object.entries(routeMap).map(([cz, en]) => [en, cz])
+  Object.entries(routeMap).map(([cz, en]) => [en, cz]),
 );
 const routeEntries = Object.entries(routeMap);
 
@@ -66,20 +65,20 @@ function optimizedLogic(currentPath, isEn) {
     // O(1) exact match
     const exactMatch = reverseRouteMap[currentPath];
     if (exactMatch) {
-        csPath = exactMatch;
+      csPath = exactMatch;
     } else {
-        let found = false;
-        for (let i = 0; i < routeEntries.length; i++) {
-            const [czBase, enBase] = routeEntries[i];
-            if (currentPath.startsWith(`${enBase}/`)) {
-                csPath = currentPath.replace(enBase, czBase);
-                found = true;
-                break;
-            }
+      let found = false;
+      for (let i = 0; i < routeEntries.length; i++) {
+        const [czBase, enBase] = routeEntries[i];
+        if (currentPath.startsWith(`${enBase}/`)) {
+          csPath = currentPath.replace(enBase, czBase);
+          found = true;
+          break;
         }
-        if (!found) {
-            csPath = currentPath.replace(/^\/en(?=\/|$)/, "") || "/";
-        }
+      }
+      if (!found) {
+        csPath = currentPath.replace(/^\/en(?=\/|$)/, "") || "/";
+      }
     }
   } else {
     csPath = currentPath || "/";
@@ -87,40 +86,40 @@ function optimizedLogic(currentPath, isEn) {
     // O(1) exact match
     const exactMatch = routeMap[currentPath];
     if (exactMatch) {
-        enPath = exactMatch;
+      enPath = exactMatch;
     } else {
-        let found = false;
-        for (let i = 0; i < routeEntries.length; i++) {
-            const [czBase, enBase] = routeEntries[i];
-            if (currentPath.startsWith(`${czBase}/`)) {
-                enPath = currentPath.replace(czBase, enBase);
-                found = true;
-                break;
-            }
+      let found = false;
+      for (let i = 0; i < routeEntries.length; i++) {
+        const [czBase, enBase] = routeEntries[i];
+        if (currentPath.startsWith(`${czBase}/`)) {
+          enPath = currentPath.replace(czBase, enBase);
+          found = true;
+          break;
         }
-        if (!found) {
-            enPath = `/en${currentPath === "/" ? "" : currentPath}`;
-        }
+      }
+      if (!found) {
+        enPath = `/en${currentPath === "/" ? "" : currentPath}`;
+      }
     }
   }
   return { csPath, enPath };
 }
 
 const testPaths = [
-    { path: "/en/contacts", isEn: true },
-    { path: "/kontakty", isEn: false },
-    { path: "/en/workshops/for-schools/extra", isEn: true },
-    { path: "/programy/pro-skoly/extra", isEn: false },
-    { path: "/unknown", isEn: false },
-    { path: "/en/unknown", isEn: true },
+  { path: "/en/contacts", isEn: true },
+  { path: "/kontakty", isEn: false },
+  { path: "/en/workshops/for-schools/extra", isEn: true },
+  { path: "/programy/pro-skoly/extra", isEn: false },
+  { path: "/unknown", isEn: false },
+  { path: "/en/unknown", isEn: true },
 ];
 
 console.log("Running baseline...");
 const startBaseline = performance.now();
 for (let i = 0; i < ITERATIONS; i++) {
-    for (const test of testPaths) {
-        originalLogic(test.path, test.isEn);
-    }
+  for (const test of testPaths) {
+    originalLogic(test.path, test.isEn);
+  }
 }
 const endBaseline = performance.now();
 console.log(`Baseline: ${endBaseline - startBaseline}ms`);
@@ -128,12 +127,15 @@ console.log(`Baseline: ${endBaseline - startBaseline}ms`);
 console.log("Running optimized...");
 const startOptimized = performance.now();
 for (let i = 0; i < ITERATIONS; i++) {
-    for (const test of testPaths) {
-        optimizedLogic(test.path, test.isEn);
-    }
+  for (const test of testPaths) {
+    optimizedLogic(test.path, test.isEn);
+  }
 }
 const endOptimized = performance.now();
 console.log(`Optimized: ${endOptimized - startOptimized}ms`);
 
-const improvement = ((endBaseline - startBaseline) - (endOptimized - startOptimized)) / (endBaseline - startBaseline) * 100;
+const improvement =
+  ((endBaseline - startBaseline - (endOptimized - startOptimized)) /
+    (endBaseline - startBaseline)) *
+  100;
 console.log(`Improvement: ${improvement.toFixed(2)}%`);

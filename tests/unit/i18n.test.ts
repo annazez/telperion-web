@@ -14,11 +14,17 @@ test("getLangFromUrl utility", (t) => {
 
   // English subpaths
   assert.strictEqual(getLangFromUrl(new URL("/en/about", baseUrl)), "en");
-  assert.strictEqual(getLangFromUrl(new URL("/en/articles/my-post", baseUrl)), "en");
+  assert.strictEqual(
+    getLangFromUrl(new URL("/en/articles/my-post", baseUrl)),
+    "en",
+  );
 
   // Czech paths (no prefix)
   assert.strictEqual(getLangFromUrl(new URL("/kontakty", baseUrl)), "cs");
-  assert.strictEqual(getLangFromUrl(new URL("/clanky/muj-prispevek", baseUrl)), "cs");
+  assert.strictEqual(
+    getLangFromUrl(new URL("/clanky/muj-prispevek", baseUrl)),
+    "cs",
+  );
 
   // Edge cases: paths starting with "en" but not being English prefix
   assert.strictEqual(getLangFromUrl(new URL("/energetika", baseUrl)), "cs");
@@ -31,27 +37,28 @@ test("replacePlaceholders utility - basic replacements", (t) => {
   const enText = "Support us by visiting: [[donation_modal.title]]";
   assert.strictEqual(
     replacePlaceholders(enText, "en"),
-    "Support us by visiting: Support Us"
+    "Support us by visiting: Support Us",
   );
 
   // Test basic replacement for a known key in Czech
   const csText = "Podpořte nás: [[donation_modal.title]]";
   assert.strictEqual(
     replacePlaceholders(csText, "cs"),
-    "Podpořte nás: Podpořte nás"
+    "Podpořte nás: Podpořte nás",
   );
 });
 
 test("replacePlaceholders utility - multiple placeholders", (t) => {
-  const text = "Title: [[donation_modal.title]], Amount: [[donation_modal.amount_other]]";
+  const text =
+    "Title: [[donation_modal.title]], Amount: [[donation_modal.amount_other]]";
   assert.strictEqual(
     replacePlaceholders(text, "en"),
-    "Title: Support Us, Amount: Other"
+    "Title: Support Us, Amount: Other",
   );
 
   assert.strictEqual(
     replacePlaceholders(text, "cs"),
-    "Title: Podpořte nás, Amount: Jiné"
+    "Title: Podpořte nás, Amount: Jiné",
   );
 });
 
@@ -59,7 +66,7 @@ test("replacePlaceholders utility - no placeholders", (t) => {
   const text = "This is a regular string without any brackets.";
   assert.strictEqual(
     replacePlaceholders(text, "en"),
-    "This is a regular string without any brackets."
+    "This is a regular string without any brackets.",
   );
 });
 
@@ -75,7 +82,7 @@ test("replacePlaceholders utility - missing keys", (t) => {
   const text = "Missing key: [[unknown.missing_key]]";
   assert.strictEqual(
     replacePlaceholders(text, "en"),
-    "Missing key: unknown.missing_key"
+    "Missing key: unknown.missing_key",
   );
 });
 
@@ -89,26 +96,32 @@ test("replacePlaceholders utility - fallback to cs", (t) => {
   const text = "Fallback test: [[donation_modal.title]]";
   assert.strictEqual(
     replacePlaceholders(text, "en"),
-    "Fallback test: Support Us"
+    "Fallback test: Support Us",
   );
 });
 
 test("replacePlaceholders utility - malformed placeholders", (t) => {
   // Only exact [[key]] should be matched
   const text1 = "Malformed: [donation_modal.title]";
-  assert.strictEqual(replacePlaceholders(text1, "en"), "Malformed: [donation_modal.title]");
+  assert.strictEqual(
+    replacePlaceholders(text1, "en"),
+    "Malformed: [donation_modal.title]",
+  );
 
   const text2 = "Malformed: donation_modal.title]]";
-  assert.strictEqual(replacePlaceholders(text2, "en"), "Malformed: donation_modal.title]]");
+  assert.strictEqual(
+    replacePlaceholders(text2, "en"),
+    "Malformed: donation_modal.title]]",
+  );
 
   const text3 = "Malformed: [[donation_modal.title";
-  assert.strictEqual(replacePlaceholders(text3, "en"), "Malformed: [[donation_modal.title");
+  assert.strictEqual(
+    replacePlaceholders(text3, "en"),
+    "Malformed: [[donation_modal.title",
+  );
 });
 
 test("replacePlaceholders utility - consecutive placeholders without spaces", (t) => {
   const text = "[[donation_modal.amount_other]][[donation_modal.title]]";
-  assert.strictEqual(
-    replacePlaceholders(text, "en"),
-    "OtherSupport Us"
-  );
+  assert.strictEqual(replacePlaceholders(text, "en"), "OtherSupport Us");
 });

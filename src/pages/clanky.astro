@@ -9,12 +9,7 @@ const vsechnyClanky = await getCollection("clanky");
 
 const clanky = vsechnyClanky
   .filter((clanek) => clanek.data.pubDate)
-  .map((clanek) => ({
-    clanek,
-    time: clanek.data.pubDate!.getTime(),
-  }))
-  .sort((a, b) => b.time - a.time)
-  .map(({ clanek }) => clanek);
+  .sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());
 ---
 
 <Layout title="Články a novinky">

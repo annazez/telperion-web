@@ -28,9 +28,7 @@ test.describe("Multi-Page Navigation", () => {
     await schoolsLink.click();
 
     await expect(page).toHaveURL(/\/programy\/pro-skoly/);
-    await expect(
-      page.getByRole("heading", { level: 1 }),
-    ).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   });
 
   test("should navigate between main pages and back", async ({
