@@ -23,9 +23,7 @@ test.describe("Keyboard Accessibility", () => {
     await expect(modal).toHaveClass(/hidden/, { timeout: 10000 });
   });
 
-  test("should allow tabbing through contact form fields", async ({
-    page,
-  }) => {
+  test("should allow tabbing through contact form fields", async ({ page }) => {
     // Open contact modal
     await page.evaluate(() => {
       document.dispatchEvent(new CustomEvent("open-contact-modal"));
