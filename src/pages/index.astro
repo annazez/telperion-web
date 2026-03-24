@@ -587,12 +587,13 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
     }, 300);
   }
 
-  document.querySelectorAll(".lightbox-trigger").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const src = (btn as HTMLElement).dataset.fullSrc || "";
-      const alt = btn.querySelector("img")?.alt || "";
-      openLightbox(src, alt);
-    });
+  document.addEventListener("click", (e) => {
+    const btn = (e.target as Element).closest(".lightbox-trigger");
+    if (!btn) return;
+
+    const src = (btn as HTMLElement).dataset.fullSrc || "";
+    const alt = btn.querySelector("img")?.alt || "";
+    openLightbox(src, alt);
   });
 
   lightboxClose.addEventListener("click", closeLightbox);
