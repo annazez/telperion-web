@@ -11,7 +11,10 @@ test.describe("Language Switching Flow", () => {
     page,
     isMobile,
   }) => {
-    test.skip(isMobile === true, "Desktop language dropdown is not visible on mobile");
+    test.skip(
+      isMobile === true,
+      "Desktop language dropdown is not visible on mobile",
+    );
     await page.goto("/");
 
     await expect(page).toHaveTitle(/Domů \| Telperion/);
@@ -58,9 +61,7 @@ test.describe("Language Switching Flow", () => {
     await page.goto("/");
 
     // Check for hreflang alternate link pointing to English version
-    const enAlternate = page.locator(
-      'link[rel="alternate"][hreflang="en"]',
-    );
+    const enAlternate = page.locator('link[rel="alternate"][hreflang="en"]');
     await expect(enAlternate).toHaveCount(1);
   });
 });

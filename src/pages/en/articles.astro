@@ -9,12 +9,7 @@ const allArticles = await getCollection("clanky");
 
 const sortedArticles = allArticles
   .filter((article) => article.data.pubDate)
-  .map((article) => ({
-    article,
-    time: article.data.pubDate!.getTime(),
-  }))
-  .sort((a, b) => b.time - a.time)
-  .map(({ article }) => article);
+  .sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());
 ---
 
 <Layout title="Articles and Knowledge Base">

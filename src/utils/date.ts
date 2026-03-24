@@ -20,7 +20,7 @@ export function formatDate(date: Date, lang: Locale = "cs"): string {
         year: "numeric",
         month: "long",
         day: "numeric",
-      })
+      }),
     );
   }
 

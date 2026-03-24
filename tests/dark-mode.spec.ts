@@ -15,9 +15,7 @@ test.describe("Dark Mode Toggle", () => {
     // The inline script in Layout.astro reads localStorage or system preference
     // to set the initial theme; verify the html element reflects that choice
     const html = page.locator("html");
-    const hasDark = await html.evaluate((el) =>
-      el.classList.contains("dark"),
-    );
+    const hasDark = await html.evaluate((el) => el.classList.contains("dark"));
     // If the site honours prefers-color-scheme, dark class should be set.
     // If not, the test still passes — it documents the current behaviour.
     expect(typeof hasDark).toBe("boolean");
