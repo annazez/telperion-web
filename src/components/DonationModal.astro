@@ -276,6 +276,10 @@ import { Icon } from "astro-icon/components";
         currentAmount = parseFloat(amountVal || "0");
       }
 
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
+        debounceTimer = null;
+      }
       renderQR();
     };
 
@@ -283,10 +287,16 @@ import { Icon } from "astro-icon/components";
       btn.addEventListener("click", () => handleAmountSelection(btn));
     });
 
+    let debounceTimer: ReturnType<typeof setTimeout> | null = null;
     customAmountInput?.addEventListener("input", () => {
       const val = parseFloat(customAmountInput.value);
       currentAmount = isNaN(val) || val <= 0 ? undefined : val;
-      renderQR();
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
+      }
+      debounceTimer = setTimeout(() => {
+        renderQR();
+      }, 300);
     });
 
     const copyBtnDefault = copyAccountBtn?.querySelector(".copy-btn-default");
@@ -331,6 +341,11 @@ import { Icon } from "astro-icon/components";
         modal.classList.add("hidden");
       }, 300);
       document.body.style.overflow = "";
+
+      if (debounceTimer) {
+        clearTimeout(debounceTimer);
+        debounceTimer = null;
+      }
 
       // Reset UI state
       amountBtns.forEach((b) => b.setAttribute("data-active", "false"));
