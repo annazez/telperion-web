@@ -79,9 +79,9 @@
       "title_highlight": "byli?",
       "title_main": "Kde všude už jsme"
     },
+    "fallback_test_key": "Toto je testovací klíč pro fallback",
     "page_title": "Domů"
   },
-  "_test_fallback_key": "This is a test fallback value",
   "modal": {
     "button": {
       "cancel": "Zrušit",
@@ -228,7 +228,6 @@
     "title_highlight": "lavic",
     "title_main": "Přinášíme klima do"
   },
-  "_test_fallback_key": "This is a test fallback value",
   "team": {
     "anna": {
       "role": "Webová vývojářka, IT specialistka, Grafička"

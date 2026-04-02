@@ -1,6 +1,45 @@
 import test from "node:test";
 import assert from "node:assert";
-import { replacePlaceholders, getLangFromUrl } from "../../src/utils/i18n.ts";
+import {
+  replacePlaceholders,
+  getLangFromUrl,
+  useTranslations,
+} from "../../src/utils/i18n.ts";
+
+test("useTranslations utility - basics", (t) => {
+  const tCs = useTranslations("cs");
+  const tEn = useTranslations("en");
+
+  // Existing keys
+  assert.strictEqual(tCs("donation_modal.title"), "Podpořte nás");
+  assert.strictEqual(tEn("donation_modal.title"), "Support Us");
+
+  // Missing keys return the key string
+  assert.strictEqual(
+    tCs("non_existent.missing_key"),
+    "non_existent.missing_key",
+  );
+  assert.strictEqual(
+    tEn("non_existent.missing_key"),
+    "non_existent.missing_key",
+  );
+});
+
+test("useTranslations utility - fallback en -> cs", (t) => {
+  const tEn = useTranslations("en");
+  // home.fallback_test_key only exists in cs-CZ.json
+  assert.strictEqual(tEn("home.fallback_test_key"), "Toto je testovací klíč pro fallback");
+});
+
+test("useTranslations utility - caching", (t) => {
+  const tCs = useTranslations("cs");
+
+  const firstCall = tCs("donation_modal.title");
+  const secondCall = tCs("donation_modal.title");
+
+  assert.strictEqual(firstCall, "Podpořte nás");
+  assert.strictEqual(secondCall, "Podpořte nás");
+});
 
 test("getLangFromUrl utility", (t) => {
   const baseUrl = "https://example.com";

@@ -18,9 +18,9 @@ test.describe("useTranslations", () => {
 
   test("falls back to cs if key is missing in en", () => {
     const t = useTranslations("en");
-    // _test_fallback_key only exists in cs-CZ.json
-    const value = t("_test_fallback_key");
-    expect(value).toBe("This is a test fallback value");
+    // home.fallback_test_key only exists in cs-CZ.json
+    const value = t("home.fallback_test_key");
+    expect(value).toBe("Toto je testovací klíč pro fallback");
   });
 
   test("returns raw key if missing in both en and cs", () => {
