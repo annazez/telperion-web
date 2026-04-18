@@ -3,6 +3,7 @@ title: "Naše české lesy"
 description: "Velké a úžasné lesy jsou i u nás nebo spíš jen byly. Můžou ještě být? Ano můžou! Přečtěte si, jaký je s našimi lesy problém a jak ho vyřešit."
 pubDate: 2024-05-20
 author: "Telperion"
+lang: cs
 ---
 
 Velké a úžasné lesy jsou i u nás nebo spíš jen byly. Můžou ještě být? Ano můžou! Kvůli tomu, že jsme se o naše lesy starali špatně a jen pro komerční účely vznikl velký problém. Jaký je to problém? Proč vznikl? A jak z toho ven? To se dozvíte dále.

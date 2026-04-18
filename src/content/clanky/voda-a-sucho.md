@@ -3,6 +3,7 @@ title: "Voda a sucho"
 description: "Vody se zbavujeme a plýtváme s ní. Proč, jakým způsobem a jak to vyřešit? Přečtěte si více o důležitosti zadržování vody v krajině."
 pubDate: 2024-05-29
 author: "Telperion"
+lang: cs
 ---
 
 Voda, tekutina, která nám umožňuje žít na planetě. Bez ní by na zemi život nikdy nevznikl. Přes to všechno se vody zbavujeme a plýtváme s ní. Proč? Jakým způsobem? Jak to vyřešit a zlepšit? Na všechny tyto otázky se zde snažíme najít odpověď.

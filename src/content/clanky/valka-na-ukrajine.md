@@ -3,6 +3,7 @@ title: "Válka na Ukrajině a životní prostředí"
 description: "Válka na Ukrajině není jen humanitární, ale také ekologickou tragédií. Přečtěte si o environmentálních hrozbách spojených s touto válkou."
 pubDate: 2024-05-27
 author: "Telperion"
+lang: cs
 ---
 
 Válka na Ukrajině je nepochybně strašlivou humanitární tragédií. V jejím pozadí se ale odehrává tragédie další, která je přinejmenším stejně děsivá. Jedná se o tragédii ekologickou…

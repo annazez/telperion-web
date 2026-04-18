@@ -3,6 +3,7 @@ title: "Vliv lidí na zvířata"
 description: "Jak lidská činnost ovlivňuje ostatní živočichy? Podívejte se na dopady našeho jednání a zjistěte, jak můžeme chránit ohrožené druhy."
 pubDate: 2024-05-28
 author: "Jakub Nekvasil"
+lang: cs
 ---
 
 Jak ovlivňuje lidská činnost ostatní živočichy? Pravěcí lidé brali zvířata jako zdroj obživy a později pracovní síly, nikdy však nezpůsobili žádnému druhu příliš velkou ztrátu a už vůbec ne vyhynutí.

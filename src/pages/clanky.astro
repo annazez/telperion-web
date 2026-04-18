@@ -8,7 +8,7 @@ import { formatDate } from "../utils/date";
 const vsechnyClanky = await getCollection("clanky");
 
 const clanky = vsechnyClanky
-  .filter((clanek) => clanek.data.pubDate)
+  .filter((clanek) => clanek.data.pubDate && clanek.data.lang === "cs")
   .sort((a, b) => b.data.pubDate!.getTime() - a.data.pubDate!.getTime());
 ---
 

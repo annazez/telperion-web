@@ -8,6 +8,7 @@ const clankyCollection = defineCollection({
     description: z.string(),
     pubDate: z.date(),
     author: z.string().default("Telperion"),
+    lang: z.enum(["cs", "en"]),
   }),
 });
 
