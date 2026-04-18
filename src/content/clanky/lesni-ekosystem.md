@@ -3,6 +3,7 @@ title: "Lesní ekosystém"
 description: "Les je obrovský organismus, ve kterém má každý svou úlohu. My ho ale ničíme a nahrazujeme pralesy palmovými plantážemi. Přečtěte si o důležitosti lesů."
 pubDate: 2024-05-22
 author: "Telperion"
+lang: cs
 ---
 
 Les je obrovský organismus skládající se z množství živočichů, rostlin, hub, lišejníků a dalších. Tento systém je vyvážený a panují tu různé symbiotické i parazitické vztahy. Zároveň je ale velice křehký a jakýkoliv zásah může mít pro prales katastrofální následek. Je to koloběh, ve kterém má každý svou úlohu a když ji splní, uvolní místo dalším.

@@ -3,6 +3,7 @@ title: "Kvalita ovzduší"
 description: "Naše ovzduší je znečištěno spalováním fosilních paliv. Jak a čím si ničíme vzduch, který dýcháme, a jak z toho můžeme vybruslit?"
 pubDate: 2024-05-25
 author: "Telperion"
+lang: cs
 ---
 
 Na planetě se dá žít, protože má atmosféru s pro nás dýchatelným vzduchem. My si ale ovzduší znečišťujeme, čímž ničíme sebe i ostatní živočichy. Proč? Jak? A způsob, jak z toho vybruslit tentokrát, naleznete níže.

@@ -3,6 +3,7 @@ title: "Odpady a recyklace"
 description: "Žijeme v době plastové. Jak dnes nakládat s odpady, jak správně třídit a proč je recyklace tak důležitá? Přečtěte si tipy, jak snížit množství odpadu."
 pubDate: 2024-05-24
 author: "Telperion"
+lang: cs
 ---
 
 Dříve mohli lidé každý svůj odpadek hodit za sebe, protože se vždy jednalo o věci, které se v přírodě rozloží. Dnes ale žijeme v době plastové a už to tak dělat nejde. Jak to tedy dělat dnes? A co je za problém? To vše a ještě mnohem víc se dozvíte v textu níže.

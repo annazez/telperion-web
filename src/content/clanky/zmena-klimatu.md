@@ -3,6 +3,7 @@ title: "Změna klimatu"
 description: "Změna klimatu je jeden z největších problémů dneška. Přečtěte si, v čem spočívá problém a jaká existují řešení v oblasti mitigace a adaptace."
 pubDate: 2024-05-30
 author: "Jakub Nekvasil"
+lang: cs
 ---
 
 Změna klimatu je aktuálně jeden z největších problémů a obsahuje mnoho zde zmíněných témat. Pokud se nebude řešit, bude mít lidstvo v budoucnu velký problém. V následujícím článku najdete mnoho informací, vyvrátíme mnoho mýtů o klimatické změně a představíme plán jak se s tímto problémem popasovat.

@@ -3,6 +3,7 @@ title: "Energetika a obnovitelné zdroje"
 description: "Jak vyrábět energii šetrně, levně a efektivně? Přečtěte si, jak lidstvo energii vyrábí, jak tím škodí planetě, a jaké existují lepší alternativy."
 pubDate: 2024-05-21
 author: "Telperion"
+lang: cs
 ---
 
 Energie – způsob, jak využít jiné síly než té naší fyzické. My jsme si ale většinou vybrali způsob, který škodí planetě. Jak jí škodíme? Jak vyrábět energii šetrně, levně a efektivně? To vše a ještě mnohem víc se zde dozvíte.

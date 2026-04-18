@@ -8,7 +8,9 @@ import { formatDate } from "../../../utils/date";
 const lang = "en";
 
 export async function getStaticPaths() {
-  const clanky = await getCollection("clanky");
+  const clanky = await getCollection("clanky", ({ data }) => {
+    return data.lang === "en";
+  });
   return clanky.map((clanek) => ({
     params: { slug: clanek.id.replace(/\.md$/, "") },
     props: { clanek },

@@ -3,6 +3,7 @@ title: "Masová krize"
 description: "Maso představuje jeden z největších problémů současnosti. Přečtěte si, jak jeho konzumace poškozuje naši planetu a jaké existují alternativy, jako je čisté maso."
 pubDate: 2024-05-23
 author: "Telperion"
+lang: cs
 ---
 
 Maso představuje jeden z největších problémů, jakým lidstvo v současnosti čelí. Každý řízek, stehno, ryba nebo jakýkoli jiný druh masa, který sníme, má na svědomí smrt živého zvířete. Aby vůbec bylo možné vyrobit dostatečné množství masa za přijatelnou cenu, chovná zvířata jsou po celý svůj život namačkaná jedno vedle druhého tak, že se sotva dokáží otočit. Zvířata jsou vystresovaná a vzájemně si ubližují. Jestli něco, co v současnosti děláme, budou naši potomci považovat za odporné, kruté a nemravné, bude to nejspíš způsob, jakým zacházíme se zvířaty.

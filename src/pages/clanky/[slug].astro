@@ -5,7 +5,9 @@ import { Icon } from "astro-icon/components";
 import { formatDate } from "../../utils/date";
 
 export async function getStaticPaths() {
-  const clanky = await getCollection("clanky");
+  const clanky = await getCollection("clanky", ({ data }) => {
+    return data.lang === "cs";
+  });
   return clanky.map((clanek) => ({
     params: { slug: clanek.id.replace(/\.md$/, "") },
     props: { clanek },

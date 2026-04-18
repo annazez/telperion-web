@@ -3,6 +3,7 @@ title: "Světlo a jeho dopad"
 description: "Světlo používáme snad každý, ale lze s ním i šetřit. Světlo totiž dokáže škodit lidem i ostatním živočichům. Proč? Jak svítit a používat světlo správně?"
 pubDate: 2024-05-26
 author: "Telperion"
+lang: cs
 ---
 
 Aby se vytvořilo světlo, je potřeba nějaká energie, většinou elektrická. Světlo používáme snad každý, ale lze s ním i šetřit. Světlo totiž dokáže škodit lidem i ostatním živočichům. Proč? Jak svítit a používat světlo správně?
