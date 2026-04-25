@@ -3,7 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel/static";
+import vercel from "@astrojs/vercel";
 
 export default defineConfig({
   site: "https://www.telperion.cz",
