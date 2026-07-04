@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 
 test("LanguageDropdown Initialization Benchmark", async ({ page }) => {
   const numDropdowns = 10000;
