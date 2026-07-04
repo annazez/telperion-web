@@ -5,8 +5,16 @@ import { translatePath } from "../../src/utils/lang.ts";
 test("translatePath utility - exact matches", (t) => {
   assert.strictEqual(translatePath("/kontakty", "en"), "/en/contacts");
   assert.strictEqual(translatePath("/clanky", "en"), "/en/articles");
+  assert.strictEqual(
+    translatePath("/ochrana-osobnich-udaju", "en"),
+    "/en/privacy-policy",
+  );
   assert.strictEqual(translatePath("/en/contacts", "cs"), "/kontakty");
   assert.strictEqual(translatePath("/en/articles", "cs"), "/clanky");
+  assert.strictEqual(
+    translatePath("/en/privacy-policy", "cs"),
+    "/ochrana-osobnich-udaju",
+  );
 });
 
 test("translatePath utility - sub-paths", (t) => {

@@ -1,0 +1,237 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionBadge from "../../components/SectionBadge.astro";
+
+const updatedAt = "4 July 2026";
+---
+
+<Layout
+  title="Privacy Policy"
+  description="Information about personal data processing on the Telperion website."
+>
+  <section class="pt-12 pb-8 px-4 max-w-4xl mx-auto text-center">
+    <SectionBadge> Privacy </SectionBadge>
+    <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+      Privacy <span class="italic">Policy</span>
+    </h1>
+    <p class="text-lg text-dark-green/80 font-medium">
+      This page explains what personal data we process when you visit
+      telperion.cz, contact Telperion, request a workshop or make a donation.
+    </p>
+    <p class="mt-4 text-sm text-dark-green/60 font-medium">
+      Last updated: {updatedAt}
+    </p>
+  </section>
+
+  <article class="container mx-auto px-4 pb-16 max-w-4xl">
+    <div class="space-y-10 text-dark-green/85 leading-relaxed">
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">Controller</h2>
+        <p>
+          The data controller is <strong>Telperion, z.s.</strong>, company ID
+          21104271, registered at Uvozova 261/6, 252 62 Unetice, Czech Republic.
+        </p>
+        <p class="mt-3">
+          Contact for privacy questions and data subject requests: <a
+            href="mailto:info@telperion.cz"
+            class="font-bold text-brand-green hover:underline"
+            >info@telperion.cz</a
+          >.
+        </p>
+      </section>
+
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">
+          What we process and why
+        </h2>
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-lg font-bold mb-2">
+              Website operation and security
+            </h3>
+            <p>
+              When you visit the website, technical data needed to deliver and
+              secure the page may be processed. This usually includes IP
+              address, access time, requested URL, browser information and
+              operational logs. The legal basis is our legitimate interest in
+              operating a functional and secure website and, where applicable,
+              compliance with legal obligations.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-2">Traffic and performance</h3>
+            <p>
+              We use Vercel Web Analytics and Vercel Speed Insights for
+              aggregate traffic, error and performance measurement. According to
+              Vercel documentation, Web Analytics does not use third-party
+              cookies and Speed Insights is not tied to a specific visitor or IP
+              address. The legal basis is our legitimate interest in improving
+              and securing the website.
+            </p>
+            <p class="mt-3">
+              We also use Sentry for technical error monitoring. If an error
+              occurs on the website, Sentry may process the error message, stack
+              trace, page URL, event time, browser, device, operating system,
+              environment and other technical context needed to find and fix the
+              issue. Sentry Session Replay is disabled in the website
+              configuration, default sending of personal identifiers is
+              disabled, and we do not use Sentry for marketing or profiling. The
+              legal basis is our legitimate interest in keeping the website
+              functional, secure and reliable.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-2">Contact form</h3>
+            <p>
+              If you send a workshop request or message through the form, we
+              process the data you provide: name, email address, optional phone
+              number, selected programme, form language and message content. The
+              form is technically processed through Formspree. We use the data
+              to reply, arrange a programme and continue communication. The
+              legal basis is pre-contractual steps or our legitimate interest in
+              handling your request.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-2">Email and phone</h3>
+            <p>
+              If you contact us by email or phone, we process your contact
+              details and the content of the communication so we can respond and
+              handle any follow-up cooperation.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-2">Donations</h3>
+            <p>
+              Selecting an amount and generating the payment QR code happens in
+              your browser and does not by itself send us personal data. If you
+              make a bank transfer, we process payment data from bank statements
+              and the transparent account for accounting, donation records and
+              legal compliance.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-2">Interactive map</h3>
+            <p>
+              The home page embeds a uMap map hosted by OpenStreetMap France.
+              The map is loaded only when it gets close to the visible part of
+              the page. The map provider receives technical browser data and may
+              set a technical cookie needed to operate the service. If the map
+              asks for geolocation, the permission is controlled by your
+              browser; Telperion does not receive your location.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">
+          Cookies and similar technologies
+        </h2>
+        <p>
+          Telperion's own website code does not set marketing or analytics
+          cookies. We do not use ad pixels, remarketing or profiling. For that
+          reason, we do not currently show a cookie consent banner.
+        </p>
+        <ul class="mt-4 list-disc pl-6 space-y-2">
+          <li>
+            Vercel Web Analytics does not use third-party cookies according to
+            Vercel documentation and works with aggregate statistics.
+          </li>
+          <li>
+            uMap/OpenStreetMap France may set the technical <code
+              >csrftoken</code
+            >
+            cookie when the embedded map is loaded.
+          </li>
+          <li>
+            Sentry is configured for technical error reporting without Session
+            Replay and without marketing or profiling use.
+          </li>
+          <li>
+            The website uses <code>sessionStorage</code> to remember that you closed
+            an event popup during the current session. If your browser already contains
+            an older <code>zvoleny-jazyk</code> value, the form may read it only to
+            prefill the inquiry language.
+          </li>
+        </ul>
+      </section>
+
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">
+          Who may access the data
+        </h2>
+        <p>
+          We disclose data only as needed to operate the website and handle
+          communication. The main recipient and processor categories are Vercel
+          for hosting, analytics and performance measurement, Formspree for the
+          contact form, Sentry for technical error monitoring, our email
+          provider, Fio banka for bank donations, uMap/OpenStreetMap France for
+          the embedded map, and accounting, legal or public authorities where
+          required by law or legal claims.
+        </p>
+        <p class="mt-3">
+          Some services may process data outside the EU/EEA, especially in the
+          United States. In such cases, we rely on the contractual and security
+          mechanisms provided by those services.
+        </p>
+      </section>
+
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">Retention</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>
+            Requests and inquiries are kept for as long as needed to handle them
+            and continue communication. If needed to document an agreement or
+            protect legal claims, we keep them for up to 3 years from the last
+            communication unless the law requires a longer period.
+          </li>
+          <li>
+            Accounting and donation records are kept for the period required by
+            accounting and tax law.
+          </li>
+          <li>
+            Technical logs, error reports, analytics and performance data are
+            retained by the service providers according to their rules and
+            configuration; we use them in aggregate or operational form.
+          </li>
+        </ul>
+      </section>
+
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">Your rights</h2>
+        <p>
+          You may request access to your personal data, rectification, erasure,
+          restriction of processing, data portability where applicable, and you
+          may object to processing based on legitimate interest. Where
+          processing is based on consent, you may withdraw it at any time.
+        </p>
+        <p class="mt-3">
+          You also have the right to lodge a complaint with the <a
+            href="https://uoou.gov.cz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-bold text-brand-green hover:underline"
+            >Czech Data Protection Authority</a
+          >.
+        </p>
+      </section>
+
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">Security</h2>
+        <p>
+          The website uses HTTPS, access to data is limited to people and
+          services that need it, and the public website is kept separate from
+          internal records. We do not intentionally process special categories
+          of personal data through the website and we do not operate user
+          accounts, comments, a newsletter or an e-shop.
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>

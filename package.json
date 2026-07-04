@@ -23,6 +23,7 @@
     "@fontsource-variable/manrope": "^5.2.8",
     "@fontsource-variable/playfair-display": "^5.2.8",
     "@iconify-json/mdi": "^1.2.3",
+    "@sentry/astro": "^10.63.0",
     "@tailwindcss/vite": "^4.3.2",
     "@tolgee/web": "^7.1.1",
     "@vercel/analytics": "^2.0.1",

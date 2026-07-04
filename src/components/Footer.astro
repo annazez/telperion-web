@@ -7,6 +7,9 @@ const instaLink =
   lang === "en"
     ? "https://www.instagram.com/telperion.en/"
     : "https://www.instagram.com/telperion.cz/";
+const privacyLink =
+  lang === "en" ? "/en/privacy-policy" : "/ochrana-osobnich-udaju";
+const privacyLabel = lang === "en" ? "Privacy" : "Soukromí";
 ---
 
 <footer class="w-full flex justify-center pb-6 px-4">
@@ -18,51 +21,59 @@ const instaLink =
     >
       &copy; {currentYear} Telperion z.s.
     </p>
-    <div class="flex items-center gap-6 md:gap-4">
+    <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-5">
       <a
-        href={instaLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram"
-        class="text-dark-green hover:text-brand-green transition-colors duration-200"
+        href={privacyLink}
+        class="text-sm text-dark-green font-bold hover:text-brand-green transition-colors duration-200"
       >
-        <Icon name="mdi:instagram" class="w-6 h-6" />
+        {privacyLabel}
       </a>
-      {
-        lang !== "en" && (
-          <a
-            href="https://www.facebook.com/telperion.cz"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            class="text-dark-green hover:text-brand-green transition-colors duration-200"
-          >
-            <Icon name="mdi:facebook" class="w-6 h-6" />
-          </a>
-        )
-      }
-      {
-        lang !== "en" && (
-          <a
-            href="https://www.youtube.com/@telperion-cz/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube"
-            class="text-dark-green hover:text-brand-green transition-colors duration-200"
-          >
-            <Icon name="mdi:youtube" class="w-6 h-6" />
-          </a>
-        )
-      }
-      <a
-        href="https://github.com/annazez/telperion-web"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-        class="text-dark-green hover:text-brand-green transition-colors duration-200"
-      >
-        <Icon name="mdi:github" class="w-6 h-6" />
-      </a>
+      <div class="flex items-center gap-6 md:gap-4">
+        <a
+          href={instaLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          class="text-dark-green hover:text-brand-green transition-colors duration-200"
+        >
+          <Icon name="mdi:instagram" class="w-6 h-6" />
+        </a>
+        {
+          lang !== "en" && (
+            <a
+              href="https://www.facebook.com/telperion.cz"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              class="text-dark-green hover:text-brand-green transition-colors duration-200"
+            >
+              <Icon name="mdi:facebook" class="w-6 h-6" />
+            </a>
+          )
+        }
+        {
+          lang !== "en" && (
+            <a
+              href="https://www.youtube.com/@telperion-cz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+              class="text-dark-green hover:text-brand-green transition-colors duration-200"
+            >
+              <Icon name="mdi:youtube" class="w-6 h-6" />
+            </a>
+          )
+        }
+        <a
+          href="https://github.com/annazez/telperion-web"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          class="text-dark-green hover:text-brand-green transition-colors duration-200"
+        >
+          <Icon name="mdi:github" class="w-6 h-6" />
+        </a>
+      </div>
     </div>
   </div>
 </footer>

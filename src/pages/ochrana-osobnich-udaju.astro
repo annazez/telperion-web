@@ -1,0 +1,232 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionBadge from "../components/SectionBadge.astro";
+
+const updatedAt = "4. července 2026";
+---
+
+<Layout
+  title="Ochrana osobních údajů"
+  description="Informace o zpracování osobních údajů na webu Telperion."
+>
+  <section class="pt-12 pb-8 px-4 max-w-4xl mx-auto text-center">
+    <SectionBadge> Soukromí </SectionBadge>
+    <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+      Ochrana <span class="italic">osobních údajů</span>
+    </h1>
+    <p class="text-lg text-dark-green/80 font-medium">
+      Tyto informace popisují, jaké osobní údaje zpracováváme při návštěvě webu
+      telperion.cz, při kontaktování spolku, poptávce programu nebo daru.
+    </p>
+    <p class="mt-4 text-sm text-dark-green/60 font-medium">
+      Poslední aktualizace: {updatedAt}
+    </p>
+  </section>
+
+  <article class="container mx-auto px-4 pb-16 max-w-4xl">
+    <div class="space-y-10 text-dark-green/85 leading-relaxed">
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">Správce údajů</h2>
+        <p>
+          Správcem osobních údajů je <strong>Telperion, z.s.</strong>, IČO
+          21104271, se sídlem Úvozová 261/6, 252 62 Únětice, Česká republika.
+        </p>
+        <p class="mt-3">
+          Kontakt pro dotazy a uplatnění práv: <a
+            href="mailto:info@telperion.cz"
+            class="font-bold text-brand-green hover:underline"
+            >info@telperion.cz</a
+          >.
+        </p>
+      </section>
+
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">
+          Jaké údaje zpracováváme a proč
+        </h2>
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-lg font-bold mb-2">Provoz a zabezpečení webu</h3>
+            <p>
+              Při běžné návštěvě webu se zpracovávají technické údaje nutné pro
+              doručení stránky a bezpečný provoz, typicky IP adresa, čas
+              přístupu, požadovaná URL, informace o prohlížeči a provozní logy.
+              Právními základy jsou náš oprávněný zájem na funkčním a bezpečném
+              webu a případně plnění právních povinností.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-2">Návštěvnost a výkon webu</h3>
+            <p>
+              Používáme Vercel Web Analytics a Vercel Speed Insights. Slouží k
+              agregovanému měření návštěvnosti, chyb a výkonu stránek. Podle
+              dokumentace Vercelu Web Analytics nepoužívá third-party cookies a
+              Speed Insights není navázán na konkrétního návštěvníka nebo IP
+              adresu. Právní základ je oprávněný zájem na zlepšování a
+              zabezpečení webu.
+            </p>
+            <p class="mt-3">
+              Používáme také Sentry pro technické sledování chyb. Pokud na webu
+              dojde k chybě, Sentry může zpracovat chybovou zprávu, stack trace,
+              URL stránky, čas události, informace o prohlížeči, zařízení,
+              operačním systému, prostředí a další technický kontext potřebný k
+              nalezení a opravě závady. Sentry Session Replay je v konfiguraci
+              webu vypnuté, výchozí odesílání osobních identifikátorů je vypnuté
+              a Sentry nepoužíváme pro marketing ani profilování. Právní základ
+              je oprávněný zájem na funkčním, bezpečném a spolehlivém webu.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-2">Kontaktní formulář</h3>
+            <p>
+              Pokud odešlete poptávku programu nebo nám napíšete přes formulář,
+              zpracujeme údaje, které vyplníte: jméno, e-mail, volitelně
+              telefon, zvolený program, jazyk formuláře a obsah zprávy. Formulář
+              je technicky zpracován přes službu Formspree. Údaje používáme pro
+              odpověď, domluvu programu a navazující komunikaci. Právní základ
+              je jednání o spolupráci nebo náš oprávněný zájem vyřídit dotaz.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-2">E-mail a telefon</h3>
+            <p>
+              Když nás kontaktujete e-mailem nebo telefonicky, zpracováváme vaše
+              kontaktní údaje a obsah komunikace, abychom mohli odpovědět a
+              řešit navazující spolupráci.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-2">Dary</h3>
+            <p>
+              Výběr částky v darovacím okně a generování QR platby probíhá v
+              prohlížeči a samo o sobě nám neposílá vaše osobní údaje. Pokud dar
+              skutečně odešlete bankovním převodem, zpracováváme platební údaje
+              z bankovního výpisu a transparentního účtu pro účetnictví,
+              evidenci darů a plnění právních povinností.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-bold mb-2">Interaktivní mapa</h3>
+            <p>
+              Na úvodní stránce načítáme vloženou mapu ze služby uMap běžící na
+              OpenStreetMap France. Mapa se načítá až při přiblížení do
+              viditelné části stránky. Poskytovatel mapy při načtení obdrží
+              technické údaje prohlížeče a může nastavit technickou cookie
+              potřebnou pro provoz služby. Pokud by mapa žádala přístup k
+              poloze, rozhodujete o něm přímo v prohlížeči; Telperion polohu
+              nedostává.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">
+          Cookies a podobné technologie
+        </h2>
+        <p>
+          Vlastní kód webu Telperion nenastavuje marketingové ani analytické
+          cookies. Nepoužíváme reklamní pixely, remarketing ani profilování.
+          Proto v aktuálním stavu nezobrazujeme cookie banner s volbou souhlasu.
+        </p>
+        <ul class="mt-4 list-disc pl-6 space-y-2">
+          <li>
+            Vercel Web Analytics podle dokumentace nevyužívá third-party cookies
+            a pracuje s agregovanou statistikou.
+          </li>
+          <li>
+            uMap/OpenStreetMap France může při načtení vložené mapy nastavit
+            technickou cookie <code>csrftoken</code> pro ochranu služby.
+          </li>
+          <li>
+            Sentry je nastavené pro technické hlášení chyb bez Session Replay a
+            bez marketingového nebo profilovacího použití.
+          </li>
+          <li>
+            Web používá <code>sessionStorage</code> pro zapamatování zavření eventového
+            popupu v rámci jedné relace. Pokud máte ve svém prohlížeči starší hodnotu
+            <code>zvoleny-jazyk</code>, formulář ji může přečíst pouze pro
+            předvyplnění jazyka poptávky.
+          </li>
+        </ul>
+      </section>
+
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">
+          Komu mohou být údaje zpřístupněny
+        </h2>
+        <p>
+          Údaje zpřístupňujeme jen v rozsahu potřebném pro provoz webu a
+          vyřízení komunikace. Používáme zejména tyto kategorie příjemců a
+          zpracovatelů: Vercel pro hosting, webovou analytiku a měření výkonu,
+          Sentry pro technické sledování chyb, Formspree pro kontaktní formulář,
+          poskytovatele e-mailu, Fio banku při bankovních darech,
+          uMap/OpenStreetMap France pro vloženou mapu a případně účetní, právní
+          nebo veřejné orgány, pokud to vyžaduje zákon nebo ochrana právních
+          nároků.
+        </p>
+        <p class="mt-3">
+          Některé používané služby mohou zpracovávat data mimo EU/EHP, zejména v
+          USA. V takovém případě vycházíme ze smluvních a bezpečnostních
+          mechanismů poskytovatelů těchto služeb.
+        </p>
+      </section>
+
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">Doba uchování</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>
+            Dotazy a poptávky uchováváme po dobu potřebnou k vyřízení a
+            navazující komunikaci; pokud je to potřeba kvůli doložení dohody
+            nebo ochraně právních nároků, nejdéle 3 roky od poslední komunikace,
+            pokud zákon nevyžaduje déle.
+          </li>
+          <li>
+            Účetní a darovací podklady uchováváme po dobu vyžadovanou účetními a
+            daňovými předpisy.
+          </li>
+          <li>
+            Technické logy, chybová hlášení, analytická a výkonnostní data
+            uchovávají poskytovatelé služeb podle svých pravidel a nastavení;
+            používáme je v agregované nebo provozní podobě.
+          </li>
+        </ul>
+      </section>
+
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">Vaše práva</h2>
+        <p>
+          Máte právo požádat o přístup k osobním údajům, opravu, výmaz, omezení
+          zpracování, přenositelnost tam, kde se použije, a vznést námitku proti
+          zpracování založenému na oprávněném zájmu. Pokud je zpracování
+          založeno na souhlasu, můžete souhlas kdykoliv odvolat.
+        </p>
+        <p class="mt-3">
+          Máte také právo podat stížnost u <a
+            href="https://uoou.gov.cz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-bold text-brand-green hover:underline"
+            >Úřadu pro ochranu osobních údajů</a
+          >.
+        </p>
+      </section>
+
+      <section class="border-t border-brand-green/20 pt-8">
+        <h2 class="text-2xl font-serif font-bold mb-4">Zabezpečení</h2>
+        <p>
+          Web provozujeme přes HTTPS, omezujeme přístup k údajům jen na osoby a
+          služby, které ho potřebují, a udržujeme veřejný web oddělený od
+          interních evidencí. Nezpracováváme přes web zvláštní kategorie
+          osobních údajů a neprovozujeme uživatelské účty, komentáře, newsletter
+          ani e-shop.
+        </p>
+      </section>
+    </div>
+  </article>
+</Layout>
