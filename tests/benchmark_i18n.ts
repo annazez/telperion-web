@@ -1,7 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert";
 import { useTranslations, translations } from "../src/utils/i18n.ts";
-import cs from "../src/i18n/cs-CZ.json" with { type: "json" };
 import en from "../src/i18n/en.json" with { type: "json" };
 
 // Baseline logic
