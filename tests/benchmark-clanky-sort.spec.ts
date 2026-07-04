@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 
 test("Article Sorting Benchmark", async ({ page }) => {
   const numArticles = 1000;
