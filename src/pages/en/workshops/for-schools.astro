@@ -26,6 +26,7 @@ const realizace = [
     <SectionBadge> {t("schools.badge")} </SectionBadge>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
       {t("schools.title_main")}
+      {" "}
       <span class="italic">{t("schools.title_highlight")}</span>
     </h1>
     <p class="text-lg text-dark-green/80 font-medium">
@@ -73,9 +74,9 @@ const realizace = [
           <p>{t("schools.climate_days.desc_p1")}</p>
           <p>
             {t("schools.climate_days.desc_p2_before")}
-            <strong>{t("schools.climate_days.desc_p2_bold")}</strong>{
-              t("schools.climate_days.desc_p2_after")
-            }
+            {" "}
+            <strong>{t("schools.climate_days.desc_p2_bold")}</strong>
+            {" "}{t("schools.climate_days.desc_p2_after")}
           </p>
           <p>{t("schools.climate_days.desc_p3")}</p>
         </div>
