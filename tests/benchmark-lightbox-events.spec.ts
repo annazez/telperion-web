@@ -33,8 +33,10 @@ test("Benchmark: Individual vs Delegated Event Listeners", async ({ page }) => {
     triggers.forEach((btn) => {
       btn.addEventListener("click", function _individualHandler() {
         // dummy op
-        const src = (btn as HTMLElement).dataset.fullSrc || "";
-        const alt = btn.querySelector("img")?.alt || "";
+        void (
+          ((btn as HTMLElement).dataset.fullSrc || "") +
+          (btn.querySelector("img")?.alt || "")
+        );
       });
     });
 
@@ -80,8 +82,10 @@ test("Benchmark: Individual vs Delegated Event Listeners", async ({ page }) => {
       const target = (e.target as Element).closest(".lightbox-trigger");
       if (!target) return;
 
-      const src = (target as HTMLElement).dataset.fullSrc || "";
-      const alt = target.querySelector("img")?.alt || "";
+      void (
+        ((target as HTMLElement).dataset.fullSrc || "") +
+        (target.querySelector("img")?.alt || "")
+      );
     });
 
     const end = performance.now();
