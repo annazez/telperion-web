@@ -28,6 +28,7 @@ test.describe("Navbar Component", () => {
         { name: "Podcast", href: "/podcast" },
         { name: "Články", href: "/clanky" },
         { name: "Kontakt", href: "/kontakty" },
+        { name: "Sítě", href: "/socialni-site" },
       ];
 
       for (const link of expectedLinks) {
@@ -100,7 +101,7 @@ test.describe("Navbar Component", () => {
       await mobileBtn.click();
       await expect(mobileMenu).toBeVisible();
 
-      const expectedLinks = ["Domů", "Podcast", "Články", "Kontakt"];
+      const expectedLinks = ["Domů", "Podcast", "Články", "Kontakt", "Sítě"];
 
       for (const name of expectedLinks) {
         const link = mobileMenu.getByRole("link", { name: name });

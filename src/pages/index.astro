@@ -89,11 +89,13 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
         <iframe
           id="umap-iframe"
           title="Mapa Telperionu - Kde působíme"
-          class="absolute left-0 top-0 w-full border-0 transition-opacity duration-500 opacity-0"
+          class="absolute left-0 top-0 w-full border-0 transition-opacity duration-500 opacity-0 pointer-events-none"
           style="height: calc(100% + 40px);"
           allowfullscreen
           allow="geolocation"
           loading="lazy"
+          tabindex="-1"
+          aria-hidden="true"
           data-src="https://umap.openstreetmap.fr/cs-cz/map/mapa-telperionu_1371476?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true#7/49.800/15.500"
         >
         </iframe>
@@ -101,6 +103,39 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
         <div
           class="absolute inset-0 bg-brand-green/5 pointer-events-none mix-blend-overlay"
         >
+        </div>
+
+        <div
+          id="umap-placeholder"
+          class="absolute inset-0 z-10 flex items-center justify-center bg-cream px-6 text-center transition-opacity duration-300"
+        >
+          <div class="w-full max-w-md">
+            <div
+              class="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-brand-green/10 text-brand-green"
+              aria-hidden="true"
+            >
+              <Icon name="mdi:map-marker-radius" class="h-7 w-7" />
+            </div>
+            <h3
+              class="mb-3 font-serif text-2xl font-bold text-brand-green md:text-3xl"
+            >
+              {t("home.map.load_title")}
+            </h3>
+            <p
+              class="mb-6 text-sm font-medium leading-relaxed text-dark-green/80 md:text-base"
+            >
+              {t("home.map.load_description")}
+            </p>
+            <button
+              id="umap-load-button"
+              type="button"
+              data-loading-label={t("home.map.loading_button")}
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-brand-green px-6 py-3 text-sm font-bold text-white shadow-lg shadow-brand-green/20 transition hover:bg-dark-green focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-green disabled:cursor-wait disabled:opacity-80 md:text-base"
+            >
+              <Icon name="mdi:map-outline" class="h-5 w-5" aria-hidden="true" />
+              <span id="umap-load-label">{t("home.map.load_button")}</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -526,7 +561,17 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
   import { getSafeLanguage } from "../utils/lang";
 
   const iframe = document.getElementById("umap-iframe") as HTMLIFrameElement;
-  if (iframe) {
+  const mapPlaceholder = document.getElementById(
+    "umap-placeholder",
+  ) as HTMLDivElement;
+  const loadMapButton = document.getElementById(
+    "umap-load-button",
+  ) as HTMLButtonElement;
+  const loadMapLabel = document.getElementById(
+    "umap-load-label",
+  ) as HTMLSpanElement;
+
+  if (iframe && mapPlaceholder && loadMapButton) {
     const lang = getSafeLanguage();
     const umapLang = lang === "en" ? "en" : "cs-cz";
     const dataSrc = iframe.getAttribute("data-src") || "";
@@ -535,22 +580,26 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
       `openstreetmap.fr/${umapLang}/map`,
     );
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            iframe.src = newSrc;
-            iframe.onload = () => {
-              iframe.classList.remove("opacity-0");
-            };
-            observer.disconnect();
-          }
-        });
-      },
-      { rootMargin: "200px 0px" },
-    );
+    loadMapButton.addEventListener("click", () => {
+      if (iframe.hasAttribute("src")) return;
 
-    observer.observe(iframe);
+      loadMapButton.disabled = true;
+      loadMapButton.setAttribute("aria-busy", "true");
+      if (loadMapLabel) {
+        loadMapLabel.textContent =
+          loadMapButton.dataset.loadingLabel || loadMapLabel.textContent;
+      }
+
+      iframe.onload = () => {
+        iframe.classList.remove("opacity-0", "pointer-events-none");
+        iframe.removeAttribute("aria-hidden");
+        iframe.removeAttribute("tabindex");
+        mapPlaceholder.classList.add("opacity-0", "pointer-events-none");
+        mapPlaceholder.setAttribute("aria-hidden", "true");
+      };
+
+      iframe.setAttribute("src", newSrc);
+    });
   }
 
   const lightbox = document.getElementById("photo-lightbox") as HTMLDivElement;

@@ -9,12 +9,14 @@ test("translatePath utility - exact matches", (t) => {
     translatePath("/ochrana-osobnich-udaju", "en"),
     "/en/privacy-policy",
   );
+  assert.strictEqual(translatePath("/socialni-site", "en"), "/en/social-media");
   assert.strictEqual(translatePath("/en/contacts", "cs"), "/kontakty");
   assert.strictEqual(translatePath("/en/articles", "cs"), "/clanky");
   assert.strictEqual(
     translatePath("/en/privacy-policy", "cs"),
     "/ochrana-osobnich-udaju",
   );
+  assert.strictEqual(translatePath("/en/social-media", "cs"), "/socialni-site");
 });
 
 test("translatePath utility - sub-paths", (t) => {

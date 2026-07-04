@@ -10,6 +10,7 @@ export const routeMap: Record<string, string> = {
   "/programy/pro-verejnost": "/en/workshops/for-public",
   "/programy/dalsi-programy": "/en/workshops/other",
   "/ochrana-osobnich-udaju": "/en/privacy-policy",
+  "/socialni-site": "/en/social-media",
 };
 
 // Optimization: Pre-calculate reverse map and entries

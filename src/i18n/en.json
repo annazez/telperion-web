@@ -76,6 +76,10 @@
     "map": {
       "description": "We take our programs to students throughout the Czech Republic. Take a look at all the places where Telperion has already been.\n",
       "layers_tip": "Use the layers icon to filter specific workshops.",
+      "load_button": "Load map",
+      "load_description": "We load the map only after you click, so uMap/OpenStreetMap France is not contacted automatically.",
+      "load_title": "The interactive map is provided by an external service",
+      "loading_button": "Loading map...",
       "title_highlight": "been?",
       "title_main": "Where have we already"
     },
@@ -98,7 +102,7 @@
       "klima_dny": "Climate days",
       "mozaika_firmy": "Climate Fresk – Companies\n",
       "mozaika_junior": "Climate Fresk – Junior \n",
-        "mozaika_stredni_skola": "Climate Fresk – High School",
+      "mozaika_stredni_skola": "Climate Fresk – High School",
       "mozaika_verejnost": "Climate Fresk – Public \n",
       "not_workshop": "Not listed",
       "other": "Other workshop",
@@ -120,7 +124,18 @@
     "programs": "Workshops",
     "programs_other": "Other workshops",
     "programs_public": "For public and businesses",
-    "programs_schools": "For schools"
+    "programs_schools": "For schools",
+    "social": "Social"
+  },
+  "social": {
+    "badge": "Online",
+    "description": "Follow Telperion on social media and other public channels. Links lead to external services and open in a new window.",
+    "github_description": "Website source code.",
+    "linkedin_description": "Association updates and Telperion's professional profile.",
+    "page_title": "Social Media",
+    "primary_label": "Primary channel",
+    "title_highlight": "media",
+    "title_main": "Find us on social"
   },
   "other": {
     "badge": "New formats\n",

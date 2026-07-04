@@ -119,11 +119,12 @@ const updatedAt = "4 July 2026";
             <h3 class="text-lg font-bold mb-2">Interactive map</h3>
             <p>
               The home page embeds a uMap map hosted by OpenStreetMap France.
-              The map is loaded only when it gets close to the visible part of
-              the page. The map provider receives technical browser data and may
-              set a technical cookie needed to operate the service. If the map
-              asks for geolocation, the permission is controlled by your
-              browser; Telperion does not receive your location.
+              The map is loaded only after you click the map loading button;
+              until then, we do not connect to uMap/OpenStreetMap France. The
+              map provider receives technical browser data and may set a
+              technical cookie needed to operate the service. If the map asks
+              for geolocation, the permission is controlled by your browser;
+              Telperion does not receive your location.
             </p>
           </div>
         </div>
@@ -147,7 +148,7 @@ const updatedAt = "4 July 2026";
             uMap/OpenStreetMap France may set the technical <code
               >csrftoken</code
             >
-            cookie when the embedded map is loaded.
+            cookie after you click to load the embedded map.
           </li>
           <li>
             Sentry is configured for technical error reporting without Session

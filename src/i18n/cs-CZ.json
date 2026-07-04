@@ -76,6 +76,10 @@
     "map": {
       "description": "S našimi programy jezdíme za žáky a studenty po celé České republice. Podívejte se, kde všude už Telperion zapustil kořeny.\n\n",
       "layers_tip": "Pomocí ikony vrstev můžete filtrovat jednotlivé typy programů.",
+      "load_button": "Načíst mapu",
+      "load_description": "Mapu načteme až po kliknutí, aby se služba uMap/OpenStreetMap France nepřipojovala automaticky.",
+      "load_title": "Interaktivní mapa je z externí služby",
+      "loading_button": "Načítám mapu...",
       "title_highlight": "byli?",
       "title_main": "Kde všude už jsme"
     },
@@ -99,7 +103,7 @@
       "klima_dny": "Klima dny",
       "mozaika_firmy": "Klimatická mozaika - Firmy",
       "mozaika_junior": "Klimatická mozaika - Junior",
-        "mozaika_stredni_skola": "Klimatická mozaika - Střední škola",
+      "mozaika_stredni_skola": "Klimatická mozaika - Střední škola",
       "mozaika_verejnost": "Klimatická mozaika - Veřejnost",
       "not_workshop": "Neuvedeno",
       "other": "Jiný program",
@@ -121,7 +125,18 @@
     "programs": "Programy",
     "programs_other": "Další programy",
     "programs_public": "Pro veřejnost a firmy",
-    "programs_schools": "Pro školy"
+    "programs_schools": "Pro školy",
+    "social": "Sítě"
+  },
+  "social": {
+    "badge": "Online",
+    "description": "Sledujte Telperion na sociálních sítích a dalších veřejných kanálech. Odkazy vedou na externí služby a otevřou se v novém okně.",
+    "github_description": "Zdrojový kód webu.",
+    "linkedin_description": "Novinky ze spolku a profesní profil Telperionu.",
+    "page_title": "Sociální sítě",
+    "primary_label": "Hlavní kanál",
+    "title_highlight": "sítích",
+    "title_main": "Jsme na sociálních"
   },
   "other": {
     "badge": "Nové formáty\n",

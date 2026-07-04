@@ -35,13 +35,15 @@ Aktivní datové toky:
   `javascript-astro`.
 - Kontaktní formulář: `src/components/Modal.astro` odesílá jméno, e-mail,
   volitelný telefon, program, jazyk a zprávu na `https://formspree.io/f/xyknzgwp`.
-- Mapa: úvodní stránka lazy-loaduje iframe z
-  `https://umap.openstreetmap.fr/...`; mapa se načítá až při přiblížení do
-  viewportu přes `IntersectionObserver`.
+- Mapa: úvodní stránka má click-to-load iframe z
+  `https://umap.openstreetmap.fr/...`; mapa se načítá až po kliknutí na
+  tlačítko pro načtení mapy. Web zároveň nepoužívá preconnect na uMap ani
+  OpenStreetMap tile servery před kliknutím.
 - Dary: `DonationModal.astro` generuje QR platbu lokálně v prohlížeči a odkazuje
   na transparentní účet Fio. Výběr částky sám o sobě neposílá data na server.
-- Externí odkazy: sociální sítě, GitHub, Fio, Climate Fresk, Plant-for-the-Planet.
-  Nejde o embed sociálních widgetů.
+- Externí odkazy: samostatná stránka sociálních sítí odkazuje na Instagram,
+  LinkedIn, Facebook, YouTube a GitHub; další externí odkazy vedou na Fio,
+  Climate Fresk a Plant-for-the-Planet. Nejde o embed sociálních widgetů.
 
 Browser storage:
 
@@ -58,9 +60,10 @@ Browser storage:
 
 Přes `curl -I -L` bylo 2026-07-04 ověřeno:
 
-- uMap iframe odpovídá hlavičkou `Set-Cookie` pro technickou cookie
-  `csrftoken` s přibližně roční expirací. Jde o cookie domény
-  `umap.openstreetmap.fr`, ne o marketingovou cookie Telperionu.
+- uMap iframe může po kliknutí na načtení mapy odpovědět hlavičkou
+  `Set-Cookie` pro technickou cookie `csrftoken` s přibližně roční expirací.
+  Jde o cookie domény `umap.openstreetmap.fr`, ne o marketingovou cookie
+  Telperionu.
 - Formspree endpoint při přímém dotazu odpovídá cookie `fs_ab1=control` na
   doméně `formspree.io`. Na webu Telperion se tato doména kontaktuje až při
   odeslání formuláře.
@@ -100,16 +103,16 @@ marketingové nebo analytické cookies, protože:
   k agregované statistice,
 - Sentry je v aktuální konfiguraci použité pro technické hlášení chyb bez
   Session Replay a bez marketingového nebo profilovacího použití,
-- zjištěná uMap cookie je technická cookie poskytovatele vložené mapy,
+- zjištěná uMap cookie je technická cookie poskytovatele vložené mapy, která
+  může vzniknout až po kliknutí na načtení mapy,
 - `sessionStorage` se používá jen pro zapamatování zavření popupu v relaci.
 
 Je ale nutné mít jasnou informaci o zpracování osobních údajů a cookies/podobných
 technologiích. Ta je doplněna do privacy policy a odkazována z footeru.
 
-Přísnější varianta by byla předělat mapu na click-to-load: mapa by se nenačetla
-automaticky při scrollu, ale až po kliknutí na tlačítko. To by snížilo riziko u
-third-party iframe cookies, není však nezbytné pro současný stav, pokud zůstane
-mapa popsaná v policy.
+Mapa je nově řešená jako click-to-load: nenačítá se automaticky při scrollu, ale
+až po kliknutí na tlačítko. To snižuje automatický kontakt se třetí stranou a
+riziko third-party iframe cookies před aktivní volbou návštěvníka.
 
 Cookie banner nebo consent management bude potřeba přidat, pokud se později
 nasadí např. Google Analytics s cookies, Meta/TikTok/LinkedIn pixel, Hotjar,
@@ -128,6 +131,10 @@ volitelná technologie čtená/ukládaná v prohlížeči před souhlasem.
   `Úvozová 261/6, 252 62 Únětice`.
 - Doplněna Sentry konfigurace přes env proměnné a zmínky o technickém error
   monitoringu do privacy policy.
+- Vložená uMap/OpenStreetMap mapa je přepnutá na click-to-load a privacy policy
+  popisuje načtení mapy až po kliknutí.
+- Sociální odkazy byly přesunuté z footeru na samostatnou stránku. Jsou to
+  běžné externí odkazy bez embedů.
 
 ## K potvrzení
 
@@ -140,4 +147,5 @@ volitelná technologie čtená/ukládaná v prohlížeči před souhlasem.
   jestli chcete Formspree nahradit vlastním formulářem nebo EU providerem.
 - Zda existuje nebo bude uzavřený DPA vztah se Sentry a jak dlouho chcete v
   Sentry uchovávat chybové události.
-- Zda ponechat mapu jako automatický lazy-load, nebo ji přepnout na click-to-load.
+- Po větších změnách mapového embeddu znovu ověřit, zda se třetí strana
+  nenačítá před kliknutím.

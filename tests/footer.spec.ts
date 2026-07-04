@@ -25,15 +25,21 @@ test.describe("Footer Component", () => {
     await expect(glassCard).toHaveClass(/glass-card/);
   });
 
-  test("should have social icons", async ({ page }) => {
-    const footerContent = page.locator("footer div.glass-card");
-    const instagramIcon = footerContent.locator('a[aria-label="Instagram"]');
-    const youtubeIcon = footerContent.locator('a[aria-label="YouTube"]');
+  test("should show privacy link without social links", async ({ page }) => {
+    const footer = page.locator("footer");
+    await footer.scrollIntoViewIfNeeded();
 
-    await expect(instagramIcon).toBeVisible();
-    await expect(youtubeIcon).toBeVisible();
+    const privacyLink = footer.getByRole("link", { name: "Soukromí" });
 
-    await expect(instagramIcon).toHaveClass(/hover:text-brand-green/);
-    await expect(youtubeIcon).toHaveClass(/hover:text-brand-green/);
+    await expect(privacyLink).toBeVisible();
+    await expect(privacyLink).toHaveAttribute(
+      "href",
+      "/ochrana-osobnich-udaju",
+    );
+
+    await expect(footer.getByRole("link", { name: "Instagram" })).toHaveCount(
+      0,
+    );
+    await expect(footer.getByRole("link", { name: "YouTube" })).toHaveCount(0);
   });
 });
